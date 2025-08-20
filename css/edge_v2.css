@@ -95,7 +95,7 @@ nav ul li a:hover {font-weight: 700;}
 #section-01 {
   padding-top: 38vh;
   height: 100vh;
-  background-image: url('./images/section01-bg.jpg');
+  background-image: url('https://github.com/woojun613/EDGE/blob/main/images/section01-bg.jpg?raw=true');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -413,6 +413,7 @@ i:hover {
 }
 .footer ul li {margin-bottom: 10px;}
 .footer a {color: #fff;}
+
 
 
 
