@@ -6,10 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   ScrollSmoother.create({
     wrapper: '#smooth-wrapper',
     content: '#smooth-content',
-    smooth: 1,
-    effects: true,
-    fixedElements: '.fixed-nav',
-    normalizeScroll: true // 이 옵션을 사용하면 스크롤 관련 문제를 줄여줍니다.
+    smooth: 2,
+    effects: true
   });
     
   // ============ section-01 JS
@@ -282,4 +280,5 @@ $('#close-today').on('click', function() {
 
 $(".popup-close").click(function() {
   $(".popup-wrap").hide();
+
 });
