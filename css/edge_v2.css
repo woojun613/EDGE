@@ -131,7 +131,7 @@ nav ul li a:hover {font-weight: 700;}
 
 #section-02 {
   position: relative;
-  padding: 20vh 0;
+  padding-top: 20vh;
   text-align: center;
 }
 
@@ -169,6 +169,7 @@ nav ul li a:hover {font-weight: 700;}
 .b-1-box-img-1 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-1.png?raw=true');}
 .b-1-box-img-2 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-2.png?raw=true');}
 .b-1-box-img-3 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-3.png?raw=true');}
+
 
 
 /* ================= section-05 아코디언 이벤트 ================= */
@@ -238,6 +239,8 @@ nav ul li a:hover {font-weight: 700;}
     font-size: max(1.2vw, 21px);
   }
 } */
+
+
 
 
 /* ================= section-03 횡스크롤 이벤트 ================= */
@@ -475,14 +478,3 @@ i:hover {
 }
 .footer ul li {margin-bottom: 10px;}
 .footer a {color: #fff;}
-
-
-
-
-
-
-
-
-
-
-
