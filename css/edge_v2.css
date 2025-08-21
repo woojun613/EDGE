@@ -322,11 +322,6 @@ main {overflow:hidden}
 
 
 /* ================= 3d 슬라이드 ================= */
-#section-05 {
-  height: 100vh;
-  background: lightcyan;
-}
-
 .heading-3d {
   display: flex;
   align-items: center;
@@ -480,6 +475,7 @@ i:hover {
 }
 .footer ul li {margin-bottom: 10px;}
 .footer a {color: #fff;}
+
 
 
 
