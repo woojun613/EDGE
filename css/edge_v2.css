@@ -131,7 +131,6 @@ nav ul li a:hover {font-weight: 700;}
 
 #section-02 {
   position: relative;
-  margin-bottom: 20vh;
   padding: 20vh 0;
   text-align: center;
 }
@@ -148,7 +147,6 @@ nav ul li a:hover {font-weight: 700;}
   border-radius: 200px;
   filter: blur(40px);
 }
-/* .container-smoother img {width: 300px;} */
 
 .container-smoother-1 {top: 40vh; left: 5vw; background: lightblue;}
 .container-smoother-2 {top: 120vh; left: 60vw; background: lightpink;}
@@ -171,6 +169,75 @@ nav ul li a:hover {font-weight: 700;}
 .b-1-box-img-1 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-1.png?raw=true');}
 .b-1-box-img-2 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-2.png?raw=true');}
 .b-1-box-img-3 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-3.png?raw=true');}
+
+
+/* ================= section-05 아코디언 이벤트 ================= */
+
+.title {
+  line-height: 1.1;
+  padding-bottom: .4em;
+  color: #CEDEFF;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+}
+
+.text {
+  line-height: 1.4;
+  overflow: hidden;
+  padding-bottom: 20px;
+  color: #fff;
+}
+
+.accordions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1vh;
+}
+
+.accordion {
+  background: url('https://cdn.imweb.me/thumbnail/20250721/a7c557fb1ec5c.png') no-repeat center center;
+  background-size: cover;
+  width: max(50.5vw, 280px);
+  padding: 25px 30px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  margin-bottom: 10px;
+  box-shadow: 13px 6px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.08);
+  
+  &:nth-child(2) {
+    background: url('https://cdn.imweb.me/thumbnail/20250717/d21b3c638995d.png') no-repeat center center;
+    background-size: cover;
+  }
+  
+  &:nth-child(3) {
+    background: url('https://cdn.imweb.me/thumbnail/20250717/19c66b79226e0.png') no-repeat center center;
+    background-size: cover;
+  }
+  
+  &:nth-child(4) {
+    background: url('https://cdn.imweb.me/thumbnail/20250717/04b2f52f0a38a.png') no-repeat center center;
+    background-size: cover;
+  }
+
+  &:nth-child(5) {
+    background: url('https://cdn.imweb.me/thumbnail/20250717/16b049a3cf75d.png') no-repeat center center;
+    background-size: cover;
+  }
+  
+  &:nth-child(6) {
+    background: url('https://cdn.imweb.me/thumbnail/20250717/1b31d4641da66.png') no-repeat center center;
+    background-size: cover;
+  }
+}
+
+/* @media (max-width: 480px) {
+  .accordion {
+    padding: 15px 20px 8px;
+  }
+  .title {
+    font-size: max(1.2vw, 21px);
+  }
+} */
 
 
 /* ================= section-03 횡스크롤 이벤트 ================= */
@@ -413,6 +480,7 @@ i:hover {
 }
 .footer ul li {margin-bottom: 10px;}
 .footer a {color: #fff;}
+
 
 
 
