@@ -175,16 +175,11 @@ nav ul li a:hover {font-weight: 700;}
 /* ================= section-05 아코디언 이벤트 ================= */
 
 .title {
-  line-height: 1.1;
-  padding-bottom: .4em;
   color: #CEDEFF;
   text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
 }
 
 .text {
-  line-height: 1.4;
-  overflow: hidden;
-  padding-bottom: 20px;
   color: #fff;
 }
 
@@ -192,7 +187,6 @@ nav ul li a:hover {font-weight: 700;}
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 1vh;
 }
 
 .accordion {
@@ -478,3 +472,4 @@ i:hover {
 }
 .footer ul li {margin-bottom: 10px;}
 .footer a {color: #fff;}
+
