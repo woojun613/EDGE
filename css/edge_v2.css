@@ -32,7 +32,7 @@ p {font-size: 18px;}
 
 
 /*========= header ========= */
-nav {
+.fixed-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,12 +52,12 @@ nav {
   display: block;
   height: 40px;
 }
-nav ul {
+.fixed-nav ul {
   display: flex;
   justify-content: space-between;
   width: 40%;
 }
-nav ul li a:hover {font-weight: 700;}
+.fixed-nav ul li a:hover {font-weight: 700;}
 
 /* ================= 팝업 ================= */
 .popup-wrap {
@@ -122,9 +122,7 @@ nav ul li a:hover {font-weight: 700;}
   text-align: left;
 }
 
-.b-1-box h3 {
-  margin-top: 100px;
-}
+.b-1-box h3 {margin-top: 100px;}
 
 
 /* ================= section-02 ================= */
@@ -149,9 +147,9 @@ nav ul li a:hover {font-weight: 700;}
 }
 
 .container-smoother-1 {top: 40vh; left: 5vw; background: lightblue;}
-.container-smoother-2 {top: 120vh; left: 60vw; background: lightpink;}
-.container-smoother-3 {top: 140vh; left: 40vw; background: lightgreen;}
-.container-smoother-4 {top: 260vh; left: -5vw; background: lightcyan;}
+.container-smoother-2 {top: 120vh; left: 80vw; background: lightpink;}
+.container-smoother-3 {top: 180vh; left: 40vw; background: lightgreen;}
+.container-smoother-4 {top: 240vh; left: -5vw; background: lightcoral;}
 
 .b-1-box-txt {width: 24vw;}
 .b-1-box-txt h3 {margin-bottom: 20px;}
@@ -175,11 +173,16 @@ nav ul li a:hover {font-weight: 700;}
 /* ================= section-05 아코디언 이벤트 ================= */
 
 .title {
+  /* line-height: 1.1; */
+  /* padding-bottom: .4em; */
   color: #CEDEFF;
   text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
 }
 
 .text {
+  /* line-height: 1.4; */
+  /* overflow: hidden; */
+  /* padding-bottom: 20px; */
   color: #fff;
 }
 
@@ -187,6 +190,7 @@ nav ul li a:hover {font-weight: 700;}
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* padding-bottom: 2vh; */
 }
 
 .accordion {
@@ -472,5 +476,3 @@ i:hover {
 }
 .footer ul li {margin-bottom: 10px;}
 .footer a {color: #fff;}
-
-
