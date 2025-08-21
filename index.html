@@ -9,9 +9,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+  <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://assets.codepen.io/16327/ScrollTrigger.min.js?v=3.12"></script>
+  <!-- <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js?v=3.12"></script> -->
+  <script>
+    // 플러그인 등록
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  </script>
 </head>
 <body>
   <header>
@@ -236,6 +241,87 @@
   </script>
   <!-- ========== section-02 ========== -->
 
+  <!-- ========== section-05 ========== -->
+  <article id="section-05">
+    <div class="accordions">
+      <div class="accordion">
+        <h3 class="title">정보보안 컨설팅</h3>
+        <p class="text">
+          정보자산의 안전한 운영을 위해, 기업 맞춤형 보안 전략을 수립하고 인증 획득을 전담합니다.
+        </p>
+      </div>
+
+      <div class="accordion">
+        <h3 class="title">개인정보보호 컨설팅</h3>
+        <p class="text">
+          개인정보 처리 전 과정을 분석하여, 법적 요건을 충족하는 보호체계를 설계하고 운영을 지원합니다.
+        </p>
+      </div>
+
+      <div class="accordion">
+        <h3 class="title">보안 점검 서비스</h3>
+        <p class="text">
+          IT 시스템 전반의 보안 취약점을 사전에 식별하고, 실질적인 기술 보호 조치를 통해 침해 위험을 최소화합니다.
+        </p>
+      </div>
+
+      <div class="accordion">
+        <h3 class="title">보안 교육 및 훈련</h3>
+        <p class="text">
+          보안은 사람에서 시작됩니다. 실무 중심 교육과 시나리오 기반 훈련을 통해 조직의 보안 대응 역량을 강화합니다.
+        </p>
+      </div>
+
+      <div class="accordion">
+        <h3 class="title">홈페이지 보안 패키지 서비스</h3>
+        <p class="text">
+          홈페이지 제작과 동시에 법적 요건과 기술 보안 진단을 모두 갖춘 통합형 서비스입니다.
+        </p>
+      </div>
+
+      <div class="accordion">
+        <h3 class="title">보안 인식 개선 활동 지원</h3>
+        <p class="text">
+          조직 구성원이 보안을 일상적으로 인식하고 실천할 수 있도록, 시각적·정보 전달 콘텐츠를 제작합니다.
+        </p>
+      </div>
+    </div>
+  </article>
+  <!-- <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js"></script> -->
+  <script>
+    // gsap.registerPlugin(ScrollSmoother)
+
+    // const accorScrollerSmoother = ScrollSmoother.create({
+    //   content: '#accordion-content',
+    //   // wrapper: '#accordion-wrapper',
+    //   smooth: true,
+    //   effects: false,
+    //   normalizeScroll: true
+    // }) 왜 충돌이 날까요????
+
+    const accorTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.accordions',
+        pin: true,
+        anticipatePin: 0.1,
+        start: 'top 90px',
+        end: 'bottom top',
+        scrub: 1,
+        ease: 'linear',
+      }
+    })
+
+    accorTl.to('.accordion .text', {
+      height: 0,
+      paddingBottom: 0,
+      opacity: 0,
+      stagger: .5,
+    })
+    accorTl.to('.accordion', {
+      marginBottom: -15,
+      stagger: .5,
+    }, '<')
+  </script>
 
   <!-- ========== section-03 ========== -->
   <article id="section-03">
@@ -279,10 +365,6 @@
         <div class="img"></div>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
       </section>
-      <!-- <section id="sec07" class="scroll-items">
-        <span>07</span>
-        <div class="img"></div>
-      </section> -->
     </main>
   </article>
 
@@ -306,8 +388,6 @@
         }
       );
     });
-
-    gsap.registerPlugin(ScrollTrigger);
 
     const hor = document.querySelector("#hor");
     const sections = gsap.utils.toArray("#hor > section");
@@ -426,7 +506,7 @@
         scrollTrigger: {
           trigger: section,
           pin: true,
-          anticipatePin: 0.1,
+          anticipatePin: 0.5,
           scrub: 1,
           start: "top top",
           end: "+=3000"
@@ -527,7 +607,7 @@
   </script>
   <!-- ========== section-04 ========== -->
 
-  
+
   <footer>
     <div class="footer">
       <img src="images/logo.png" alt="">
@@ -541,5 +621,4 @@
     </div>
   </footer>
 </body>
-
 </html>
