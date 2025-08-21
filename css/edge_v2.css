@@ -168,9 +168,9 @@ nav ul li a:hover {font-weight: 700;}
   box-shadow: 13px 6px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.08);
 }
 
-.b-1-box-img-1 {background-image: url('images/edge-1.png');}
-.b-1-box-img-2 {background-image: url('images/edge-2.png');}
-.b-1-box-img-3 {background-image: url('images/edge-3.png');}
+.b-1-box-img-1 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-1.png?raw=true');}
+.b-1-box-img-2 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-2.png?raw=true');}
+.b-1-box-img-3 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-3.png?raw=true');}
 
 
 /* ================= section-03 횡스크롤 이벤트 ================= */
@@ -346,11 +346,11 @@ i:hover {
   background-position: center;
   background-size: cover;
 }
-.position-bg-1 {background-image: url('images/edge-1.png');}
-.position-bg-2 {background-image: url('images/edge-2.png');}
-.position-bg-3 {background-image: url('images/edge-3.png');}
-.position-bg-4 {background-image: url('images/edge-4.png');}
-.position-bg-5 {background-image: url('images/edge-5.png');}
+.position-bg-1 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-1.png?raw=true');}
+.position-bg-2 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-2.png?raw=true');}
+.position-bg-3 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-3.png?raw=true');}
+.position-bg-4 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-4.png?raw=true');}
+.position-bg-5 {background-image: url('https://github.com/woojun613/EDGE/blob/main/images/edge-5.png?raw=true');}
 
 .position1 {
   left: 21.5vw;
@@ -413,6 +413,7 @@ i:hover {
 }
 .footer ul li {margin-bottom: 10px;}
 .footer a {color: #fff;}
+
 
 
 
