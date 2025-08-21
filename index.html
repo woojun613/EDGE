@@ -8,29 +8,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
-  <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://assets.codepen.io/16327/ScrollTrigger.min.js?v=3.12"></script>
-  <!-- <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js?v=3.12"></script> -->
-  <script>
-    // 플러그인 등록
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-  </script>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="#" class="top-logo"><img src="images/logo.png" alt=""></a>
-      <ul>
-        <li><a href="#">기업소개</a></li>
-        <li><a href="#">서비스</a></li>
-        <li><a href="#">공지사항</a></li>
-        <li><a href="#">인재채용</a></li>
-      </ul>
-      <a href="#" class="btn">문의하기</a>
-    </nav>
+  <nav class="fixed-nav">
+    <a href="#" class="top-logo"><img src="images/logo.png" alt=""></a>
+    <ul>
+      <li><a href="#">기업소개</a></li>
+      <li><a href="#">서비스</a></li>
+      <li><a href="#">공지사항</a></li>
+      <li><a href="#">인재채용</a></li>
+    </ul>
+    <a href="#" class="btn">문의하기</a>
+  </nav>
 
+  <div id="smooth-wrapper">
+  <div id="smooth-content">
+
+  <header>
     <div class="popup-wrap">
       <div class="popup">
         <div id="owl-banner-edge" class="owl-carousel owl-theme"><!-- 필수 : .owl-carousel와 .owl-theme -->
@@ -54,97 +48,20 @@
         </div>
       </div>
     </div>
-  
-  <!-- ========== header script ========== -->
-  <script>
-    // ============ OwlCarousel2
-    $('#owl-banner-edge').owlCarousel({
-      autoplay:true,
-      autoplayTimeout:3000,
-      autoplayHoverPause:true,
-      loop:true,
-      margin:10,
-      nav:true,
-      responsive:{
-        0:{ items:1 },
-        600:{ items:2 },
-        1000:{ items:3 }
-      }
-    });
-
-    // ============ 오늘 하루 그만보기
-    const cookieName = 'hidePopupToday';
-
-    function setCookie(name, value, days) {
-      const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      const expires = "; expires=" + date.toUTCString();
-      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-
-    function getCookie(name) {
-      const nameEQ = name + "=";
-      const ca = document.cookie.split(';');
-      for(let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-      }
-      return null;
-    }
-
-    if (getCookie(cookieName)) {
-      $('.popup-wrap').hide();
-    } else {
-      $('.popup-wrap').show();
-    }
-
-    $('#close-today').on('click', function() {
-      setCookie(cookieName, 'true', 1);
-      $('.popup-wrap').hide();
-    });
-
-    $(".popup-close").click(function() {
-      $(".popup-wrap").hide();
-    });
-  </script>
   </header>
-
 
   <!-- ========== section-01 ========== -->
   <article id="section-01">
-      <div class="a-1">
-        <div><h1 class="title-1">Securing</h1><h1 class="title-2">&nbsp;Safety</h1></div>
-        <div><h1 class="title-3">on the</h1><h1 class="title-4">&nbsp;Edge</h1></div>
-      </div>
-      
-      <div class="a-1-btn">
-        <button class="btn">App Store</button>
-        <button class="btn">Google Play</button>
-      </div>
-  </article>
-
-  <!-- ========== section-01 JS ========== -->
-  <script>
-    const introTl = gsap.timeline();
+    <div class="a-1">
+      <div><h1 class="title-1">Securing</h1><h1 class="title-2">&nbsp;Safety</h1></div>
+      <div><h1 class="title-3">on the</h1><h1 class="title-4">&nbsp;Edge</h1></div>
+    </div>
     
-    introTl.fromTo ( ".title-1",
-      { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
-      { autoAlpha: 1, yPercent: 0, duration: 0.5, delay: 0.5}
-    ).fromTo ( ".title-2",
-      { transformOrigin: "center bottom", autoAlpha: 0, xPercent: 20 },
-      { autoAlpha: 1, xPercent: 0, duration: 0.5}
-    ).fromTo ( ".title-3",
-      { transformOrigin: "center bottom", autoAlpha: 0, xPercent: -20 },
-      { autoAlpha: 1, xPercent: 0, duration: 0.5}
-    ).fromTo ( ".title-4",
-      { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
-      { autoAlpha: 1, yPercent: 0, duration: 0.5}
-    ).fromTo ( ".a-1-btn",
-      { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
-      { autoAlpha: 1, yPercent: 0, duration: 0.5}
-    );
-  </script>
+    <div class="a-1-btn">
+      <button class="btn">App Store</button>
+      <button class="btn">Google Play</button>
+    </div>
+  </article>
   <!-- ========== section-01 ========== -->
 
 
@@ -179,66 +96,11 @@
       </div>
     </div>
 
-    <div class="container-smoother container-smoother-1"></div>
-    <div class="container-smoother container-smoother-2"></div>
-    <div class="container-smoother container-smoother-3"></div>
-    <div class="container-smoother container-smoother-4"></div>
+    <div class="container-smoother container-smoother-1" data-speed="2.0"></div>
+    <div class="container-smoother container-smoother-2" data-speed="2.0"></div>
+    <div class="container-smoother container-smoother-3" data-speed="2.0"></div>
+    <div class="container-smoother container-smoother-4" data-speed="2.0"></div>
   </article>
-
-  <!-- ========== section-02 JS ========== -->
-  <script>
-    const boxes = gsap.utils.toArray([".section-02-title", ".b-1-box1", ".b-1-box2", ".b-1-box3"]);
-
-    boxes.forEach(box => {
-      gsap.fromTo(
-        box,
-        { autoAlpha: 0},
-        {
-          autoAlpha: 1,
-          duration: 1,
-          scrollTrigger: {
-            scrub: 1.5,
-            trigger: box,
-            start: "center 90%",
-            end: "center top"
-          }
-        }
-      );
-    });
-
-    gsap.utils.toArray([".container-smoother-1", ".container-smoother-2", ".container-smoother-3", ".container-smoother-4"]).forEach(box => {
-      let yFrom, yTo;
-      
-      if (box.classList.contains("container-smoother-1")) {
-        yFrom = 100;
-        yTo = -100;
-      } else if (box.classList.contains("container-smoother-2")) {
-        yFrom = 50;
-        yTo = -100;
-      } else if (box.classList.contains("container-smoother-3")) {
-        yFrom = 100;
-        yTo = -100;
-      } else if (box.classList.contains("container-smoother-4")) {
-        yFrom = 10;
-        yTo = -100;
-      }
-
-      gsap.fromTo(
-        box,
-        { yPercent: yFrom },
-        {
-          yPercent: yTo,
-          duration: 1,
-          scrollTrigger: {
-            scrub: 1.5,
-            trigger: box,
-            start: "top bottom",
-            end: "center center"
-          }
-        }
-      );
-    });
-  </script>
   <!-- ========== section-02 ========== -->
 
   <!-- ========== section-05 ========== -->
@@ -287,41 +149,6 @@
       </div>
     </div>
   </article>
-  <!-- <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js"></script> -->
-  <script>
-    // gsap.registerPlugin(ScrollSmoother)
-
-    // const accorScrollerSmoother = ScrollSmoother.create({
-    //   content: '#accordion-content',
-    //   // wrapper: '#accordion-wrapper',
-    //   smooth: true,
-    //   effects: false,
-    //   normalizeScroll: true
-    // }) 왜 충돌이 날까요????
-
-    const accorTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.accordions',
-        pin: true,
-        anticipatePin: 0.1,
-        start: 'top 90px',
-        end: 'bottom top',
-        scrub: 1,
-        ease: 'linear',
-      }
-    })
-
-    accorTl.to('.accordion .text', {
-      height: 0,
-      paddingBottom: 0,
-      opacity: 0,
-      stagger: .5,
-    })
-    accorTl.to('.accordion', {
-      marginBottom: -15,
-      stagger: .5,
-    }, '<')
-  </script>
 
   <!-- ========== section-03 ========== -->
   <article id="section-03">
@@ -367,50 +194,6 @@
       </section>
     </main>
   </article>
-
-  <!-- ========== section-03 JS ========== -->
-  <script>
-    const boxes3 = gsap.utils.toArray([".section-03-title", "#sec01", "#hor", "#sec06"]);
-
-    boxes3.forEach(box => {
-      gsap.fromTo(
-        box,
-        { autoAlpha: 0},
-        {
-          autoAlpha: 1,
-          duration: 1,
-          scrollTrigger: {
-            scrub: 1.5,
-            trigger: box,
-            start: "center 100%",
-            end: "center center"
-          }
-        }
-      );
-    });
-
-    const hor = document.querySelector("#hor");
-    const sections = gsap.utils.toArray("#hor > section");
-
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: hor,
-        start: "top top",
-        end: () => "+=" + (hor.offsetWidth - innerWidth),
-        pin: true,
-        scrub: 0.5,
-        snap: {
-          snapTo: 1 / (sections.length - 1),
-          inertia: false,
-          duration: { min: 0.1, max: 0.1 },
-        },
-        invalidateOnRefresh: true,
-        // anticipatePin: 1,
-      },
-    });
-  </script>
   <!-- ========== section-03 ========== -->
 
   
@@ -493,121 +276,6 @@
     </div>
   </article>
 
-  <!-- ========== section-04 JS ========== -->
-  <script>
-    // =============== 스케일 컨텐츠 ================
-    const scaieSections = gsap.utils.toArray(".scale-box");
-
-    scaieSections.forEach(section => {
-      const text = section.querySelector(".scale-content"),
-      image = section.querySelector(".scale-img");
-      
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          pin: true,
-          anticipatePin: 0.5,
-          scrub: 1,
-          start: "top top",
-          end: "+=3000"
-        }
-      });
-
-      tl.from(text, {opacity: 0, y: 100})
-      .from(image, {scale: 0.5, ease: "linear", duration: 1})
-      // .to(text, {opacity: 0, y: -100, ease: "power1.in"}); 사라지는거
-    });
-
-    // =============== 3d 슬라이드 ================
-    class Card {
-      constructor(node, position) {
-        this.node = node;
-        this.position = position;
-      }
-
-      nextPosition() {
-        let nextPosition = 1;
-        if (this.position != 5) {
-          nextPosition = this.position + 1;
-        }
-        return nextPosition;
-      }
-
-      prevPosition() {
-        let prevPosition = 5;
-        if (this.position != 1) { 
-          prevPosition = this.position - 1;
-        }
-        return prevPosition;
-      }
-
-      moveNext() {
-        this.node.classList.replace(
-          `position${this.position}`,
-          `position${this.nextPosition()}`
-        );
-
-        this.position = this.nextPosition();
-      }
-
-      movePrev() {
-        this.node.classList.replace(
-          `position${this.position}`,
-          `position${this.prevPosition()}`
-        );
-
-        this.position = this.prevPosition();
-      }
-    }
-
-    const [prev, next] = document.querySelectorAll("i");
-    const gallery = document.querySelector(".gallery");
-    const cards = [];
-    let start;
-
-    document.querySelectorAll(".card-3d").forEach((e, pos = 0) => {
-      pos += 1;
-      cards.push(new Card(e, pos));
-    });
-
-    next.addEventListener("click", () => {
-      cards.forEach((c) => {
-        c.moveNext();
-      });
-    });
-
-    prev.addEventListener("click", () => {
-      cards.forEach((c) => {
-        c.movePrev();
-      });
-    });
-
-    gallery.addEventListener("touchstart", (s) => {
-      start = s.targetTouches[0].screenX;
-    });
-
-    gallery.addEventListener("touchend", (e) => {
-      let end = e.changedTouches[0].screenX;
-      const range = Math.abs(start - end);
-
-      if (range > 30) {
-        if (start < end) {
-          cards.forEach((c) => {
-            c.moveNext();
-          });
-        }
-
-        if (start > end) {
-          cards.forEach((c) => {
-            c.movePrev();
-          });
-        }
-      }
-    });
-  </script>
-  <!-- ========== section-04 ========== -->
-
-
   <footer>
     <div class="footer">
       <img src="images/logo.png" alt="">
@@ -620,5 +288,14 @@
       <a href="#">개인정보 처리 방침</a>
     </div>
   </footer>
+
+  </div><!-- <div id="smooth-content"> -->
+  </div><!-- <div id="smooth-wrapper"> -->
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+<script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+<script src="https://assets.codepen.io/16327/ScrollTrigger.min.js?v=3.12"></script>
+<script src="https://assets.codepen.io/16327/ScrollSmoother.min.js?v=3.12"></script>
+<script src="js/edge_v2.js"></script>
 </html>
