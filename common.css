@@ -14,7 +14,13 @@ a {
   color: #333;
   font-size: 18px;
 }
-/* h1 {font-size: 48px;} */
+h1 {
+  font-size: 80px !important;
+  font-weight: 600 !important;
+  line-height: 76px !important;
+  text-transform: uppercase;
+  color: #333;
+}
 h2 {
   font-size: 42px;
   margin-bottom: 16px;
@@ -35,7 +41,7 @@ p {font-size: 17px;}
   font-weight: 500;
 }
 
-button {
+/* button {
   padding: 10px 24px;
   font-size: 17px;
   background: #637FDF;
@@ -43,4 +49,40 @@ button {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+} */
+
+.edge-btn {
+  position: relative;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  background: #637fdf;
+  border: none;
+  z-index: 1;
 }
+
+.edge-btn:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #637fdf;
+  border-radius: 5px;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.edge-btn:hover {color: #fff;}
+.edge-btn:hover:after {
+  left: 0;
+  width: 100%;
+}
+.edge-btn:active {top: 2px;}
