@@ -3,7 +3,6 @@
 header {
   width: 100vw;
   height: 70px;
-  backdrop-filter: blur(8px);
   position: fixed;
   z-index: 99;
 }
