@@ -525,6 +525,7 @@
 
   .s5-con-mo ul li p:first-child {
     margin-right: 10px;
+    width: 50px;
     font-weight: 700;
   }
 
