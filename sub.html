@@ -37,28 +37,28 @@
       </ul>
       
       <ul class="s1-con">
-        <li class="fade-event">
+        <li class="fade-event1">
           <img src="images/산업별 전문 컨설팅 수행.jpg" alt="">
           <div>
             <h3>산업별 전문 컨설팅 수행</h3>
             <p>공공기관, 금융권, 대학, 제조업 등 다양한 산업군별 보안요소 실전 경험 보유</p>
           </div>
         </li>
-        <li class="fade-event">
+        <li class="fade-event2">
           <div>
             <h3>전환경 보안진단 역량</h3>
             <p>웹 · 앱 · 클라우드 전 환경에 대한 진단 역량 / 최신 CVE와 OWASP 기반의 정밀 점검 수행</p>
           </div>
           <img src="images/역량 보안 진단.jpg" alt="">
         </li>
-        <li class="fade-event">
+        <li class="fade-event3">
           <img src="images/맞춤형 리포트.jpg" alt="">
           <div>
             <h3>맞춤형 리포트 · 시각화 자료</h3>
             <p>실무 · 경영진 눈높이에 맞춘 맞춤형 리포트 및 시각화 자료 제공</p>
           </div>
         </li>
-        <li class="fade-event">
+        <li class="fade-event4">
           <div>
             <h3>통합 서비스 제공</h3>
             <p>보안 점검부터 컨설팅, 문서 정비, 교율, 사후관리까지 전 과정 통합 제공</p>
@@ -153,36 +153,39 @@
   ).fromTo ( ".s1-txt > p",
     { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
     { autoAlpha: 1, yPercent: 0, duration: 0.4,}
-  ).fromTo ( ".s1-img > li:nth-child(1) > img",
+  ).fromTo ( ".s1-img > li > img",
     { transformOrigin: "center bottom", autoAlpha: 0},
-    { autoAlpha: 1, duration: 0.4}
-  ).fromTo ( ".s1-img > li:nth-child(2) > img",
-    { transformOrigin: "center bottom", autoAlpha: 0},
-    { autoAlpha: 1, duration: 0.4}
-  ).fromTo ( ".s1-img > li:nth-child(3) > img",
-    { transformOrigin: "center bottom", autoAlpha: 0},
-    { autoAlpha: 1, duration: 0.4}
+    { autoAlpha: 1, duration: 0.4, stagger: 0.4 } // stagge > 하나의 코드로 세 이미지 애니메이션 처리
   );
 
   // ========== fade event ==========
-  const boxes = document.querySelectorAll(".fade-event");
+  const selectors = [
+    ".fade-event1", 
+    ".fade-event2", 
+    ".fade-event3", 
+    ".fade-event4"
+  ];
 
-  boxes.forEach(box => {
-    gsap.from(box, {
-      autoAlpha: 0,
-      duration: 1,
+  selectors.forEach((selector) => {
+    gsap.timeline({
       scrollTrigger: {
-        trigger: box,
-        start: "top 100%",
-        scrub: true
+        trigger: selector, 
+        start: "top 70%",
+        toggleActions: "play none none none",
+        once: true
       }
-    });
+    }).fromTo ( selector, // 해당 셀렉터를 타겟으로 설정
+      { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
+      { autoAlpha: 1, yPercent: 0 , duration: 0.4, stagger: 0.4 }
+    );
   });
+
+
 
   // ========== section01 ==========
   const introT2 = gsap.timeline({
     scrollTrigger: {
-      trigger: ".s2-txt",         // 애니메이션을 시작할 기준 요소 (일반적으로 가장 먼저 움직일 요소를 포함하는 부모)
+      trigger: ".s2-txt", // 애니메이션을 시작할 기준 요소 (일반적으로 가장 먼저 움직일 요소를 포함하는 부모)
       start: "top 70%",
       toggleActions: "play none none none", // 스크롤 다운 시 한 번만 재생
       once: true
