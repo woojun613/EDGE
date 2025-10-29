@@ -10,7 +10,8 @@
 </head>
 <body>
   <header>
-    <nav>
+    <!-- ========== PC header ========== -->
+    <nav class="h-pc">
       <img onclick="window.location.href='index.html'" src="images/회사CI_2.png" alt="엣지시큐리티 로고">
       <ul>
         <li><a href="sub.html">기업소개</a></li>
@@ -20,6 +21,23 @@
       </ul>
       <button class="edge-btn">문의하기</button>
     </nav>
+
+    <!-- ========== MO header ========== -->
+    <nav class="fixed-nav">
+      <a href="index.html" class="top-logo"><img src="https://cdn.imweb.me/upload/S20250822eb76b8264281a/96855dfbd9892.png" alt=""></a>
+      <i class="fas fa-bars menu-open"></i>
+    </nav>
+    
+    <div class="top-menu-mo">
+      <span><i class="fas fa-plus menu-close menuBtn"></i></span>
+      <ul>
+        <li><a href="https://edge001.imweb.me/index" class="edge-a">기업소개</a></li>
+        <li><a href="https://edge001.imweb.me/service" class="edge-a">서비스</a></li>
+        <li><a href="https://edge001.imweb.me/notice" class="edge-a">공지사항</a></li>
+        <li><a href="https://edge001.imweb.me/recruit" class="edge-a">인재채용</a></li>
+        <li><a class="edge-btn edge-a" href="https://edge001.imweb.me/inquiry">문의하기</a></li>
+      </ul>
+    </div>
   </header>
 
   <main>
@@ -36,6 +54,7 @@
         <li><img src="images/장점3.png" alt=""></li>
       </ul>
       
+      <!-- ========== PC ========== -->
       <ul class="s1-con">
         <li class="fade-event1">
           <img src="images/산업별 전문 컨설팅 수행.jpg" alt="">
@@ -66,6 +85,40 @@
           <img src="images/통합 서비스 제공.jpg" alt="">
         </li>
       </ul>
+      <!-- ========== PC ========== -->
+
+      <!-- ========== MO ========== -->
+      <ul class="s1-con-mo">
+        <li class="fade-event-mo1">
+          <div>
+            <h3>산업별 전문 컨설팅 수행</h3>
+            <p>공공기관, 금융권, 대학, 제조업 등 다양한 산업군별 보안요소 실전 경험 보유</p>
+          </div>
+          <img src="images/산업별 전문 컨설팅 수행.jpg" alt="">
+        </li>
+        <li class="fade-event-mo2">
+          <div>
+            <h3>전환경 보안진단 역량</h3>
+            <p>웹 · 앱 · 클라우드 전 환경에 대한 진단 역량 / 최신 CVE와 OWASP 기반의 정밀 점검 수행</p>
+          </div>
+          <img src="images/역량 보안 진단.jpg" alt="">
+        </li>
+        <li class="fade-event-mo3">
+          <div>
+            <h3>맞춤형 리포트 · 시각화 자료</h3>
+            <p>실무 · 경영진 눈높이에 맞춘 맞춤형 리포트 및 시각화 자료 제공</p>
+          </div>
+          <img src="images/맞춤형 리포트.jpg" alt="">
+        </li>
+        <li class="fade-event-mo4">
+          <div>
+            <h3>통합 서비스 제공</h3>
+            <p>보안 점검부터 컨설팅, 문서 정비, 교율, 사후관리까지 전 과정 통합 제공</p>
+          </div>
+          <img src="images/통합 서비스 제공.jpg" alt="">
+        </li>
+      </ul>
+      <!-- ========== MO ========== -->
     </section>
 
     <section id="sec02">
@@ -141,6 +194,29 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script>
+  // ============ 모바일 메뉴 ============
+  $('.menu-open').click(function() {
+    $(this).addClass('act');
+      
+      if($(this).hasClass('act')) {
+        $('.top-menu-mo').addClass('act');
+      }
+      else {
+        $('.top-menu-mo').removeClass('act');
+      }
+  });
+
+  $('.menu-close').click(function() {
+    $(this).removeClass('act');
+      
+      if($(this).hasClass('act')) {
+        $('.top-menu-mo').addClass('act');
+      }
+      else {
+        $('.top-menu-mo').removeClass('act');
+      }
+  });
+
     gsap.registerPlugin(ScrollTrigger);
 
   // ========== fadeIn event ==========
@@ -169,7 +245,29 @@
   selectors.forEach((selector) => {
     gsap.timeline({
       scrollTrigger: {
-        trigger: selector, 
+        trigger: selector,
+        start: "top 50%",
+        toggleActions: "play none none none",
+        once: true
+      }
+    }).fromTo ( selector, // 해당 셀렉터를 타겟으로 설정
+      { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
+      { autoAlpha: 1, yPercent: 0 , duration: 0.4, stagger: 0.4 }
+    );
+  });
+
+  // ========== fade event MO ==========
+  const selectorsMO = [
+    ".fade-event-mo1", 
+    ".fade-event-mo2", 
+    ".fade-event-mo3", 
+    ".fade-event-mo4"
+  ];
+
+  selectorsMO.forEach((selector) => {
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: selector,
         start: "top 70%",
         toggleActions: "play none none none",
         once: true

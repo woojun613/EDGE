@@ -12,7 +12,8 @@
 <body>
 
   <header>
-    <nav>
+    <!-- ========== PC header ========== -->
+    <nav class="h-pc">
       <img onclick="window.location.href='index.html'" src="images/회사CI_2.png" alt="엣지시큐리티 로고">
       <ul>
         <li><a href="sub.html">기업소개</a></li>
@@ -22,7 +23,26 @@
       </ul>
       <button class="edge-btn">문의하기</button>
     </nav>
+
+    <!-- ========== MO header ========== -->
+    <nav class="fixed-nav">
+      <a href="index.html" class="top-logo"><img src="https://cdn.imweb.me/upload/S20250822eb76b8264281a/96855dfbd9892.png" alt=""></a>
+      <i class="fas fa-bars menu-open"></i>
+    </nav>
+    
+    <div class="top-menu-mo">
+      <span><i class="fas fa-plus menu-close menuBtn"></i></span>
+      <ul>
+        <li><a href="sub.html" class="edge-a">기업소개</a></li>
+        <li><a href="https://edge001.imweb.me/service" class="edge-a">서비스</a></li>
+        <li><a href="https://edge001.imweb.me/notice" class="edge-a">공지사항</a></li>
+        <li><a href="https://edge001.imweb.me/recruit" class="edge-a">인재채용</a></li>
+        <li><a class="edge-btn edge-a" href="https://edge001.imweb.me/inquiry">문의하기</a></li>
+      </ul>
+    </div>
   </header>
+
+
 
   <main>
     <div id="fullpage">
@@ -39,6 +59,8 @@
       </div>
 
       <div id="section02" class="section section02">
+
+        <!-- ========== s2-con PC ========= -->
         <ul class="s2-txt">
           <li><h2>Securing Safety on the EDGE</h2></li>
           <li><p>Edge Security는 디지털 전환 시대에 증가하는 보안 위협에 맞서, 기업 전반을 아우르는 정밀 진단과 맞춤형 전략으로 기업의 실질적인 보안을 완성합니다.</p></li>
@@ -59,6 +81,30 @@
             <h3>지속 가능한 보안</h3>
           </li>
         </ul>
+        <!-- ========== s2-con PC ========= -->
+        
+        <!-- ========== s2-con MO ========= -->
+        <ul class="s2-txt-mo">
+          <li><h2>Securing Safety on the EDGE</h2></li>
+          <li><p>엣지 시큐리티는 디지털 전환 시대에 정밀 진단과 맞춤형 전략으로 기업 전반의 실질적인 보안을 완성하고</p></li>
+          <li><p>실행 중심의 컨설팅을 통해 안전한 미래를 지키는 파트너가 되겠습니다.</p></li>
+        </ul>
+
+        <ul class="s2-con-mo">
+          <li class="s2-con-1">
+            <h3>책임 있는 보안 파트너</h3>
+            <img src="images/보안파트너.jpg" alt="">
+          </li>
+          <li class="s2-con-2">
+            <h3>투명한 컨설팅 과정</h3>
+            <img src="images/투명한컨설팅.jpg" alt="">
+          </li>
+          <li  class="s2-con-3">
+            <h3>지속 가능한 보안</h3>
+            <img src="images/시속가능한 보안.jpg" alt="">
+          </li>
+        </ul>
+        <!-- ========== s2-con MO ========= -->
       </div>
 
       <!-- ========== slide ========== -->
@@ -68,7 +114,7 @@
             <img src="images/정보보안 컨설팅.png" alt="">
             <div>
               <h2>정보보안 컨설팅</h2>
-              <h3>정보자산의 안전한 운영을 위해, 기업 맞춤형 보안 전략을 수립하고 인증 획득을 전담합니다.</h3>
+              <h3>정보자산의 안전한 운영을 위해, 기업 맞춤형 보안<br>전략을 수립하고 인증 획득을 전담합니다.</h3>
             </div>
           </div>
         </div>
@@ -78,7 +124,7 @@
             <img src="images/개인정보보호 컨설팅.png" alt="">
             <div>
               <h2>개인정보보호 컨설팅</h2>
-              <h3>개인정보 처리 전 과정을 분석하여, 법적 요건을 충족하는 보호체계를 설계하고 운영을 지원합니다.</h3>
+              <h3>개인정보 처리 전 과정을 분석하여, 법적 요건을<br>충족하는 보호체계를 설계하고 운영을 지원합니다.</h3>
             </div>
           </div>
         </div>
@@ -88,7 +134,7 @@
             <img src="images/보안 교육 및 훈련.png" alt="">
             <div>
               <h2>보안 교육 및 훈련</h2>
-              <h3>보안은 사람에서 시작됩니다. 실무 중심 교육과 시나리오 기반 훈련을 통해 조직의 보안 대응 역량을 강화합니다.</h3>
+              <h3>보안은 사람에서 시작됩니다. 실무 중심 교육과<br>시나리오 기반 훈련을 통해 조직의 보안 대응<br>역량을 강화합니다.</h3>
             </div>
           </div>
         </div>
@@ -98,7 +144,7 @@
             <img src="images/보안 점검 서비스.png" alt="">
             <div>
               <h2>보안 점검 서비스</h2>
-              <h3>IT 시스템 전반의 보안 취약점을 사전에 식별하고, 실질적인 기술 보호 조치를 통해 침해 위험을 최소화합니다.</h3>
+              <h3>IT 시스템 전반의 보안 취약점을 사전에 식별하고<br>실질적인 기술 보호 조치를 통해 침해 위험을<br>최소화합니다.</h3>
             </div>
           </div>
         </div>
@@ -108,7 +154,7 @@
             <img src="images/홈페이지 보안 패키지 서비스.jpg" alt="">
             <div>
               <h2>홈페이지 보안 패키지 서비스</h2>
-              <h3>홈페이지 제작과 동시에 법적 요건과 기술 보안 진단을 모두 갖춘 통합형 서비스입니다.</h3>
+              <h3>홈페이지 제작과 동시에 법적 요건과 기술 보안 진단을<br>모두 갖춘 통합형 서비스입니다.</h3>
             </div>
           </div>
         </div>
@@ -118,7 +164,7 @@
             <img src="images/보안 인식 개선 활동 지원.jpg" alt="">
             <div>
               <h2>보안 인식 개선 활동 지원</h2>
-              <h3>조직 구성원이 보안을 일상적으로 인식하고 실천할 수 있도록, 시각적·정보 전달 콘텐츠를 제작합니다.</h3>
+              <h3>조직 구성원이 보안을 일상적으로 인식하고<br>실천할 수 있도록, 시각적·정보 전달 콘텐츠를<br>제작합니다.</h3>
             </div>
           </div>
         </div>
@@ -170,7 +216,8 @@
           <h2>모든 비즈니스의 보안을 함께 합니다</h2>
           <p>전 영역의 보안을 지원합니다. 기업의 지속가능한 성장을 위해 함께 고민합니다.<br>보안 그 이상의 가치를 제공하는 파트너가 되겠습니다. 지금, 엣지시큐리티와 함께하세요.</p>
         </div>
-        
+
+        <!-- ========== s5-con PC ========= -->
         <div class="s5-con">
           <ul>
             <li>
@@ -188,6 +235,28 @@
           </ul>
           <iframe class="section-05-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3177.430670074243!2d127.10177741189416!3d37.21375004416182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b4500064d0aad%3A0x1f0cd872aafae2ec!2z7Jej7KeA7Iuc7YGQ66as7Yuw!5e0!3m2!1sko!2skr!4v1753751438872!5m2!1sko!2skr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+        <!-- ========== s5-con PC ========= -->
+
+        <!-- ========== s5-con MO ========= -->
+        <div class="s5-con-mo">
+          <iframe class="section-05-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3177.430670074243!2d127.10177741189416!3d37.21375004416182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b4500064d0aad%3A0x1f0cd872aafae2ec!2z7Jej7KeA7Iuc7YGQ66as7Yuw!5e0!3m2!1sko!2skr!4v1753751438872!5m2!1sko!2skr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <ul>
+            <li>
+              <p>회사주소</p>
+              <p>경기도 화성시 동탄첨단산업2로 43 동탄G타워 503호 </p>
+            </li>
+            <li>
+              <p>대표전화</p>
+              <p>010-7436-0017 </p>
+            </li>
+            <li>
+              <p>이메일</p>
+              <p>edgesec@edgesec.co.kr</p>
+            </li>
+          </ul>
+        </div>
+        <!-- ========== s5-con MO ========= -->
+        
       </div>
     </div>
   </main>
@@ -198,6 +267,31 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script>
+
+  // ============ 모바일 메뉴 ============
+  $('.menu-open').click(function() {
+    $(this).addClass('act');
+      
+      if($(this).hasClass('act')) {
+        $('.top-menu-mo').addClass('act');
+      }
+      else {
+        $('.top-menu-mo').removeClass('act');
+      }
+  });
+
+  $('.menu-close').click(function() {
+    $(this).removeClass('act');
+      
+      if($(this).hasClass('act')) {
+        $('.top-menu-mo').addClass('act');
+      }
+      else {
+        $('.top-menu-mo').removeClass('act');
+      }
+  });
+  // ============ 모바일 메뉴 ============
+
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -229,41 +323,98 @@
   // ========== section2 ==========
   const introT2 = gsap.timeline({ paused: true }); // 즉시 실행되지 않도록 paused: true 설정
 
-  introT2.fromTo ( ".s2-txt",
-      { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
-      { autoAlpha: 1, yPercent: 0, duration: 0.4}
-  ).fromTo ( ".s2-con-1",
+  // introT2.fromTo ( ".s2-txt",
+  //   { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
+  //   { autoAlpha: 1, yPercent: 0, duration: 0.4}
+  // ).fromTo ( ".s2-con-1",
+  //   { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
+  //   { autoAlpha: 1, yPercent: 0, duration: 0.4}
+  // ).fromTo ( ".s2-con-2",
+  //   { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
+  //   { autoAlpha: 1, yPercent: 0, duration: 0.4}
+  // ).fromTo ( ".s2-con-3",
+  //   { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
+  //   { autoAlpha: 1, yPercent: 0, duration: 0.4}
+  // );
+
+  let mq2 = gsap.matchMedia();
+
+  mq2.add({
+    isDesktop: "(min-width: 490px)", 
+    isMobile: "(max-width: 489px)"
+  }, (context) => {
+    
+    let { isDesktop, isMobile } = context.conditions;
+
+    if (isDesktop) {
+      introT2.fromTo ( ".s2-txt",
+        { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
+        { autoAlpha: 1, yPercent: 0, duration: 0.4}
+      );
+    }
+
+    if (isMobile) {
+      introT2.fromTo ( ".s2-txt-mo",
+        { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
+        { autoAlpha: 1, yPercent: 0, duration: 0.4}
+      );
+    }
+
+    introT2.fromTo ( ".s2-con-1",
       { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
       { autoAlpha: 1, yPercent: 0, duration: 0.4}
-  ).fromTo ( ".s2-con-2",
+    ).fromTo ( ".s2-con-2",
       { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
       { autoAlpha: 1, yPercent: 0, duration: 0.4}
-  ).fromTo ( ".s2-con-3",
+    ).fromTo ( ".s2-con-3",
       { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
       { autoAlpha: 1, yPercent: 0, duration: 0.4}
-  );
+    );
+
+  });
 
   // ========== section4 ==========
   const introT4 = gsap.timeline({ paused: true });
 
   introT4.fromTo ( ".s4-txt",
-      { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
-      { autoAlpha: 1, yPercent: 0, duration: 0.4}
+    { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
+    { autoAlpha: 1, yPercent: 0, duration: 0.4}
   ).fromTo ( ".container-3d",
-      { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
-      { autoAlpha: 1, yPercent: 0, duration: 0.4}
+    { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
+    { autoAlpha: 1, yPercent: 0, duration: 0.4}
   );
 
   // ========== section5 ==========
   const introT5 = gsap.timeline({ paused: true });
 
-  introT5.fromTo ( ".s5-txt",
+  let mq5 = gsap.matchMedia();
+
+  mq5.add({
+    isDesktop: "(min-width: 490px)", 
+    isMobile: "(max-width: 489px)"
+  }, (context) => {
+    
+    let { isDesktop, isMobile } = context.conditions;
+
+    introT5.fromTo ( ".s5-txt",
       { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
       { autoAlpha: 1, yPercent: 0, duration: 0.4}
-  ).fromTo ( ".s5-con",
-      { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
-      { autoAlpha: 1, yPercent: 0, duration: 0.4}
-  );
+    );
+
+    if (isDesktop) {
+      introT5.fromTo ( ".s5-con",
+        { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
+        { autoAlpha: 1, yPercent: 0, duration: 0.4}
+      );
+    }
+
+    if (isMobile) {
+      introT5.fromTo ( ".s5-con-mo",
+        { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
+        { autoAlpha: 1, yPercent: 0, duration: 0.4}
+      );
+    }
+  });
 
 
   // ========== fullpage ==========
