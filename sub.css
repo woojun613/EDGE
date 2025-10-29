@@ -2,7 +2,6 @@
 
 @media (min-width: 490px) { /* ================= PC ================= */
   /* ========== section01 ========== */
-
   #sec01 {padding-top: 24vh;}
 
   .s1-txt {
@@ -47,12 +46,10 @@
 
   .s1-con li img {width: 420px;}
   .s1-con li div {width: 480px;}
-
   /* ========== section01 ========== */
 
 
   /* ========== section02 ========== */
-
   #sec02 {
     margin-top: 160px;
     text-align: center;
@@ -98,12 +95,10 @@
     font-size: 30px;
     margin-top: 24px;
   }
-
   /* ========== section02 ========== */
 
 
   /* ========== section03 ========== */
-
   #sec03 {
     margin-top: 200px;
     text-align: center;
@@ -134,11 +129,11 @@
     font-size: 24px;
     margin-bottom: 8px;
   }
+  /* ========== section03 ========== */
 }
 
 @media (max-width: 489px) { /* ================= MO ================= */
   /* ========== section01 ========== */
-
   #sec01 {padding-top: 14vh;}
 
   .s1-txt {
@@ -188,12 +183,10 @@
     text-align: center;
   }
   .s1-con-mo li div > p {margin: 10px 0 20px;}
-
   /* ========== section01 ========== */
 
 
   /* ========== section02 ========== */
-
   #sec02 {
     margin-top: 100px;
     text-align: center;
@@ -239,12 +232,10 @@
     font-size: 30px;
     margin-top: 24px;
   }
-
   /* ========== section02 ========== */
 
 
   /* ========== section03 ========== */
-
   #sec03 {
     margin-top: 60px;
     text-align: center;
@@ -273,4 +264,5 @@
   }
 
   .s3-con li i {font-size: 18px;}
+  /* ========== section03 ========== */
 }

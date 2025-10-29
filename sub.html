@@ -21,6 +21,7 @@
       </ul>
       <button class="edge-btn">문의하기</button>
     </nav>
+    <!-- ========== PC header ========== -->
 
     <!-- ========== MO header ========== -->
     <nav class="fixed-nav">
@@ -38,6 +39,7 @@
         <li><a class="edge-btn edge-a" href="https://edge001.imweb.me/inquiry">문의하기</a></li>
       </ul>
     </div>
+    <!-- ========== MO header ========== -->
   </header>
 
   <main>
@@ -86,6 +88,7 @@
         </li>
       </ul>
       <!-- ========== PC ========== -->
+
 
       <!-- ========== MO ========== -->
       <ul class="s1-con-mo">
@@ -216,10 +219,13 @@
         $('.top-menu-mo').removeClass('act');
       }
   });
+  // ============ 모바일 메뉴 ============
+
 
     gsap.registerPlugin(ScrollTrigger);
 
   // ========== fadeIn event ==========
+
   // ========== 바로 실행되는 section01 ==========
   const introT1 = gsap.timeline();
 
@@ -233,15 +239,15 @@
     { transformOrigin: "center bottom", autoAlpha: 0},
     { autoAlpha: 1, duration: 0.4, stagger: 0.4 } // stagge > 하나의 코드로 세 이미지 애니메이션 처리
   );
+  // ========== 바로 실행되는 section01 ==========
 
-  // ========== fade event ==========
   const selectors = [
     ".fade-event1", 
     ".fade-event2", 
     ".fade-event3", 
     ".fade-event4"
   ];
-
+  
   selectors.forEach((selector) => {
     gsap.timeline({
       scrollTrigger: {
@@ -251,10 +257,12 @@
         once: true
       }
     }).fromTo ( selector, // 해당 셀렉터를 타겟으로 설정
-      { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
-      { autoAlpha: 1, yPercent: 0 , duration: 0.4, stagger: 0.4 }
-    );
-  });
+    { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
+    { autoAlpha: 1, yPercent: 0 , duration: 0.4, stagger: 0.4 }
+  );
+});
+  // ========== fade event ==========
+
 
   // ========== fade event MO ==========
   const selectorsMO = [
@@ -277,7 +285,7 @@
       { autoAlpha: 1, yPercent: 0 , duration: 0.4, stagger: 0.4 }
     );
   });
-
+  // ========== fade event MO ==========
 
 
   // ========== section01 ==========
@@ -303,6 +311,8 @@
     { transformOrigin: "center bottom", autoAlpha: 0},
     { autoAlpha: 1, duration: 0.4}
   );
+  // ========== section01 ==========
+
 
   // ========== section02 ==========
   const introT3 = gsap.timeline({
@@ -330,6 +340,7 @@
     { transformOrigin: "center bottom", autoAlpha: 0},
     { autoAlpha: 1, duration: 0.5}
   );
+  // ========== section02 ==========
 
 
   // ========== section03 ==========
@@ -355,6 +366,6 @@
     { transformOrigin: "center bottom", autoAlpha: 0},
     { autoAlpha: 1, duration: 0.5}
   );
-
+  // ========== section03 ==========
 </script>
 </html>

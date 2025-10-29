@@ -321,20 +321,6 @@
   // ========== section2 ==========
   const introT2 = gsap.timeline({ paused: true }); // 즉시 실행되지 않도록 paused: true 설정
 
-  // introT2.fromTo ( ".s2-txt",
-  //   { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 50 },
-  //   { autoAlpha: 1, yPercent: 0, duration: 0.4}
-  // ).fromTo ( ".s2-con-1",
-  //   { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
-  //   { autoAlpha: 1, yPercent: 0, duration: 0.4}
-  // ).fromTo ( ".s2-con-2",
-  //   { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
-  //   { autoAlpha: 1, yPercent: 0, duration: 0.4}
-  // ).fromTo ( ".s2-con-3",
-  //   { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
-  //   { autoAlpha: 1, yPercent: 0, duration: 0.4}
-  // );
-
   let mq2 = gsap.matchMedia();
 
   mq2.add({
@@ -370,6 +356,8 @@
     );
 
   });
+  // ========== section2 ==========
+
 
   // ========== section4 ==========
   const introT4 = gsap.timeline({ paused: true });
@@ -381,6 +369,8 @@
     { transformOrigin: "center bottom", autoAlpha: 0, yPercent: 10 },
     { autoAlpha: 1, yPercent: 0, duration: 0.4}
   );
+  // ========== section4 ==========
+
 
   // ========== section5 ==========
   const introT5 = gsap.timeline({ paused: true });
@@ -413,6 +403,7 @@
       );
     }
   });
+  // ========== section5 ==========
 
 
   // ========== fullpage ==========
@@ -453,9 +444,10 @@
       }
     });
   });
+  // ========== fullpage ==========
 
 
-  // ========== 3d슬라이드 ==========
+  // ========== 3d slide ==========
   class Card {
     constructor(node, position) {
       this.node = node;
@@ -541,5 +533,6 @@
       }
     }
   });
+  // ========== 3d slide ==========
 </script>
 </html>
