@@ -1,0 +1,851 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'GangwonEducationModuche';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFLightA.woff') format('woff');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GangwonEducationModuche';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ===================================================
+  CSS Reset & Base Styles (초기화 및 기본 설정)
+=================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+ul, ol, li { list-style: none; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; vertical-align: top; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+/* ===================================================
+  CSS Reset & Base Styles (초기화 및 기본 설정)
+=================================================== */
+
+
+
+
+/* ===================================================
+  Header - 따라다니는 상단 메뉴바
+=================================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px); /* 스크롤 시 뒤쪽 배경이 고급스럽게 블러 처리됨 */
+  z-index: 9999;
+  /* transition: all 0.3s ease; */
+}
+
+.header-container {
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo a {
+  display: flex;
+  align-items: center;
+}
+.header-logo img {
+  height: 40px; /* 헤더 높이에 맞게 로고 사이즈 조절 */
+  width: auto;
+}
+
+/* 우측 영역 (메뉴 + 버튼) 가로 정렬 */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* 메뉴와 버튼 사이의 간격 */
+}
+
+/* 네비게이션 (GNB) */
+.gnb ul {
+  display: flex;
+  gap: 40px; /* 각 메뉴 글자 사이의 간격 */
+}
+
+.gnb a {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px; /* 헤더에 맞게 슬림하게 조절 */
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.header-btn:hover {
+  background-color: #fff;
+  color: #0e1420; /* 색상 반전 효과 */
+}
+
+.header.is-hidden {
+  transform: translateY(-100%);
+}
+/* ===================================================
+  Header - 따라다니는 상단 메뉴바 끝
+=================================================== */
+
+
+
+
+
+/* ===================================================
+  Custom Mouse Cursor (마우스 커서 반전 효과)
+=================================================== */
+body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
+  cursor: none !important;
+}
+
+.swiper-grab-cursor, .swiper-slide {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #fff; 
+  border-radius: 50%;
+  pointer-events: none; 
+  z-index: 99999; 
+  mix-blend-mode: difference; 
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* 호버 상태일 때 커서 크기 확대 */
+.custom-cursor.is-hovering {
+  width: 60px;
+  height: 60px;
+}
+/* ===================================================
+  Custom Mouse Cursor (마우스 커서 반전 효과)
+=================================================== */
+
+
+
+
+
+/* ===================================================
+  section-01 - 메인 비주얼 (Hero)
+=================================================== */
+.section-01 {
+  width: 100%;
+  min-height: 100vh; /* 브라우저 화면 높이에 꽉 차도록 설정 */
+  background-color: #121722; /* 시안과 흡사한 아주 짙은 네이비 배경 */
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  padding-top: 80px; /* 고정된 헤더(80px) 높이만큼 콘텐츠를 아래로 내려줌 */
+}
+
+.sec1-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* 메인 타이틀 */
+.sec1-title {
+  color: #fff;
+  font-size: 64px; /* 큼직하고 시원하게 */
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 30px;
+}
+
+/* 👇 요청하신 파란색 그라데이션 텍스트 */
+.gradient-text-blue {
+  background: linear-gradient(91.34deg, #256FE4 0.73%, #189FC5 50.14%, #0ACFA5 99.54%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
+}
+
+/* 서브 텍스트 */
+.sec1-desc {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 60px; /* 버튼과의 간격 */
+}
+
+/* 빠른보안상담 버튼 (섹션 7 스타일 기반) */
+.sec1-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px; /* 버튼을 좀 더 큼직하게 */
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  /* transition: all 0.3s ease; */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sec1-btn:hover {
+  background-color: #fff;
+  color: #121722; /* 바탕색에 맞춰 글자색 반전! */
+}
+/* ===================================================
+  section-01 - 메인 비주얼 (Hero) 끝
+=================================================== */
+
+
+
+
+
+
+
+/* ===================================================
+  section-02 - 기존 보안컨설팅 경험 (슬라이드)
+=================================================== */
+.section-02 {
+  background: 
+    linear-gradient(to bottom, rgba(37, 42, 66, 0) 70%, #252A42 100%),
+    linear-gradient(77.36deg, #4B5484 25.54%, #252A42 59.51%, #000000 97.09%);
+  padding: 120px 0 150px; 
+  overflow: hidden; 
+}
+
+/* --- 헤더 영역 --- */
+.sec2-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sec2-subtitle {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.sec2-title {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.gradient-text-orange {
+  background: linear-gradient(91.34deg, #EF4E46 0.73%, #F2910E 99.54%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
+}
+
+.sec2-desc {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* 1. 슬라이더 전체 컨테이너에 하단 여백 80px 강제 확보 */
+.sec2-slider {
+  width: 100%;
+  max-width: 100%; 
+  margin: 0 auto;
+  padding-bottom: 80px !important; 
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+/* 2. 개별 흰색 카드 스타일 */
+.card-slide {
+  background: #fff;
+  border-radius: 20px;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 588px !important; 
+  height: 400px !important; 
+  max-height: 400px !important; 
+}
+
+/* 카드 내부 텍스트 */
+.slide-title {
+  font-size: 26px;
+  color: #111;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.slide-desc {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* 하단 인용구 (아바타 + 텍스트) */
+.slide-quote {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 12px;
+}
+
+.quote-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.quote-text {
+  font-family: 'GangwonEducationModuche';
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 3. 불릿(점) 위치를 확보된 80px 공간의 맨 밑바닥으로 이동 */
+.sec2-slider .swiper-pagination {
+  position: absolute !important;
+  bottom: 0px !important; 
+}
+
+/* 2. 기본 불릿 스타일 */
+.swiper-pagination-bullet {
+  background: #7B7B7B !important; 
+  opacity: 1 !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: 0 6px !important;
+  transition: background 0.3s ease; /* 색상만 부드럽게 변하도록 설정 */
+}
+
+/* 3. 활성화된 불릿 스타일 (길어지는 효과 제거) */
+.swiper-pagination-bullet-active {
+  background: #F07129 !important;
+  width: 10px !important; 
+  border-radius: 50% !important;
+}
+/* ===================================================
+  section-02 - 기존 보안컨설팅 경험 (슬라이드)
+=================================================== */
+
+
+
+
+/* ===================================================
+  section-03 - WHAT MAKES US DIFFERENT 시작
+=================================================== */
+.section-03 {
+  background: 
+    linear-gradient(to bottom, #252A42 0%, rgba(37, 42, 66, 0) 30%),
+    linear-gradient(to bottom, rgba(1, 1, 1, 0) 80%, #010101 100%),
+    linear-gradient(147.87deg, #4B5484 5.08%, #252A42 41.34%, #010101 81.46%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+  min-height: 100vh;
+}
+/* --- 상단 헤더 영역 --- */
+.sec3-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sec3-subtitle {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.sec3-title {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 30px;
+}
+
+.sec3-desc {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* --- 콘텐츠 영역 (가로, 세로 고정) --- */
+.sec3-content {
+  position: relative; /* 자식 요소 겹치기를 위한 기준점 */
+  width: 1200px;
+  height: 384px;
+  margin: 0 auto;
+}
+
+/* --- 모서리가 둥근 그라데이션 박스 (겹치기) --- */
+.gradient-box {
+  position: absolute; /* 한 자리에 5개를 모두 겹칩니다 */
+  top: 0; left: 0;
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  height: 384px;
+  border-radius: 20px;
+  background: transparent;
+  padding: 0 130px; 
+  gap: 140px; 
+  /* 초기 상태를 안 보이고 살짝 작게 설정 (JS가 작동 안할때 대비) */
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+}
+
+/* 첫 번째 박스만 처음에 보이게 설정 */
+.gradient-box:first-child {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+/* 그라데이션 테두리를 만드는 가상 요소 */
+.gradient-box::before {
+  content: "";
+  position: absolute;
+  inset: 0; 
+  border-radius: 20px; 
+  padding: 2px; 
+  background: linear-gradient(90deg, #C273FF 0%, #484AF7 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none; 
+}
+
+/* --- 박스 내부 이미지 --- */
+.box-image {
+  flex-shrink: 0;
+  width: 250px; /* 이미지 래퍼 크기 조절 */
+  height: auto;
+}
+
+/* --- 박스 내부 텍스트 --- */
+.box-text {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sustainability 텍스트 그라데이션 */
+.box-gradient-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #C273FF 0%, #484AF7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
+}
+
+.box-main-title {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+}
+/* ===================================================
+  section-03 - WHAT MAKES US DIFFERENT 끝
+=================================================== */
+
+
+
+
+
+/* ===================================================
+  section-04 - 3D 입체감 카드 레이아웃
+=================================================== */
+.section-04 {
+  background-color: #010101;
+  display: flex;
+  flex-direction: column; /* 가로 배열을 세로 배열로 변경하여 타이틀이 위로 오게 함 */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 100px 0; /* 위아래 전체 여백 확보 */
+}
+
+/* ===================================================
+  타이틀 영역 스타일 (새로 추가)
+=================================================== */
+.title-area {
+  text-align: center;
+  margin-bottom: 60px; /* 타이틀과 아래 카드 컨테이너 사이의 간격 */
+}
+
+.title-area .subtitle {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em; /* 자간을 살짝 넓혀서 고급스럽게 */
+  margin-bottom: 20px;
+}
+
+.title-area .main-title {
+  color: #fff;
+  font-size: 48px; /* 폰트 크기 (비율에 맞게 조절 가능) */
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* 텍스트 그라데이션 핵심 코드 */
+.gradient-text {
+  background: linear-gradient(90deg, #C273FF 0%, #484AF7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
+}
+
+.container {
+  display: flex;
+  flex-direction: column; 
+  width: 1200px; 
+  padding: 0 30px 100px;
+  margin: 0 auto;
+  /* background-color: turquoise; */
+}
+
+/* ===================================================
+  새로 추가된 껍데기 (스크롤 페이드인 담당)
+=================================================== */
+.card-wrapper {
+  position: relative; /* top을 사용하기 위해 필수 */
+  opacity: 0; /* 처음엔 투명하게 숨김 */
+  top: 70px; /* 원래 위치보다 70px 아래에 배치 */
+  transition: opacity 0.8s ease-out, top 0.8s ease-out;
+  cursor: pointer;
+}
+
+.card-wrapper.is-visible {
+  opacity: 1; /* 다시 보이게 됨 */
+  top: 0; /* 원래 위치로 올라옴 */
+}
+
+/* 1. 카드 전체 뼈대 (투명한 영역) - 1.35배 확대 */
+.card {
+  position: relative;
+  width: 486px;  
+  height: 600px; 
+  transform-style: preserve-3d;
+  overflow: visible;
+  transform: perspective(950px);
+}
+
+/* 2. 실제 색상이 들어가는 배경 사각형 */
+.card-bg {
+  position: absolute;
+  top: 27px; /* 비율에 맞춰 수정 */
+  right: 0;
+  width: 378px;  /* 비율에 맞춰 수정 */
+  height: 477px; /* 비율에 맞춰 수정 */
+  background: url('./images/TEST_BG.png') center center no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  transform: translateZ(0);
+  z-index: 1;
+}
+
+/* 3. 3D 요소 (왼쪽과 위쪽으로 삐져나옴) */
+.card-diagram {
+  position: absolute;
+  top: 104px;  /* 비율에 맞춰 수정 */
+  left: 68px;  /* 비율에 맞춰 수정 */
+  width: 351px; /* 비율에 맞춰 수정 */
+  z-index: 2;
+  transform: translateZ(135px); /* 3D 입체감 확대 */
+  filter: drop-shadow(10px 18px 25px rgba(0,0,0,0.4)); /* 그림자도 살짝 확대 */
+}
+
+/* 4. 텍스트 (왼쪽과 아래쪽으로 삐져나옴) */
+.card-title {
+  position: absolute;
+  bottom: 82px; /* 비율에 맞춰 수정 */
+  left: 68px;  /* 비율에 맞춰 수정 */
+  margin: 0;
+  color: #fff;
+  font-size: 2.7rem; /* 폰트 사이즈 1.35배 확대 */
+  z-index: 3;
+  transform: translateZ(81px); /* 입체감 확대 */
+  text-shadow: 5px 5px 12px rgba(0,0,0,0.6);
+  white-space: nowrap;
+}
+
+/* ===================================================
+  지그재그 레이아웃 코드 
+=================================================== */
+.card-wrapper:nth-child(odd) { align-self: flex-start; }
+.card-wrapper:nth-child(even) { align-self: flex-end; }
+.card-wrapper:nth-child(n+2) { margin-top: -204px; }
+
+/* ===================================================
+  오른쪽 카드 반전 코드
+=================================================== */
+.container > .card-wrapper:nth-child(even) .card {
+  transform: perspective(950px);
+}
+.container > .card-wrapper:nth-child(even) .card-bg {
+  right: auto; left: 0; 
+}
+.container > .card-wrapper:nth-child(even) .card-diagram {
+  left: auto; right: 68px;
+}
+.container > .card-wrapper:nth-child(even) .card-title {
+  left: auto; right: 68px;
+}
+
+/* ===================================================
+  페이드인 완료 상태)
+=================================================== */
+.card.is-visible {
+  opacity: 1; /* 다시 보이게 됨 */
+  top: 0; /* 원래 위치로 올라옴 */
+}
+/* ===================================================
+  section-04 - 3D 입체감 카드 레이아웃 끝
+=================================================== */
+
+
+
+
+/* ===================================================
+  section-07 - 문의하기 (푸터 위) 시작
+=================================================== */
+.section-07 {
+  background-color: #0e1420; 
+  padding: 120px 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* JS 페이드인 애니메이션을 위해 초기에는 숨겨둡니다 */
+.sec7-container {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* 상단 그라데이션 서브타이틀 */
+.sec7-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #32C58A 0%, #1FC9FF 50%, #355AD0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 메인 타이틀 */
+.sec7-title {
+  color: #fff;
+  font-size: 32px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+/* 문의하기 라운드 테두리 버튼 */
+.sec7-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.8); /* 얇은 흰색 테두리 */
+  border-radius: 50px; /* 완전한 알약 모양 */
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* 버튼 마우스 호버 효과 (색상 반전) */
+.sec7-btn:hover {
+  background-color: #fff;
+  color: #0e1420; 
+}
+/* ===================================================
+  section-07 - 문의하기 (푸터 위) 끝
+=================================================== */
+
+
+
+
+/* ===================================================
+  footer - 엣지시큐리티 푸터 스타일
+=================================================== */
+.footer {
+  background-color: #152640; 
+  padding: 80px 0 60px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.footer-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- 푸터 상단 (정보 + 버튼들) --- */
+.footer-top {
+  display: flex;
+  justify-content: space-between; /* 정보는 왼쪽, 버튼은 오른쪽 배치 */
+  align-items: flex-start;
+  margin-bottom: 70px; /* 로고 영역과의 간격 */
+}
+
+/* 회사 정보 기본 간격 */
+.footer-info p {
+  margin-bottom: 8px; /* 줄 간격 */
+}
+
+/* 주소 텍스트 색상 (값) */
+.footer-info p.address {
+  color: #446699;
+}
+
+/* 라벨 색상 (대표전화, 도입 및 협업 문의) */
+.footer-info p.phone,
+.footer-info p.email {
+  color: #446699;
+}
+
+/* 값 색상 (전화번호, 이메일 주소) */
+.footer-info p.phone a,
+.footer-info p.email a {
+  color: #7998C5;
+}
+
+/* 전화번호와 이메일 링크 호버 효과 */
+.footer-info a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* 버튼 영역 (SNS + TOP) */
+.footer-btns {
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  gap: 12px; 
+}
+
+.sns-links {
+  display: flex;
+  gap: 12px; 
+}
+
+.sns-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  background-color: #283d5b;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/* 박스 안의 이미지 크기를 적당히 조절 */
+.sns-icon {
+  width: 28px; 
+  height: 28px;
+  object-fit: contain;
+}
+
+.top-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px; /* SNS 박스와 높이 완벽 일치 */
+  padding: 0 24px; /* 글자 길이에 맞춰 가로 여백 부여 */
+  background-color: #283d5b;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/* 마우스 올렸을 때의 공통 효과 (살짝 밝아지며 떠오름) */
+.sns-links a:hover,
+.top-btn:hover {
+  background-color: #3b4860;
+  transform: translateY(-5px);
+}
+
+/* --- 푸터 하단 (로고 + 약관) --- */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between; /* 로고 왼쪽, 약관 오른쪽 배치 */
+  align-items: flex-end; /* 바닥에 맞춤 */
+}
+
+/* 로고 크기 조정 */
+.footer-logo img {
+  width: 550px;
+  height: 97px;
+  object-fit: contain;
+  vertical-align: middle; /* a 태그 안에서 하단 여백이 생기는 현상 방지 */
+}
+
+/* 하단 링크 */
+.footer-links {
+  display: flex;
+  gap: 30px; /* 약관끼리 간격 */
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: #7998C5; /* 약관 텍스트도 요청하신 색상 적용 */
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+/* ===================================================
+  footer - 엣지시큐리티 푸터 스타일
+=================================================== */
