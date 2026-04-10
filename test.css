@@ -192,7 +192,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   margin-bottom: 60px; /* 버튼과의 간격 */
 }
 
-/* 빠른보안상담 버튼 (섹션 7 스타일 기반) */
+/* 빠른보안상담 버튼 */
 .sec1-btn {
   display: inline-flex;
   align-items: center;
