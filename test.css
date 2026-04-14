@@ -197,11 +197,11 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 40px; /* 버튼을 좀 더 큼직하게 */
+  padding: 14px 40px; /* 버튼을 좀 더 큼직하게 */
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 50px;
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   /* transition: all 0.3s ease; */
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -695,10 +695,10 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 .sec5-desc {
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 300;
   line-height: 1.6;
-  opacity: 0.7; 
+  /* opacity: 0.7;  */
   margin-bottom: 50px;
 }
 
