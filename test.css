@@ -651,122 +651,6 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 
 /* ===================================================
-  section-06 - CONTACT US (지도 및 연락처)
-=================================================== */
-.section-06 {
-  background-color: #000; /* 배경색 없음 (다크 테마 유지) */
-  padding: 150px 0;
-}
-
-.sec6-container {
-  width: 1200px;
-  margin: 0 auto;
-  padding: 0 30px;
-  /* 페이드인 애니메이션을 위해 초기에는 숨김 */
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-/* 상단 타이틀 영역 */
-.sec6-header {
-  text-align: center;
-  margin-bottom: 80px;
-}
-
-.sec6-subtitle {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  margin-bottom: 20px;
-  opacity: 0.7;
-}
-
-.sec6-title {
-  color: #fff;
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 1.3;
-}
-
-/* 하단 2단 레이아웃 영역 (지도 + 정보) */
-.sec6-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 80px; /* 지도와 정보 사이의 간격 */
-}
-
-/* 좌측: 지도 영역 */
-.sec6-map {
-  width: 55%; /* 왼쪽 공간 비율 */
-  height: 420px; /* 지도의 높이 */
-  border-radius: 20px; /* 시안처럼 모서리 둥글게 */
-  overflow: hidden; /* iframe이 둥근 모서리를 삐져나가지 않도록 잘라냄 */
-  background-color: #1a2235; /* 지도가 로딩되기 전 보이는 어두운 임시 배경색 */
-}
-
-.sec6-map iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* 우측: 정보 리스트 영역 */
-.sec6-info {
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  gap: 50px; /* 항목과 항목 사이의 간격 */
-}
-
-.info-item {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* 라벨과 값(텍스트) 사이의 간격 */
-}
-
-/* 아이콘과 제목(라벨) */
-.info-label {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #A1B3CF; /* 연한 파스텔 블루/그레이 톤 */
-  font-size: 15px;
-  font-weight: 500;
-}
-
-/* 아이콘 크기 고정 */
-.info-icon {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-/* 실제 내용 텍스트 */
-.info-value {
-  color: #fff;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-/* 이메일, 전화번호에 마우스 올렸을 때 효과 */
-.info-value a {
-  transition: color 0.3s ease;
-}
-
-.info-value a:hover {
-  color: #C273FF; /* 우리가 설정한 보라색 포인트 컬러로 싹 바뀜 */
-}
-/* ===================================================
-  section-06 - CONTACT US 끝
-=================================================== */
-
-
-
-
-/* ===================================================
   section-05 - BUILDING TOGETHER
 =================================================== */
 .section-05 {
@@ -801,7 +685,6 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   margin-bottom: 30px;
 }
 
-/* 👇 요청하신 보라색 그라데이션 텍스트 */
 .gradient-text-purple {
   background: linear-gradient(90deg, #C273FF 0%, #484AF7 100%);
   -webkit-background-clip: text;
@@ -826,7 +709,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   justify-content: center;
   padding: 14px 40px;
   border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 50px; /* 알약 모양 */
+  border-radius: 50px;
   color: #fff;
   font-size: 15px;
   font-weight: 500;
@@ -840,6 +723,122 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 /* ===================================================
   section-05 - BUILDING TOGETHER 끝
 =================================================== */
+
+
+
+
+
+/* ===================================================
+  section-06 - CONTACT US (지도 및 연락처)
+=================================================== */
+.section-06 {
+  background-color: #000; 
+  padding: 0 0 120px;
+}
+
+.sec6-container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.sec6-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sec6-subtitle {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.sec6-title {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.sec6-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px; /* 지도와 정보 사이의 간격 */
+}
+
+/* 좌측: 지도 영역 */
+.sec6-map {
+  width: 55%; /* 왼쪽 공간 비율 */
+  height: 420px;
+  border-radius: 20px;
+  overflow: hidden; /* iframe이 둥근 모서리를 삐져나가지 않도록 잘라냄 */
+  background-color: #1a2235; /* 지도가 로딩되기 전 보이는 어두운 임시 배경색 */
+}
+
+.sec6-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  /* pointer-events: none; 지도 기능 비활성화 (디자인 유지)  */
+}
+
+/* 우측: 정보 리스트 영역 */
+.sec6-info {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px; /* 항목과 항목 사이의 간격 */
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* 라벨과 값(텍스트) 사이의 간격 */
+}
+
+/* 아이콘과 제목(라벨) */
+.info-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #A1B3CF;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* 아이콘 크기 고정 */
+.info-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* 실제 내용 텍스트 */
+.info-value {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* 이메일, 전화번호에 마우스 올렸을 때 효과 */
+.info-value a {
+  transition: color 0.3s ease;
+}
+
+.info-value a:hover {
+  color: #C273FF; /* 우리가 설정한 보라색 포인트 컬러로 싹 바뀜 */
+}
+/* ===================================================
+  section-06 - CONTACT US 끝
+=================================================== */
+
 
 
 
