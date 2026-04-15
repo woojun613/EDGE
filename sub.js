@@ -28,7 +28,7 @@ if (cursor) {
 
   // 호버 요소 확대 효과 (서브페이지에 존재하는 요소들로 깔끔하게 정리)
   const hoverElements = document.querySelectorAll(
-    '.header-logo a, .gnb a, .header-btn, .tab-item, .service-tags span, .sec7-btn, a, button'
+    '.header-logo a, .gnb a, .header-btn, .tab-item, .sec7-btn, a, button'
   );
   
   hoverElements.forEach((el) => {
