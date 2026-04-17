@@ -42,6 +42,55 @@ if (mapArea) {
 }
 
 
+
+
+
+// =====================================================================
+// interlude
+// =====================================================================
+
+// ... 기존 Section 02 및 Section 07 애니메이션 ...
+
+// 👇👇👇 여기에 인터루드 섹션 애니메이션 추가 👇👇👇
+// 3. 서브페이지 인터루드 섹션: 스크롤에 따라 텍스트 한 줄씩 등장 (블러 효과)
+const interludeSec = document.querySelector(".sub-section-interlude");
+if (interludeSec) {
+  // GSAP 타임라인 생성
+  const interludeTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sub-section-interlude",
+      start: "top top", // 섹션 상단이 화면 상단에 닿을 때 실행
+      end: "+=1500", // 애니메이션 진행 스크롤 길이 (스크롤 양을 조절하여 속도 변경 가능)
+      scrub: true, // 스크롤에 맞춰 애니메이션 진행
+      pin: true, // 섹션 고정
+      anticipatePin: 1, // 고정 시 깜빡임 방지
+    }
+  });
+
+  interludeTl
+    // 첫 번째 줄 등장
+    .to(".interlude-title", {
+      opacity: 1,
+      filter: "blur(0px)", // 블러가 걷히며 뚜렷해짐
+      y: 0, // 원래 위치로 올라옴
+      duration: 1,
+      ease: "power2.out"
+    })
+    // 두 번째 줄 등장
+    .to(".interlude-sub-title", {
+      opacity: 1,
+      filter: "blur(0px)", // 블러가 걷히며 뚜렷해짐
+      y: 0, // 원래 위치로 올라옴
+      duration: 1,
+      ease: "power2.out"
+    }, "-=0.5"); // 첫 번째 애니메이션 끝나기 0.5초 전에 시작 (순차적 등장 느낌)
+}
+
+
+
+
+
+
 // =====================================================================
 // [2] Smart Header (스크롤 반응형 상단 메뉴바)
 // =====================================================================
