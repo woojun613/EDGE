@@ -149,18 +149,45 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 
 /* ===================================================
-  section-01 - 메인 비주얼 (Hero)
+  section-01 - 메인 비주얼 (Hero) 영상 배경
 =================================================== */
 .section-01 {
+  position: relative; /* 자식 요소(영상)를 묶어두기 위한 필수 기준점 */
+  overflow: hidden; /* 영상이 섹션 밖으로 삐져나가지 않게 잘라냄 */
   width: 100%;
-  min-height: 100vh; /* 브라우저 화면 높이에 꽉 차도록 설정 */
-  background-color: #121722; /* 시안과 흡사한 아주 짙은 네이비 배경 */
+  min-height: 100vh;
+  /* background-color: #121722; */
   display: flex;
-  align-items: center; /* 세로 중앙 정렬 */
-  padding-top: 80px; /* 고정된 헤더(80px) 높이만큼 콘텐츠를 아래로 내려줌 */
+  align-items: center; 
+  padding-top: 80px; 
 }
 
+/* --- 배경 영상 스타일 --- */
+.sec1-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 영상 비율을 유지하면서 꽉 채움 (찌그러짐 방지!) */
+  z-index: 0;
+}
+
+/* --- 어두운 반투명 오버레이 (가독성 향상) --- */
+.sec1-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* 70% 투명도의 검은색 (영상 밝기에 따라 숫자 조절 가능) */
+  z-index: 1; /* 영상(0) 바로 위에 배치 */
+}
+
+/* --- 콘텐츠 영역 (텍스트 & 버튼) --- */
 .sec1-container {
+  position: relative; 
+  z-index: 2; /* 영상(0)과 오버레이(1)보다 맨 앞으로 나오게 배치 */
   width: 1200px;
   margin: 0 auto;
 }
@@ -202,13 +229,12 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   color: #fff;
   font-size: 15px;
   font-weight: 500;
-  /* transition: all 0.3s ease; */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .sec1-btn:hover {
   background-color: #fff;
-  color: #121722; /* 바탕색에 맞춰 글자색 반전! */
+  color: #121722; 
 }
 /* ===================================================
   section-01 - 메인 비주얼 (Hero) 끝

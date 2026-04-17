@@ -140,15 +140,11 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .sub-hero {
   position: relative;
   width: 100%;
-  min-height: 100vh; /* 브라우저 화면에 꽉 차게 설정 */
-  background-color: #0b111e; /* 배경 이미지가 없을 때 보이는 임시 어두운 배경 */
-  
-  /* 👇 나중에 여기에 배경 이미지 경로를 넣어주세요! 👇 */
+  min-height: 100vh;
   background-image: url('./images/Rectangle\ 1749.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
   display: flex;
   align-items: center; 
   padding-top: 80px; /* 헤더 높이만큼 띄워줌 */
