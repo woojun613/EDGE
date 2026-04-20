@@ -14,7 +14,7 @@ heroTl
   // 1. 'SERVICE' 서브타이틀 등장
   .from(".sub-subtitle", {
     opacity: 0,
-    y: 30, // 30px 아래에서 위로 스르륵
+    y: 30,
     duration: 0.8,
     ease: "power3.out",
     delay: 0.2 // 페이지 로드 후 0.2초 살짝 대기 후 시작
@@ -26,7 +26,7 @@ heroTl
     duration: 0.8,
     ease: "power3.out"
   }, "-=0.6") // 앞의 애니메이션이 끝나기 0.6초 전에 겹쳐서 자연스럽게 시작
-  // 3. 하단 탭 메뉴들 차례대로 타다닥 등장
+  // 3. 하단 탭 메뉴들 차례대로 등장
   .from(".sub-hero-tabs .tab-item", {
     opacity: 0,
     y: 20,
@@ -34,9 +34,10 @@ heroTl
     ease: "power3.out",
     stagger: 0.1 // 각 탭 메뉴가 0.1초 간격으로 순차적으로 등장하는 마법의 속성!
   }, "-=0.4")
+  // 4. section 01의 플로팅 오브젝트 등장 (히어로 타이틀과 살짝 겹치게)
   .from(".floating-obj", {
     opacity: 0,
-    duration: 1, // 1.5초 동안 아주 천천히 고급스럽게 등장
+    duration: 0.5, // 1.5초 동안 아주 천천히 고급스럽게 등장
     ease: "power2.inOut" // 부드럽게 시작해서 부드럽게 끝남
   }, "-=0.2");
 
