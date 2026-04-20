@@ -19,15 +19,13 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   Header - 따라다니는 상단 메뉴바
 =================================================== */
 .header {
-  position: fixed;
+  position: absolute; /* 스크롤을 따라오지 않고 문서 맨 위에 고정 */
   top: 0;
   left: 0;
   width: 100%;
   height: 80px;
-  background-color: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(10px); /* 스크롤 시 뒤쪽 배경이 고급스럽게 블러 처리됨 */
+  background-color: transparent; /* 검은색 배경 완벽 제거! */
   z-index: 9999;
-  /* transition: all 0.3s ease; */
 }
 
 .header-container {
@@ -134,13 +132,53 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 
 
+
+/* ===================================================
+  Sticky Tab Bar (스크롤 시 상단 고정 탭)
+=================================================== */
+.sticky-tab-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #081B28; /* 아래 섹션과 통일된 세련된 다크톤 */
+  z-index: 9998; /* 커스텀 커서 아래, 메인 컨텐츠 위 */
+  display: flex;
+  align-items: center;
+  transform: translateY(-100%); /* 처음엔 위쪽 화면 밖에 숨김 */
+  transition: transform 0.3s ease; /* 스르륵 내려오는 애니메이션 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* 시안 느낌의 은은한 구분선 */
+}
+
+.sticky-tab-bar.is-visible {
+  transform: translateY(0); /* 클래스가 붙으면 화면으로 내려옴 */
+}
+
+.sticky-tab-container {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 50px;
+}
+
+.sticky-tab-bar .tab-item {
+  margin-top: 15px; /* 밑줄 위치가 시각적으로 완벽하게 정렬되도록 살짝 눌러줌 */
+}
+/* ===================================================
+  Sticky Tab Bar 끝
+=================================================== */
+
+
+
+
 /* ===================================================
   Sub-page Hero (서브페이지 히어로 섹션)
 =================================================== */
 .sub-hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 70vh;
   background-image: url('./images/Rectangle\ 1749.png');
   background-size: cover;
   background-position: center;
@@ -166,7 +204,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   z-index: 2;
   width: 1200px;
   margin: 0 auto;
-  height: calc(100vh - 80px); /* 전체 높이에서 헤더를 뺀 실제 콘텐츠 높이 */
+  height: calc(70vh - 80px); /* 전체 높이에서 헤더를 뺀 실제 콘텐츠 높이 */
   display: flex;
   flex-direction: column;
   justify-content: center; /* 텍스트를 수직 중앙에 배치 */
@@ -290,14 +328,28 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   display: inline-block;
 }
 
-.floating-obj {
+/* .floating-obj {
   position: absolute;
   top: -220px;
   right: 50px;
-  width: 320px; /* 이미지 크기 (상황에 맞게 조절 가능) */
+  width: 320px;
   z-index: 10;
   animation: floating 4s ease-in-out infinite;
+} */
+
+/* --- 충돌 방지를 위해 위치(wrapper)와 애니메이션(obj) 분리 --- */
+.floating-wrapper {
+  position: absolute;
+  top: -170px;
+  right: 50px;
+  z-index: 10;
 }
+
+.floating-obj {
+  width: 320px; /* 이미지 크기 */
+  animation: floating 4s ease-in-out infinite; /* 제자리 무한 둥둥 애니메이션 */
+}
+
 
 /* Y축(세로)으로 위아래로 부드럽게 움직이는 키프레임 */
 @keyframes floating {

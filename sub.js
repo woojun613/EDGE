@@ -40,18 +40,18 @@ if (cursor) {
 // =====================================================================
 // [2] Smart Header (스크롤 반응형 상단 메뉴바)
 // =====================================================================
-let lastScrollY = window.scrollY;
+// let lastScrollY = window.scrollY;
 
-window.addEventListener('scroll', () => {
-  const currentScrollY = window.scrollY;
-  // 스크롤 내릴 때 (80px 이상) 숨김, 올릴 때 나타남
-  if (currentScrollY > lastScrollY && currentScrollY > 80) {
-    gsap.to('.header', { y: -80, duration: 0.3, ease: "power2.out" }); 
-  } else {
-    gsap.to('.header', { y: 0, duration: 0.3, ease: "power2.out" }); 
-  }
-  lastScrollY = currentScrollY;
-});
+// window.addEventListener('scroll', () => {
+//   const currentScrollY = window.scrollY;
+//   // 스크롤 내릴 때 (80px 이상) 숨김, 올릴 때 나타남
+//   if (currentScrollY > lastScrollY && currentScrollY > 80) {
+//     gsap.to('.header', { y: -80, duration: 0.3, ease: "power2.out" }); 
+//   } else {
+//     gsap.to('.header', { y: 0, duration: 0.3, ease: "power2.out" }); 
+//   }
+//   lastScrollY = currentScrollY;
+// });
 
 
 // =====================================================================
@@ -100,5 +100,43 @@ function scrollToTop() {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
+  });
+}
+
+
+// =====================================================================
+// [5] Parallax Animation (패럴랙스 스크롤 효과)
+// =====================================================================
+const floatingWrapper = document.querySelector(".floating-wrapper");
+
+if (floatingWrapper) {
+  gsap.to(floatingWrapper, {
+    y: -350, // 스크롤을 내릴 때 위로 250px 만큼 더 빠르게 이동합니다. (숫자를 키울수록 더 빨리 올라감)
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".sub-section-01",
+      start: "top bottom", // 섹션이 화면 아래에서 보이기 시작할 때 작동
+      end: "bottom top",   // 섹션이 화면 위로 완전히 사라질 때 종료
+      scrub: 1 // 스크롤 속도에 맞춰 부드럽게(1초 지연) 따라가기
+    }
+  });
+}
+
+
+
+
+
+// =====================================================================
+// [6] Sticky Tab Bar Animation (상단 고정 탭 메뉴)
+// =====================================================================
+const stickyTabBar = document.querySelector('.sticky-tab-bar');
+const heroTabs = document.querySelector('.sub-hero-tabs');
+
+if (stickyTabBar && heroTabs) {
+  ScrollTrigger.create({
+    trigger: heroTabs,
+    start: "top 20px", // 원본 메뉴가 상단(0px 근처)에 닿을 즈음 발동
+    onEnter: () => stickyTabBar.classList.add('is-visible'), // 스크롤을 내리면 촥! 내려옴
+    onLeaveBack: () => stickyTabBar.classList.remove('is-visible') // 스크롤을 올리면 다시 숨김
   });
 }
