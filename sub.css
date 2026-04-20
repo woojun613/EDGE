@@ -228,7 +228,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 .sub-title {
   color: #fff;
-  font-size: 48px;
+  font-size: 34px;
   font-weight: 800;
   line-height: 1.4;
 }
@@ -314,7 +314,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 .sec1-main-title {
   color: #fff;
-  font-size: 38px;
+  font-size: 44px;
   font-weight: 800;
   margin-bottom: 15px;
 }
@@ -342,13 +342,13 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 /* --- 충돌 방지를 위해 위치(wrapper)와 애니메이션(obj) 분리 --- */
 .floating-wrapper {
   position: absolute;
-  top: -170px;
+  top: -150px;
   right: -10px;
   z-index: 10;
 }
 
 .floating-obj {
-  width: 320px; /* 이미지 크기 */
+  width: 260px; /* 이미지 크기 */
   animation: floating 4s ease-in-out infinite; /* 제자리 무한 둥둥 애니메이션 */
 }
 
