@@ -343,7 +343,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .floating-wrapper {
   position: absolute;
   top: -170px;
-  right: 50px;
+  right: -10px;
   z-index: 10;
 }
 
