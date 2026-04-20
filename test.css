@@ -133,6 +133,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   z-index: 99999; 
   mix-blend-mode: difference; 
   transition: width 0.3s ease, height 0.3s ease;
+  opacity: 0;
 }
 
 /* 호버 상태일 때 커서 크기 확대 */

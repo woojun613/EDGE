@@ -2,33 +2,51 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // =====================================================================
-// [1] Custom Mouse Cursor (마우스 커서 효과 통합)
+// [1] Custom Mouse Cursor (유령 커서 날아옴 방지 완벽 버전)
 // =====================================================================
 const cursor = document.querySelector('.custom-cursor');
 
 if (cursor) {
-  // 커서 중심축 및 성능 최적화
+  // 커서 중심축 세팅
   gsap.set(cursor, { xPercent: -50, yPercent: -50 });
   let xTo = gsap.quickTo(cursor, "x", { duration: 0.15, ease: "power3" });
   let yTo = gsap.quickTo(cursor, "y", { duration: 0.15, ease: "power3" });
 
-  // 커서 이동
+  let isFirstMove = true; // 🔥 처음 마우스를 움직였는지 체크하는 스위치
+
+  // 마우스 이동 시 좌표 업데이트 및 커서 나타내기
   window.addEventListener("mousemove", (e) => {
-    xTo(e.clientX);
-    yTo(e.clientY);
+    if (isFirstMove) {
+      // 🔥 1. 처음 움직일 때는 0,0에서 날아오지 못하도록 마우스 위치로 '순간이동' 시킵니다.
+      gsap.set(cursor, { x: e.clientX, y: e.clientY });
+      // 🔥 2. 제자리에 순간이동한 상태에서 부드럽게 나타나게 합니다.
+      gsap.to(cursor, { opacity: 1, duration: 0.3 });
+      isFirstMove = false;
+    } else {
+      // 3. 두 번째 움직임부터는 원래대로 부드럽게 마우스를 따라다니게 합니다.
+      xTo(e.clientX);
+      yTo(e.clientY);
+    }
   });
 
   // 화면 밖으로 나갈 때 숨김 / 들어올 때 표시
-  document.body.addEventListener("mouseleave", () => gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.2 }));
-  document.body.addEventListener("mouseenter", () => gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.2 }));
+  document.body.addEventListener("mouseleave", () => {
+    gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.2 });
+  });
+  
+  document.body.addEventListener("mouseenter", () => {
+    if (!isFirstMove) {
+      gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.2 });
+    }
+  });
 
   // 클릭 시 스케일 축소/복구
   window.addEventListener("mousedown", () => gsap.to(cursor, { scale: 0.8, duration: 0.1 }));
   window.addEventListener("mouseup", () => gsap.to(cursor, { scale: 1, duration: 0.15, ease: "back.out(1.7)" }));
 
-  // 호버 요소 확대 효과 (서브페이지에 존재하는 요소들로 깔끔하게 정리)
+  // 호버 요소 확대 효과
   const hoverElements = document.querySelectorAll(
-    '.header-logo a, .gnb a, .header-btn, .tab-item, .sec7-btn, a, button'
+    '.header-logo a, .gnb a, .header-btn, .tab-item, .sec7-btn, .recommend-box, .outcome-card, a, button'
   );
   
   hoverElements.forEach((el) => {
