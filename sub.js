@@ -91,6 +91,46 @@ if (sec7) {
   });
 }
 
+// 3. 서브페이지 Section 03: 추천 대상 박스 순차적 등장 애니메이션
+const recommendBoxes = gsap.utils.toArray('.recommend-box');
+if (recommendBoxes.length > 0) {
+  recommendBoxes.forEach((box, i) => {
+    gsap.from(box, {
+      scrollTrigger: {
+        trigger: box,
+        start: "top 90%", // 박스가 화면 아래에서 90% 지점에 올 때 실행
+      },
+      opacity: 0,
+      x: 50, // 살짝 오른쪽(50px)에 있다가 원래 자리로 들어옴
+      duration: 0.8,
+      ease: "power3.out",
+      delay: i * 0.05, // 이전 박스보다 0.05초 늦게 출발하여 계단식 효과 연출
+      clearProps: "transform"
+    });
+  });
+}
+
+// 4. 서브페이지 Section 04: 성과 카드 2x2 순차적 등장 애니메이션
+const outcomeCards = gsap.utils.toArray('.outcome-card');
+if (outcomeCards.length > 0) {
+  outcomeCards.forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%", // 카드가 화면 아래에서 85% 지점에 올 때 실행
+      },
+      opacity: 0,
+      y: 40, // 40px 아래에서 위로 올라옴
+      duration: 0.8,
+      ease: "power3.out",
+      delay: (i % 2) * 0.15, // 가로줄 단위로 엇갈리게 등장하도록 딜레이 계산
+      clearProps: "transform"
+    });
+  });
+}
+
+
+
 
 // =====================================================================
 // [4] Utilities (기타 기능)
@@ -102,6 +142,8 @@ function scrollToTop() {
     behavior: 'smooth'
   });
 }
+
+
 
 
 // =====================================================================

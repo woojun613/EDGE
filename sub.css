@@ -120,6 +120,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   transition: width 0.3s ease, height 0.3s ease;
 }
 
+
 /* 호버 상태일 때 커서 크기 확대 */
 .custom-cursor.is-hovering {
   width: 60px;
@@ -512,17 +513,158 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 
 
+/* ===================================================
+  Sub-page Section 03
+=================================================== */
+.sub-section-03 {
+  background-color: #F8F8F8;
+  padding: 120px 0;
+}
+
+.sub-sec3-container {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* 좌측 타이틀 (스크롤 따라다니기) */
+.sub-sec3-left {
+  width: 30%;
+  position: sticky; 
+  top: 150px; /* 헤더와 스티키 메뉴 아래에 위치하도록 여백 */
+}
+
+.sec3-title {
+  color: #111;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+/* 우측 추천 박스 리스트 */
+.sub-sec3-right {
+  width: 65%; /* 텍스트 박스가 들어갈 넓은 공간 */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* 박스 사이의 간격 */
+}
+
+/* 개별 회색 박스 */
+.recommend-box {
+  background-color: #EEEEEE;
+  border-radius: 8px;
+  padding: 30px 40px;
+  color: #111;
+  font-size: 18px;
+  font-weight: 600; /* 시안처럼 약간 굵은 폰트 */
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+/* 박스 안의 부가 설명 텍스트 (괄호 내용) */
+.recommend-box .box-sub-text {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  margin-top: 6px;
+}
+
+/* 마우스를 올렸을 때의 상호작용 효과 */
+.recommend-box:hover {
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transform: translateY(-3px);
+}
+/* ===================================================
+  Sub-page Section 03
+=================================================== */
 
 
 
 
 
+/* ===================================================
+  Sub-page Section 04 (이런 성과를 만들어냅니다)
+=================================================== */
+.sub-section-04 {
+  background-color: #EEEEEE;
+  padding: 120px 0;
+}
 
+.sub-sec4-container {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
+/* 좌측 타이틀 (스크롤 고정) */
+.sub-sec4-left {
+  width: 30%;
+  position: sticky; 
+  top: 150px; 
+}
 
+.sec4-title {
+  color: #111;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
 
+/* 우측 2x2 그리드 배열 */
+.sub-sec4-right {
+  width: 65%; 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 정확히 반반(1:1) 비율로 2칸 나눔 */
+  gap: 20px; /* 카드 사이의 가로, 세로 간격 */
+}
 
+/* 개별 화이트 카드 */
+.outcome-card {
+  background-color: #ffffff;
+  border-radius: 16px; /* 부드러운 라운드 처리 */
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); /* 아주 은은한 그림자로 입체감 부여 */
+  transition: all 0.3s ease;
+}
 
+/* 아이콘 자리 (나중에 이미지만 교체하시면 됩니다) */
+.outcome-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.outcome-title {
+  color: #111;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.outcome-desc {
+  color: #555;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* 마우스 호버 시 살짝 떠오르는 효과 */
+.outcome-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+/* ===================================================
+  Sub-page Section 04
+=================================================== */
 
 
 
