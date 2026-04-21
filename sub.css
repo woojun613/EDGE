@@ -623,15 +623,15 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .outcome-card {
   background-color: #ffffff;
   border-radius: 16px; /* 부드러운 라운드 처리 */
-  padding: 40px;
+  padding: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
 }
 
 /* 아이콘 자리 (나중에 이미지만 교체하시면 됩니다) */
 .outcome-icon {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   margin-bottom: 10px;
 }
