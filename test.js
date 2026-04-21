@@ -49,6 +49,22 @@ if (cursor) {
     '.header-logo a, .gnb a, .header-btn, .tab-item, .sec7-btn, a, button'
   );
   
+  // 지도(iframe) 영역 위로 올라가면 커스텀 커서 잠시 숨기기
+  const mapArea = document.querySelector('.sec6-map');
+  if (mapArea) {
+    mapArea.addEventListener('mouseenter', () => {
+      // 지도 영역에 들어오면 커스텀 커서를 투명하게 숨김
+      gsap.to(cursor, { opacity: 0, duration: 0.2 }); 
+    });
+    
+    mapArea.addEventListener('mouseleave', () => {
+      // 지도 영역에서 빠져나오면 커스텀 커서를 다시 보여줌
+      gsap.to(cursor, { opacity: 1, duration: 0.2 }); 
+      // 빠져나온 위치로 즉시 순간이동 시켜서 자연스럽게 연결
+      gsap.set(cursor, { x: event.clientX, y: event.clientY }); 
+    });
+  }
+
   hoverElements.forEach((el) => {
     el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
