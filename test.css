@@ -631,7 +631,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   display: flex;
   flex-direction: column; 
   width: 1200px; 
-  padding: 0 30px 60px;
+  padding: 0 30px;
   margin: 0 auto;
   position: relative; 
   z-index: 1;

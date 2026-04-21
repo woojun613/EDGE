@@ -221,34 +221,34 @@ function scrollToTop() {
 
 
 // =====================================================================
-// [7] 3D 카드 배경 타이포그래피 (구조 분리 완벽 안정화 버전)
+// [7] 3D 카드 배경 타이포그래피 (순서 오류 및 타이틀 침범 완벽 해결)
 // =====================================================================
-// 카드 5개를 모두 배열로 가져옵니다.
 const cardsList = gsap.utils.toArray('.section-04 .card-wrapper');
+const bgTexts = gsap.utils.toArray('.bg-text');
 
-if (cardsList.length > 0) {
+if (cardsList.length > 0 && bgTexts.length > 0) {
   
-  // 1. SECURING 텍스트 -> 2번째 카드(index 1)에 스크롤 동기화
+  // 1. SECURING 텍스트 -> 2번째 카드(index 1)
   gsap.fromTo('.text-securing', 
-    { opacity: 0, y: -200 }, 
-    { opacity: 1, y: 100, ease: "none", 
-      scrollTrigger: { trigger: cardsList[1], start: "top 80%", end: "center 40%", scrub: 1.5 }
+    { opacity: 0, y: -100 }, 
+    { opacity: 1, y: 150, ease: "none", 
+      scrollTrigger: { trigger: cardsList[1], start: "top 80%", end: "center 30%", scrub: 1.5 }
     }
   );
 
-  // 2. SAFETY 텍스트 -> 3번째 카드(index 2)에 스크롤 동기화
+  // 2. SAFETY 텍스트 -> 3번째 카드(index 2)
   gsap.fromTo('.text-safety', 
-    { opacity: 0, y: -200 }, 
-    { opacity: 1, y: 100, ease: "none", 
-      scrollTrigger: { trigger: cardsList[2], start: "top 80%", end: "center 40%", scrub: 1.5 }
+    { opacity: 0, y: -100 }, 
+    { opacity: 1, y: 150, ease: "none", 
+      scrollTrigger: { trigger: cardsList[2], start: "top 80%", end: "center 30%", scrub: 1.5 }
     }
   );
 
-  // 3. ON THE EDGE 텍스트 -> 4번째 카드(index 3)에 스크롤 동기화
+  // 3. ON THE EDGE 텍스트 -> 4번째 카드(index 3)
   gsap.fromTo('.text-edge', 
-    { opacity: 0, y: -200 }, 
-    { opacity: 1, y: 100, ease: "none", 
-      scrollTrigger: { trigger: cardsList[3], start: "top 80%", end: "center 40%", scrub: 1.5 }
+    { opacity: 0, y: -170 }, 
+    { opacity: 1, y: 80, ease: "none", 
+      scrollTrigger: { trigger: cardsList[3], start: "top 80%", end: "center 30%", scrub: 1.5 }
     }
   );
   
