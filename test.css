@@ -631,9 +631,10 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   display: flex;
   flex-direction: column; 
   width: 1200px; 
-  padding: 0 30px 100px;
+  padding: 0 30px 60px;
   margin: 0 auto;
-  /* background-color: turquoise; */
+  position: relative; 
+  z-index: 1;
 }
 
 /* ===================================================
@@ -641,10 +642,12 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 =================================================== */
 .card-wrapper {
   position: relative; /* top을 사용하기 위해 필수 */
-  opacity: 0; /* 처음엔 투명하게 숨김 */
-  top: 70px; /* 원래 위치보다 70px 아래에 배치 */
+  z-index: 1;         /* 버그 방지용 고정 */
+  opacity: 0; 
+  top: 70px; 
   transition: opacity 0.8s ease-out, top 0.8s ease-out;
   cursor: pointer;
+  /* overflow: visible;  글씨가 래퍼 밖으로 삐져나오게 함 */
 }
 
 .card-wrapper.is-visible {
@@ -655,11 +658,12 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 /* 1. 카드 전체 뼈대 (투명한 영역) - 1.35배 확대 */
 .card {
   position: relative;
-  width: 486px;  
+  width: 486px;
   height: 600px; 
   transform-style: preserve-3d;
   overflow: visible;
   transform: perspective(950px);
+  z-index: 2;
 }
 
 /* 2. 실제 색상이 들어가는 배경 사각형 */
@@ -730,6 +734,41 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .card.is-visible {
   opacity: 1; /* 다시 보이게 됨 */
   top: 0; /* 원래 위치로 올라옴 */
+}
+
+
+/* ===================================================
+  카드 배경 개별 타이포그래피 (Parallax Text)
+=================================================== */
+.bg-text {
+  position: absolute;
+  z-index: -1;
+  font-family: Arial, sans-serif;
+  font-size: 100px; 
+  font-weight: 900;
+  color: transparent; 
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.5);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  white-space: nowrap; 
+  pointer-events: none; 
+}
+
+/* 각각의 글씨가 2번, 3번, 4번 카드 높이쯤에 오도록 퍼센트로 재배치 */
+.text-securing {
+  top: 28%;      /* 기존 20% -> 28%로 내려서 타이틀 침범 방지 */
+  right: 40%;    /* 2번 카드(오른쪽)의 왼쪽 바깥으로 뻗음 */
+}
+
+.text-safety {
+  top: 53%;      /* 기존 45% -> 53%로 내림 */
+  left: 40%;     /* 3번 카드(왼쪽)의 오른쪽 바깥으로 뻗음 */
+}
+
+.text-edge {
+  top: 78%;      /* 기존 70% -> 78%로 내림 */
+  right: 40%;    /* 4번 카드(오른쪽)의 왼쪽 바깥으로 뻗음 */
+  text-align: right;
 }
 /* ===================================================
   section-04 - 3D 입체감 카드 레이아웃 끝
