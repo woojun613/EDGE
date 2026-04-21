@@ -46,10 +46,9 @@ if (cursor) {
 
   // 호버 요소 확대 효과
   const hoverElements = document.querySelectorAll(
-    '.header-logo a, .gnb a, .header-btn, .tab-item, .sec7-btn, a, button'
+    '.header-logo a, .gnb a, .header-btn, .tab-item, .card-wrapper, .sec7-btn, a, button'
   );
   
-  // 지도(iframe) 영역 위로 올라가면 커스텀 커서 잠시 숨기기
   const mapArea = document.querySelector('.sec6-map');
   if (mapArea) {
     mapArea.addEventListener('mouseenter', () => {
