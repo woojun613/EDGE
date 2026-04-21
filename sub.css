@@ -330,15 +330,6 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   display: inline-block;
 }
 
-/* .floating-obj {
-  position: absolute;
-  top: -220px;
-  right: 50px;
-  width: 320px;
-  z-index: 10;
-  animation: floating 4s ease-in-out infinite;
-} */
-
 /* --- 충돌 방지를 위해 위치(wrapper)와 애니메이션(obj) 분리 --- */
 .floating-wrapper {
   position: absolute;
@@ -350,6 +341,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .floating-obj {
   width: 260px; /* 이미지 크기 */
   animation: floating 4s ease-in-out infinite; /* 제자리 무한 둥둥 애니메이션 */
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); */
 }
 
 
@@ -632,7 +624,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   background-color: #ffffff;
   border-radius: 16px; /* 부드러운 라운드 처리 */
   padding: 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); /* 아주 은은한 그림자로 입체감 부여 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
 }
 
