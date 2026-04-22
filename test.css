@@ -375,14 +375,14 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 /* 카드 내부 텍스트 */
 .slide-title {
-  font-size: 26px;
+  font-size: 30px;
   color: #111;
   line-height: 1.4;
   margin-bottom: 20px;
 }
 
 .slide-desc {
-  font-size: 16px;
+  font-size: 20px;
   color: #555;
   line-height: 1.6;
   margin-bottom: 40px;
@@ -505,8 +505,8 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   height: 384px;
   border-radius: 20px;
   background: transparent;
-  padding: 0 130px;
-  gap: 140px; 
+  padding: 0 60px;
+  gap: 60px; 
   /* 초기 상태를 안 보이고 살짝 작게 설정 (JS가 작동 안할때 대비) */
   opacity: 0;
   visibility: hidden;
@@ -539,6 +539,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   flex-shrink: 0;
   width: 250px; /* 이미지 래퍼 크기 조절 */
   height: auto;
+  margin-left: 70px;
 }
 
 /* --- 박스 내부 텍스트 --- */
