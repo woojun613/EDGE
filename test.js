@@ -149,41 +149,33 @@ window.addEventListener("load", () => {
 // =====================================================================
 // [4] GSAP Scroll Animations (섹션별 스크롤 트리거)
 // =====================================================================
-// Section 3 : 패널 전환 (핀 고정 애니메이션)
-const panels = gsap.utils.toArray(".gradient-box.panel");
-gsap.set(panels.slice(1), { autoAlpha: 0, scale: 0.8 }); // 첫 번째 제외 숨김
 
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".section-03",
-    start: "center center",
-    end: "+=2000",
-    scrub: 1,
-    pin: true,
-    anticipatePin: 1,
-  }
-});
-panels.forEach((panel, i) => {
-  if (i !== 0) {
-    tl.to(panels[i - 1], { autoAlpha: 0, scale: 0.8, duration: 1 }, `step${i}`)
-      .to(panel, { autoAlpha: 1, scale: 1, duration: 1 }, `step${i}`);
-  }
-  tl.to({}, { duration: 0.5 }); // 머무는 시간
-});
+// 🟢 1. Section 3 : 패널 전환 (안전장치 추가!)
+const sec3Element = document.querySelector(".section-03");
 
-// Section 5, 6, 7 : 공통 페이드인 애니메이션 함수화
-const fadeSections = [
-  { trigger: ".section-05", target: ".sec5-container", start: "top 60%" },
-  { trigger: ".section-06", target: ".sec6-container", start: "top 60%" },
-  { trigger: ".section-07", target: ".sec7-container", start: "top 50%" }
-];
+if (sec3Element) {
+  // .section-03이 있는 메인 페이지에서만 실행됩니다.
+  const panels = gsap.utils.toArray(".gradient-box.panel");
+  gsap.set(panels.slice(1), { autoAlpha: 0, scale: 0.8 }); 
 
-fadeSections.forEach(sec => {
-  gsap.to(sec.target, {
-    scrollTrigger: { trigger: sec.trigger, start: sec.start },
-    opacity: 1, y: 0, duration: 1, ease: "power3.out"
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".section-03",
+      start: "center center",
+      end: "+=2000",
+      scrub: 1,
+      pin: true,
+      anticipatePin: 1,
+    }
   });
-});
+  panels.forEach((panel, i) => {
+    if (i !== 0) {
+      tl.to(panels[i - 1], { autoAlpha: 0, scale: 0.8, duration: 1 }, `step${i}`)
+        .to(panel, { autoAlpha: 1, scale: 1, duration: 1 }, `step${i}`);
+    }
+    tl.to({}, { duration: 0.5 }); 
+  });
+}
 
 
 // =====================================================================
@@ -191,16 +183,54 @@ fadeSections.forEach(sec => {
 // =====================================================================
 document.addEventListener("DOMContentLoaded", function() {
   
-  // Section 2 : Swiper 슬라이더 설정
-  new Swiper(".mySwiper", {
+  const mySwiper = new Swiper(".mySwiper", {
     slidesPerView: "auto",
     centeredSlides: true,
     spaceBetween: 30,
     loop: true,
     grabCursor: true,
     autoplay: { delay: 3000, disableOnInteraction: false },
-    pagination: { el: ".swiper-pagination", clickable: true },
+    
+    // ❌ (주의) 기존의 pagination 기본 속성은 사용하지 않으므로 지워주세요!
+    // pagination: { el: ".swiper-pagination", clickable: true },
+    
+    // 🔥 슬라이드가 넘어갈 때마다 4개의 불릿에만 불이 들어오게 조작합니다.
+    on: {
+      slideChange: function () {
+        // 8개 슬라이드(0~7)가 돌아가더라도 인덱스를 4로 나누어 0, 1, 2, 3 패턴으로 인식하게 만듦
+        const activeIndex = this.realIndex % 4; 
+        const bullets = document.querySelectorAll(".swiper-pagination-bullet");
+        bullets.forEach((bullet, index) => {
+          if (index === activeIndex) {
+            bullet.classList.add("swiper-pagination-bullet-active");
+          } else {
+            bullet.classList.remove("swiper-pagination-bullet-active");
+          }
+        });
+      }
+    }
   });
+
+  // 🔥 브라우저가 렌더링될 때 불릿 4개를 직접 강제로 그려 넣습니다.
+  const paginationContainer = document.querySelector(".swiper-pagination");
+  if (paginationContainer) {
+    paginationContainer.innerHTML = ""; // 기존 내용 비우기
+    
+    for (let i = 0; i < 4; i++) {
+      const bullet = document.createElement("span");
+      bullet.classList.add("swiper-pagination-bullet");
+      
+      // 첫 번째 불릿에는 활성화 클래스 부여
+      if (i === 0) bullet.classList.add("swiper-pagination-bullet-active");
+      
+      // 불릿 클릭 시 해당 슬라이드로 부드럽게 이동하는 기능 추가
+      bullet.addEventListener("click", () => {
+        mySwiper.slideToLoop(i);
+      });
+      
+      paginationContainer.appendChild(bullet);
+    }
+  }
 
   // Section 4 : 3D 입체감 카드 Intersection Observer (스크롤 시 등장)
   const cards = document.querySelectorAll('.card-wrapper'); 
@@ -262,3 +292,64 @@ if (cardsList.length > 0 && bgTexts.length > 0) {
   );
   
 }
+
+
+
+
+// =====================================================================
+// [8] Section 5 : 풀스크린 이미지 스크롤 축소 패럴랙스
+// =====================================================================
+const sec5 = document.querySelector('.section-05');
+
+if (sec5) {
+  const sec5Tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".section-05",
+      start: "top top", // 섹션이 화면 꼭대기에 닿으면 핀(Pin) 고정 시작!
+      end: "+=1500",    // 스크롤을 1500px 내릴 동안 애니메이션 진행
+      scrub: 1,         // 마우스 휠에 부드럽게 연동
+      pin: true         // 화면을 꽉 잡고 안 넘어가게 고정
+    }
+  });
+
+  // 1. 이미지가 시안의 우측 위치로 작아지는 효과
+  sec5Tl.to(".sec5-image-wrap", {
+    width: "600px",              // 줄어들 최종 가로 크기 (시안 비율)
+    height: "450px",             // 줄어들 최종 세로 크기
+    top: "50%",                  // 화면 세로 중앙
+    left: "calc(50%)",    // 1200px 컨테이너 기준 우측에 완벽하게 정렬되는 수식
+    yPercent: -50,               // 중심축을 완벽히 가운데로
+    borderRadius: "20px",        // 작아지면서 모서리가 둥글어짐
+    duration: 1,
+    ease: "power2.inOut"
+  })
+  // 2. 이미지가 반쯤 줄어들었을 때 텍스트가 스르륵 나타나는 효과
+  .to(".sec5-text", {
+    opacity: 1,
+    x: 0, // 원래 위치로 이동
+    duration: 0.5,
+    ease: "power2.out"
+  }, "-=0.6"); // 앞 애니메이션이 끝나기 0.6초 전에 시작!
+}
+
+// =====================================================================
+// [마지막] Section 6, 7 : 공통 페이드인 애니메이션 (안전장치 포함)
+// =====================================================================
+const fadeSections = [
+  { trigger: ".section-06", target: ".sec6-container", start: "top 60%" },
+  { trigger: ".section-07", target: ".sec7-container", start: "top 50%" }
+];
+
+fadeSections.forEach(sec => {
+  const triggerElement = document.querySelector(sec.trigger);
+  
+  if (triggerElement) {
+    gsap.to(sec.target, {
+      scrollTrigger: { trigger: sec.trigger, start: sec.start },
+      opacity: 1, 
+      y: 0, 
+      duration: 1, 
+      ease: "power3.out"
+    });
+  }
+});

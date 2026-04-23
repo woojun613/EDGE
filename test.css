@@ -41,6 +41,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   backdrop-filter: blur(10px); /* 스크롤 시 뒤쪽 배경이 고급스럽게 블러 처리됨 */
   z-index: 9999;
   /* transition: all 0.3s ease; */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-container {
@@ -253,7 +254,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-color: #131931;
+  background-color: #010101;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,8 +308,9 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 =================================================== */
 .section-02 {
   background: 
-    linear-gradient(to bottom, rgba(37, 42, 66, 0) 70%, #252A42 100%),
-    linear-gradient(77.36deg, #4B5484 25.54%, #252A42 59.51%, #000000 97.09%);
+    /* linear-gradient(to bottom, rgba(37, 42, 66, 0) 70%, #252A42 100%),
+    linear-gradient(77.36deg, #4B5484 25.54%, #252A42 59.51%, #000000 97.09%); */
+    #010101;
   padding: 120px 0 150px; 
   overflow: hidden; 
 }
@@ -412,23 +414,29 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   margin: 0;
 }
 
-/* 3. 불릿(점) 위치를 확보된 80px 공간의 맨 밑바닥으로 이동 */
+/* 3. 불릿(점) 컨테이너 위치 및 가운데 정렬 */
 .sec2-slider .swiper-pagination {
   position: absolute !important;
   bottom: 0px !important; 
+  width: 100% !important;
+  left: 0 !important;
+  text-align: center !important; 
 }
 
 /* 2. 기본 불릿 스타일 */
 .swiper-pagination-bullet {
+  display: inline-block !important; /* 🔥 가로로 예쁘게 나열되도록 강제 지정 */
   background: #7B7B7B !important; 
   opacity: 1 !important;
   width: 10px !important;
   height: 10px !important;
   margin: 0 6px !important;
-  transition: background 0.3s ease; /* 색상만 부드럽게 변하도록 설정 */
+  border-radius: 50% !important; /* 완벽한 동그라미 유지 */
+  transition: background 0.3s ease; 
+  /* cursor: pointer !important; 마우스 올렸을 때 클릭할 수 있게 포인터로 변경 */
 }
 
-/* 3. 활성화된 불릿 스타일 (길어지는 효과 제거) */
+/* 3. 활성화된 불릿 스타일 */
 .swiper-pagination-bullet-active {
   background: #F07129 !important;
   width: 10px !important; 
@@ -446,9 +454,10 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 =================================================== */
 .section-03 {
   background: 
-    linear-gradient(to bottom, #252A42 0%, rgba(37, 42, 66, 0) 30%),
+    /* linear-gradient(to bottom, #252A42 0%, rgba(37, 42, 66, 0) 30%),
     linear-gradient(to bottom, rgba(1, 1, 1, 0) 80%, #010101 100%),
-    linear-gradient(147.87deg, #4B5484 5.08%, #252A42 41.34%, #010101 81.46%);
+    linear-gradient(147.87deg, #4B5484 5.08%, #252A42 41.34%, #010101 81.46%); */
+    #010101;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -783,73 +792,57 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 
 /* ===================================================
-  section-05 - BUILDING TOGETHER
+  section-05 - BUILDING TOGETHER (풀스크린 스크롤 축소 효과)
 =================================================== */
 .section-05 {
   background-color: #010101;
-  padding: 0 0 120px; /* 위아래 넉넉한 여백 */
+  width: 100%;
+  height: 100vh; /* 화면에 100% 꽉 차게 고정 */
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-/* 페이드인 애니메이션을 위해 초기에는 투명하게 아래로 내려둠 */
 .sec5-container {
   width: 1200px;
   margin: 0 auto;
-  opacity: 0;
-  transform: translateY(40px);
+  display: flex;
+  justify-content: flex-start; /* 텍스트를 왼쪽으로 밀착 */
+  position: relative;
 }
 
-.sec5-subtitle {
-  color: #fff;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  margin-bottom: 20px;
+.sec5-text {
+  width: 45%;
+  opacity: 0; /* 처음에 안 보임 (JS로 조절) */
+  transform: translateX(-50px); /* 살짝 왼쪽에서 대기 */
+  z-index: 3; /* 이미지 축소 후 버튼 클릭을 위해 텍스트를 가장 위로 */
 }
 
-.sec5-title {
-  color: #fff;
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 1.3;
-  margin-bottom: 30px;
+/* 기존 텍스트 및 버튼 디자인 유지 */
+.sec5-subtitle { color: #fff; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; margin-bottom: 20px; }
+.sec5-title { color: #fff; font-size: 48px; font-weight: 800; line-height: 1.3; margin-bottom: 30px; }
+.gradient-text-purple { background: linear-gradient(90deg, #C273FF 0%, #484AF7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; }
+.sec5-desc { color: #fff; font-size: 18px; font-weight: 300; line-height: 1.6; margin-bottom: 50px; }
+.sec5-btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 40px; border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 50px; color: #fff; font-size: 15px; font-weight: 500; transition: background-color 0.3s ease, color 0.3s ease; }
+.sec5-btn:hover { background-color: #fff; color: #010101; }
+
+/* 🔥 풀스크린 이미지 래퍼 */
+.sec5-image-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2; /* 텍스트(3)보다는 아래에 배치 */
+  overflow: hidden;
+  border-radius: 0; /* 처음엔 네모 반듯하게 */
 }
 
-.gradient-text-purple {
-  background: linear-gradient(90deg, #C273FF 0%, #484AF7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
-.sec5-desc {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.6;
-  /* opacity: 0.7;  */
-  margin-bottom: 50px;
-}
-
-/* 자세히보기 버튼 */
-.sec5-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 40px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 50px;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 500;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.sec5-btn:hover {
-  background-color: #fff;
-  color: #010101;
+.sec5-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 /* ===================================================
   section-05 - BUILDING TOGETHER 끝
@@ -1172,4 +1165,48 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 }
 /* ===================================================
   footer - 엣지시큐리티 푸터 스타일
+=================================================== */
+
+
+
+
+/* ===================================================
+  사이드 메뉴 - 스크롤 따라오기 효과
+=================================================== */
+.side-menu {
+  position: fixed;
+  bottom: 80px;      /* 화면 하단에서 80px 위에 고정 */
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;         /* 항목과 항목 사이의 간격 */
+  z-index: 10000;    /* 최상위 서열 부여 (헤더보다 위) */
+}
+
+/* 개별 메뉴 항목 스타일 (둥근 원형) */
+.side-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  background-color: #e5e7f0;  /* 시안과 비슷한 연한 회색/보라빛 배경 */
+  border-radius: 50%;         
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* 마우스 올렸을 때 효과 */
+.side-item:hover {
+  transform: translateY(-5px); /* 살짝 위로 떠오름 */
+  background-color: #fff;       /* 배경색 하얗게 변경 */
+}
+
+.side-item img {
+  width: 24px;   /* 아이콘 크기 (원하시는 대로 조절하세요) */
+  height: 24px;
+  object-fit: contain; /* 이미지가 찌그러지지 않게 보호 */
+}
+/* ===================================================
+  사이드 메뉴 - 스크롤 따라오기 효과 끝 
 =================================================== */

@@ -181,14 +181,21 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   position: relative;
   width: 100%;
   min-height: 70vh;
-  background-image: url('./images/Rectangle-1749.png');
+  /* background-image: url('./images/Rectangle-1749.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   align-items: center; 
   padding-top: 80px; /* 헤더 높이만큼 띄워줌 */
+  border-radius: 0 0 20px 20px;
 }
+.sub-hero-01 { background-image: url('./images/sub-hero-bg1.png'); }
+.sub-hero-02 { background-image: url('./images/sub-hero-bg2.png'); }
+.sub-hero-03 { background-image: url('./images/sub-hero-bg3.png'); }
+.sub-hero-04 { background-image: url('./images/sub-hero-bg4.png'); }
+
+
 
 .sub-hero::after {
   content: "";
@@ -199,6 +206,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3); /* 30% 투명도의 검은색 레이어 */
   z-index: 1; /* 배경 이미지 위에 위치하도록 설정 */
+  border-radius: 0 0 20px 20px;
 }
 
 .sub-hero-container {
@@ -291,7 +299,8 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 =================================================== */
 .sub-section-01 {
   background-color: #081B28;
-  padding: 80px 0 60px;
+  margin-top: -30px;
+  padding: 110px 0 60px;
 }
 
 .sub-sec1-container {
@@ -864,4 +873,46 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 }
 /* ===================================================
   footer - 엣지시큐리티 푸터 스타일
+=================================================== */
+
+
+/* ===================================================
+  사이드 메뉴 - 스크롤 따라오기 효과
+=================================================== */
+.side-menu {
+  position: fixed;
+  bottom: 80px;      /* 화면 하단에서 80px 위에 고정 */
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;         /* 항목과 항목 사이의 간격 */
+  z-index: 10000;    /* 최상위 서열 부여 (헤더보다 위) */
+}
+
+/* 개별 메뉴 항목 스타일 (둥근 원형) */
+.side-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  background-color: #e5e7f0;  /* 시안과 비슷한 연한 회색/보라빛 배경 */
+  border-radius: 50%;         
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* 마우스 올렸을 때 효과 */
+.side-item:hover {
+  transform: translateY(-5px); /* 살짝 위로 떠오름 */
+  background-color: #fff;       /* 배경색 하얗게 변경 */
+}
+
+.side-item img {
+  width: 24px;   /* 아이콘 크기 (원하시는 대로 조절하세요) */
+  height: 24px;
+  object-fit: contain; /* 이미지가 찌그러지지 않게 보호 */
+}
+/* ===================================================
+  사이드 메뉴 - 스크롤 따라오기 효과 끝 
 =================================================== */
