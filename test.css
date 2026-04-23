@@ -150,6 +150,41 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 
 
+
+
+/* ===================================================
+  배경 글로우 커서 (마우스를 따라다니는 푸른 빛)
+=================================================== */
+.bg-glow-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1500px;  /* 빛의 크기 (엄청 크게) */
+  height: 1500px;
+  border-radius: 50%;
+  
+  /* 파란색~보라색이 섞인 은은한 그라데이션 빛 */
+  background: radial-gradient(circle, rgba(72, 74, 247, 0.2) 0%, rgba(37, 111, 228, 0.1) 40%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(40px); /* 테두리를 아주 부드럽게 뭉개줍니다 */
+  
+  pointer-events: none; /* 마우스 방해 금지 */
+  z-index: 9990; /* 헤더보다는 아래, 콘텐츠보다는 위에서 빛을 뿌려줌 */
+  mix-blend-mode: screen; /* 🔥 핵심: 어두운 배경 위에서 빛처럼 합성됨 */
+  
+  opacity: 0; /* 처음엔 숨김 */
+  transition: opacity 0.5s ease;
+}
+/* ===================================================
+  배경 글로우 커서 (마우스를 따라다니는 푸른 빛)
+=================================================== */
+
+
+
+
+
+
+
+
 /* ===================================================
   section-01 - 메인 비주얼 (Hero) 영상 배경
 =================================================== */
@@ -857,6 +892,10 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 =================================================== */
 .section-06 {
   background-color: #000; 
+  background-image: url('./images/s7-bg.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
   padding: 0 0 120px;
 }
 
@@ -970,7 +1009,10 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   section-07 - 문의하기 (푸터 위) 시작
 =================================================== */
 .section-07 {
-  background-color: #0e1420; 
+  background-image: url('./images/s77-bg.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   padding: 120px 0;
   text-align: center;
   display: flex;

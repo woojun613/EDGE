@@ -45,6 +45,27 @@ heroTl
 
 
 // =====================================================================
+// [0.5] Parallax Hero Content (히어로 배경은 고정, 내용물만 스크롤 1:1 연동)
+// =====================================================================
+const heroContainer = document.querySelector(".sub-hero-container");
+
+if (heroContainer) {
+  gsap.to(heroContainer, {
+    y: -1500, // 충분히 큰 값 (위로 끌어올림)
+    ease: "none",
+    scrollTrigger: {
+      trigger: "body",
+      start: "top top",
+      end: "+=1500", // 🔥 핵심: y 이동값(-1500)과 똑같이 맞춰주면 스크롤 속도와 1:1로 완벽하게 똑같이 올라갑니다!
+      scrub: true
+    }
+  });
+}
+
+
+
+
+// =====================================================================
 // [1] Custom Mouse Cursor (유령 커서 날아옴 방지 완벽 버전)
 // =====================================================================
 const cursor = document.querySelector('.custom-cursor');
@@ -238,7 +259,7 @@ const heroTabs = document.querySelector('.sub-hero-tabs');
 if (stickyTabBar && heroTabs) {
   ScrollTrigger.create({
     trigger: heroTabs,
-    start: "top 20px", // 원본 메뉴가 상단(0px 근처)에 닿을 즈음 발동
+    start: "top 20px", // 원본 메뉴가 상단(20px 근처)에 닿을 즈음 발동
     onEnter: () => stickyTabBar.classList.add('is-visible'), // 스크롤을 내리면 촥! 내려옴
     onLeaveBack: () => stickyTabBar.classList.remove('is-visible') // 스크롤을 올리면 다시 숨김
   });

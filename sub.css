@@ -178,16 +178,17 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   Sub-page Hero (서브페이지 히어로 섹션)
 =================================================== */
 .sub-hero {
-  position: relative;
+  position: sticky; /* 핵심 1: 스크롤을 내려도 천장에 딱 붙어있게 합니다 */
+  top: 0;
+  z-index: 1;       /* 핵심 2: 다음 섹션들이 덮을 수 있도록 가장 밑바닥에 배치 */
   width: 100%;
   min-height: 70vh;
-  /* background-image: url('./images/Rectangle-1749.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   align-items: center; 
-  padding-top: 80px; /* 헤더 높이만큼 띄워줌 */
+  padding-top: 80px; 
   border-radius: 0 0 20px 20px;
 }
 .sub-hero-01 { background-image: url('./images/sub-hero-bg1.png'); }
@@ -195,7 +196,15 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .sub-hero-03 { background-image: url('./images/sub-hero-bg3.png'); }
 .sub-hero-04 { background-image: url('./images/sub-hero-bg4.png'); }
 
-
+.sub-section-01,
+.sub-section-02,
+.sub-section-03,
+.sub-section-04,
+.section-07, 
+.footer {
+  position: relative; /* z-index를 먹이기 위한 필수 조건 */
+  z-index: 10;        /* 히어로(1)보다 무조건 위로 덮고 올라오도록 설정 */
+}
 
 .sub-hero::after {
   content: "";
