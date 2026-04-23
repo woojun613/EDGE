@@ -86,42 +86,61 @@ if (cursor && glowCursor) {
 }
 
 
+
 // =====================================================================
-// interlude
+// [2] Section 2 : 시네마틱 인터루드 + 슬라이드 통합 스크롤 애니메이션
 // =====================================================================
-// 인터루드 섹션: 스크롤에 따라 텍스트 한 줄씩 등장 (블러 효과)
-const interludeSec = document.querySelector(".sub-section-interlude");
-if (interludeSec) {
-  // GSAP 타임라인 생성
-  const interludeTl = gsap.timeline({
+const sec2 = document.querySelector(".section-02");
+
+if (sec2) {
+  // 🔥 1. 초기 상태 세팅 (핵심 포인트!)
+  // 타이틀 래퍼를 빈 공간(슬라이드가 나올 자리)인 화면 중앙쯤으로 강제로 끌어내려 둡니다.
+  gsap.set(".sec2-title", { y: "25vh" }); 
+  
+  // 글자들은 투명 + 블러 상태로 대기
+  gsap.set([".title-line-1", ".title-line-2"], { opacity: 0, filter: "blur(20px)" });
+  
+  // 나머지 요소(서브타이틀, 설명, 슬라이드)들은 보이지 않게 숨겨둡니다.
+  gsap.set([".sec2-subtitle", ".sec2-desc", ".sec2-slider"], { opacity: 0, y: 40 });
+
+  // 2. 타임라인 생성
+  const sec2Tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".sub-section-interlude",
-      start: "top top", // 섹션 상단이 화면 상단에 닿을 때 실행
-      end: "+=1500", // 애니메이션 진행 스크롤 길이 (스크롤 양을 조절하여 속도 변경 가능)
-      scrub: true, // 스크롤에 맞춰 애니메이션 진행
-      pin: true, // 섹션 고정
-      anticipatePin: 1, // 고정 시 깜빡임 방지
+      trigger: ".section-02",
+      start: "top top", // 화면 꼭대기에 닿으면 고정
+      end: "+=2500",    // 스크롤 길이 (천천히 연출하기 위해 여유 있게)
+      scrub: 1,
+      pin: true,
+      anticipatePin: 1
     }
   });
 
-  interludeTl
-    // 첫 번째 줄 등장
-    .to(".interlude-title", {
-      opacity: 1,
-      filter: "blur(0px)", // 블러가 걷히며 뚜렷해짐
-      y: 0, // 원래 위치로 올라옴
-      duration: 1,
-      ease: "power2.out"
-    })
-    // 두 번째 줄 등장
-    .to(".interlude-sub-title", {
-      opacity: 1,
-      filter: "blur(0px)", // 블러가 걷히며 뚜렷해짐
-      y: 0, // 원래 위치로 올라옴
-      duration: 1,
-      ease: "power2.out"
-    }, "-=0.5"); // 첫 번째 애니메이션 끝나기 0.5초 전에 시작 (순차적 등장 느낌)
+  sec2Tl
+    // [Step 1] 화면 한가운데서 첫 번째 줄 블러가 걷히며 등장
+    .to(".title-line-1", { opacity: 1, filter: "blur(0px)", duration: 1 })
+    
+    // [Step 2] 두 번째 줄 등장 (첫 줄 끝나기 전에 자연스럽게 이어짐)
+    .to(".title-line-2", { opacity: 1, filter: "blur(0px)", duration: 1 }, "-=0.5")
+    
+    // [Step 3] 완성된 문장을 화면 중앙에서 잠깐 감상할 수 있는 여백(대기 시간)
+    .to({}, { duration: 0.5 }) 
+    
+    // [Step 4] 타이틀이 자기 원래 자리(위쪽)로 스윽~ 하고 올라갑니다!
+    .to(".sec2-title", { y: 0, duration: 1.5, ease: "power3.inOut" })
+    
+    // [Step 5] 타이틀이 올라가는 '도중에' 서브타이틀, 설명, 슬라이드가 차례대로 페이드인!
+    // ("-=1.0" 덕분에 타이틀이 올라가고 0.5초 뒤에 바로 밑에서 깔리며 나타납니다)
+    .to([".sec2-subtitle", ".sec2-desc", ".sec2-slider"], { 
+      opacity: 1, 
+      y: 0, 
+      duration: 1.5, 
+      stagger: 0.2, // 다다닥 순차적으로 켜짐
+      ease: "power3.out" 
+    }, "-=1.0"); 
 }
+
+
+
 
 
 
