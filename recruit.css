@@ -97,7 +97,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 /* 탭 아이템 공통 스타일 (히어로 & 스티키 공통) */
 .tab-item.recruit-tab {
-  color: #8c9ebb;
+  color: #BABABA;
   font-size: 16px;
   font-weight: 500;
   padding-bottom: 15px;
@@ -107,7 +107,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 .tab-item.recruit-tab.active {
   font-weight: 700;
-  color: #D96A35; /* 시안의 오렌지 포인트 컬러 */
+  color: #D96A35;
 }
 
 .tab-item.recruit-tab.active::after {
@@ -223,7 +223,14 @@ main, .section-07, .footer { position: relative; z-index: 10; }
   Side Menu
 =================================================== */
 .side-menu {
-  position: fixed; bottom: 80px; right: 40px; display: flex; flex-direction: column; gap: 15px; z-index: 10000;
+  position: fixed; 
+  top: 54%;
+  transform: translateY(-50%); 
+  right: 40px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+  z-index: 10000;
 }
 .side-item {
   display: flex; justify-content: center; align-items: center; width: 56px; height: 56px;

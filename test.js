@@ -93,22 +93,34 @@ if (cursor && glowCursor) {
 const sec2 = document.querySelector(".section-02");
 
 if (sec2) {
-  // 🔥 1. 초기 상태 세팅 (핵심 포인트!)
-  // 타이틀 래퍼를 빈 공간(슬라이드가 나올 자리)인 화면 중앙쯤으로 강제로 끌어내려 둡니다.
+  // 🔥 1. 초기 상태 세팅
   gsap.set(".sec2-title", { y: "25vh" }); 
-  
-  // 글자들은 투명 + 블러 상태로 대기
-  gsap.set([".title-line-1", ".title-line-2"], { opacity: 0, filter: "blur(20px)" });
-  
-  // 나머지 요소(서브타이틀, 설명, 슬라이드)들은 보이지 않게 숨겨둡니다.
+  // 첫 번째 줄(title-line-1)은 아래 fromTo에서 직접 제어하므로 여기서 뺐습니다.
+  gsap.set(".title-line-2", { opacity: 0, filter: "blur(20px)" }); 
   gsap.set([".sec2-subtitle", ".sec2-desc", ".sec2-slider"], { opacity: 0, y: 40 });
 
-  // 2. 타임라인 생성
+  // 🔥 [해결 포인트] 첫 번째 줄을 Scrub(스크롤 연동)으로 분리!
+  // 스크롤을 내리면 나타나고, 올리면 휠 속도에 맞춰서 정확하게 되감기(사라짐) 됩니다.
+  gsap.fromTo(".title-line-1", 
+    { opacity: 0, filter: "blur(20px)" }, // 시작 상태 (투명, 블러)
+    {
+      opacity: 1, 
+      filter: "blur(0px)",                // 끝나는 상태 (선명)
+      scrollTrigger: {
+        trigger: ".section-02",
+        start: "top 85%", // 섹션이 화면 아래쪽 75%쯤 보일 때부터 등장 시작
+        end: "top 10%",   // 화면 위쪽 20% 지점에 오면 등장 완료
+        scrub: 1.5          // 🔥 마우스 휠과 완벽 동기화 (올리면 바로 되감기!)
+      }
+    }
+  );
+
+  // 2. 스크롤 타임라인 생성 (나머지 요소들)
   const sec2Tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".section-02",
       start: "top top", // 화면 꼭대기에 닿으면 고정
-      end: "+=2500",    // 스크롤 길이 (천천히 연출하기 위해 여유 있게)
+      end: "+=2000",    // 전체 스크롤 길이
       scrub: 1,
       pin: true,
       anticipatePin: 1
@@ -116,27 +128,23 @@ if (sec2) {
   });
 
   sec2Tl
-    // [Step 1] 화면 한가운데서 첫 번째 줄 블러가 걷히며 등장
-    .to(".title-line-1", { opacity: 1, filter: "blur(0px)", duration: 1 })
+    // [Step 1] 두 번째 줄 등장
+    .to(".title-line-2", { opacity: 1, filter: "blur(0px)", duration: 0.5 })
     
-    // [Step 2] 두 번째 줄 등장 (첫 줄 끝나기 전에 자연스럽게 이어짐)
-    .to(".title-line-2", { opacity: 1, filter: "blur(0px)", duration: 1 }, "-=0.5")
+    // [Step 2] 완성된 문장을 잠깐 감상하는 여백
+    .to({}, { duration: 0.3 }) 
     
-    // [Step 3] 완성된 문장을 화면 중앙에서 잠깐 감상할 수 있는 여백(대기 시간)
-    .to({}, { duration: 0.5 }) 
+    // [Step 3] 타이틀 위로 스윽~ 올라감
+    .to(".sec2-title", { y: 0, duration: 1.2, ease: "power3.inOut" })
     
-    // [Step 4] 타이틀이 자기 원래 자리(위쪽)로 스윽~ 하고 올라갑니다!
-    .to(".sec2-title", { y: 0, duration: 1.5, ease: "power3.inOut" })
-    
-    // [Step 5] 타이틀이 올라가는 '도중에' 서브타이틀, 설명, 슬라이드가 차례대로 페이드인!
-    // ("-=1.0" 덕분에 타이틀이 올라가고 0.5초 뒤에 바로 밑에서 깔리며 나타납니다)
+    // [Step 4] 서브타이틀, 설명, 슬라이드 페이드인
     .to([".sec2-subtitle", ".sec2-desc", ".sec2-slider"], { 
       opacity: 1, 
       y: 0, 
       duration: 1.5, 
-      stagger: 0.2, // 다다닥 순차적으로 켜짐
+      stagger: 0.2, 
       ease: "power3.out" 
-    }, "-=1.0"); 
+    }, "-=0.8"); 
 }
 
 
@@ -326,7 +334,7 @@ if (cardsList.length > 0 && bgTexts.length > 0) {
 
 
 // =====================================================================
-// [8] Section 5 : 풀스크린 이미지 스크롤 축소 패럴랙스
+// [8] Section 5 : 풀스크린 이미지 스크롤 축소 (위즈텍 직선 수축 방식)
 // =====================================================================
 const sec5 = document.querySelector('.section-05');
 
@@ -334,31 +342,29 @@ if (sec5) {
   const sec5Tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".section-05",
-      start: "top top", // 섹션이 화면 꼭대기에 닿으면 핀(Pin) 고정 시작!
-      end: "+=1500",    // 스크롤을 1500px 내릴 동안 애니메이션 진행
-      scrub: 1,         // 마우스 휠에 부드럽게 연동
-      pin: true         // 화면을 꽉 잡고 안 넘어가게 고정
+      start: "top top", 
+      end: "+=1500",    
+      scrub: 1,         
+      pin: true,        
+      anticipatePin: 1
     }
   });
 
-  // 1. 이미지가 시안의 우측 위치로 작아지는 효과
+  // 🔥 위즈텍 방식 적용: width/height 대신 scale과 x(vw)만 사용하여 완벽한 일직선 구현!
   sec5Tl.to(".sec5-image-wrap", {
-    width: "600px",              // 줄어들 최종 가로 크기 (시안 비율)
-    height: "450px",             // 줄어들 최종 세로 크기
-    top: "50%",                  // 화면 세로 중앙
-    left: "calc(50%)",    // 1200px 컨테이너 기준 우측에 완벽하게 정렬되는 수식
-    yPercent: -50,               // 중심축을 완벽히 가운데로
-    borderRadius: "20px",        // 작아지면서 모서리가 둥글어짐
-    duration: 1,
-    ease: "power2.inOut"
+    scale: 0.45,         // 위즈텍의 (1 - 0.6 * progress)와 비슷한 45% 크기로 축소
+    x: "15vw",           // 우측으로 15vw 만큼 이동 (원하는 위치에 맞게 숫자 조절 가능)
+    borderRadius: "40px",// scale이 줄어들면 라운드도 작아보이므로 살짝 큰 값을 줍니다.
+    ease: "none",        // 포물선 방지용 일직선 가속도
+    duration: 1
   })
-  // 2. 이미지가 반쯤 줄어들었을 때 텍스트가 스르륵 나타나는 효과
+  // 이미지가 반쯤 줄어들었을 때 텍스트가 스르륵 나타나는 효과
   .to(".sec5-text", {
     opacity: 1,
-    x: 0, // 원래 위치로 이동
+    x: 0, 
     duration: 0.5,
     ease: "power2.out"
-  }, "-=0.6"); // 앞 애니메이션이 끝나기 0.6초 전에 시작!
+  }, "-=0.6"); 
 }
 
 // =====================================================================

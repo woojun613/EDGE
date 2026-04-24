@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   // =====================================================================
-  // [4] Sticky Tab Bar Animation (채용 페이지용 최적화)
+  // [1.5] Sticky Tab Bar Animation (채용 페이지용 최적화)
   // =====================================================================
   const stickyTabBar = document.querySelector('.sticky-tab-bar');
   const contentArea = document.querySelector('.recruit-content-area'); // 다음 섹션

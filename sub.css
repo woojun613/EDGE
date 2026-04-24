@@ -285,7 +285,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 }
 
 .tab-item {
-  color: #8c9ebb; /* 비활성화된 탭의 연한 파스텔톤 색상 */
+  color: #BABABA; /* 비활성화된 탭의 연한 파스텔톤 색상 */
   font-size: 16px;
   font-weight: 500;
   padding-bottom: 15px; /* 글자와 밑줄 사이의 간격 */
@@ -918,7 +918,8 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 =================================================== */
 .side-menu {
   position: fixed;
-  bottom: 80px;      /* 화면 하단에서 80px 위에 고정 */
+  top: 54%;
+  transform: translateY(-50%);
   right: 40px;
   display: flex;
   flex-direction: column;

@@ -810,16 +810,16 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .sec5-btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 40px; border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 50px; color: #fff; font-size: 15px; font-weight: 500; transition: background-color 0.3s ease, color 0.3s ease; }
 .sec5-btn:hover { background-color: #fff; color: #010101; }
 
-/* 🔥 풀스크린 이미지 래퍼 */
+/* 풀스크린 이미지 래퍼 */
 .sec5-image-wrap {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 2; /* 텍스트(3)보다는 아래에 배치 */
+  transform-origin: center center; /* 중심을 정중앙으로 세팅 */
+  z-index: 2;
   overflow: hidden;
-  border-radius: 0; /* 처음엔 네모 반듯하게 */
 }
 
 .sec5-image-wrap img {
@@ -1165,7 +1165,8 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 =================================================== */
 .side-menu {
   position: fixed;
-  bottom: 80px;      /* 화면 하단에서 80px 위에 고정 */
+  top: 54%;
+  transform: translateY(-50%);
   right: 40px;
   display: flex;
   flex-direction: column;
