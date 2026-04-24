@@ -16,7 +16,7 @@ if (cursor && glowCursor) {
   let xTo = gsap.quickTo(cursor, "x", { duration: 0.15, ease: "power3" });
   let yTo = gsap.quickTo(cursor, "y", { duration: 0.15, ease: "power3" });
 
-  // 🔥 2. 큰 후광 커서의 움직임 (묵직하고 부드럽게 뒤늦게 따라옴)
+  // 2. 큰 후광 커서의 움직임 (묵직하고 부드럽게 뒤늦게 따라옴)
   let glowXTo = gsap.quickTo(glowCursor, "x", { duration: 0.8, ease: "power3.out" });
   let glowYTo = gsap.quickTo(glowCursor, "y", { duration: 0.8, ease: "power3.out" });
 
@@ -184,7 +184,7 @@ window.addEventListener("load", () => {
 // [4] GSAP Scroll Animations (섹션별 스크롤 트리거)
 // =====================================================================
 
-// 🟢 1. Section 3 : 패널 전환 (안전장치 추가!)
+// 1. Section 3 : 패널 전환 (안전장치 추가!)
 const sec3Element = document.querySelector(".section-03");
 
 if (sec3Element) {

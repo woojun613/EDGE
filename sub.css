@@ -75,30 +75,30 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   font-weight: 700; /* 활성화 시 글씨를 살짝 더 굵게 */
 }
 
-/* 🔥 핵심: 현재 페이지(active) 아래에 하얀 점(Dot) 생성 */
+/* 핵심: 현재 페이지(active) 아래에 하얀 점(Dot) 생성 */
 .gnb a.active::after {
   content: "";
   position: absolute;
   bottom: -12px;     /* 글씨 아래로 얼마나 띄울지 조절 */
   left: 50%;         /* 가운데 정렬 1 */
   transform: translateX(-50%); /* 가운데 정렬 2 */
-  width: 4px;        /* 점의 가로 크기 */
-  height: 4px;       /* 점의 세로 크기 */
+  width: 4px;
+  height: 4px;
   background-color: #fff; 
-  border-radius: 50%; /* 완벽한 동그라미 */
+  border-radius: 50%;
 }
 
 .header-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 28px;
+  padding: 10px 24px;
   background-color: rgba(255, 255, 255, 0.15); /* 은은한 반투명 하얀색 배경 */
   border: 1px solid rgba(255, 255, 255, 0.2);  /* 아주 연한 테두리 */
-  border-radius: 8px;
+  border-radius: 5px;
   color: #fff;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   backdrop-filter: blur(10px); /* 뒷배경이 뿌옇게 비치는 글래스모피즘 효과 */
   -webkit-backdrop-filter: blur(10px);
   transition: all 0.3s ease;
