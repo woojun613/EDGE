@@ -293,7 +293,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   padding: 120px 0 150px; 
   overflow: hidden; 
 }
-
+.pin-spacer { background: #010101; }
 .sec2-title .title-line {
   display: block; /* <br> 태그 대신 각각 한 줄씩 차지하게 만듦 */
 }

@@ -93,51 +93,54 @@ if (cursor && glowCursor) {
 const sec2 = document.querySelector(".section-02");
 
 if (sec2) {
-  // 🔥 1. 초기 상태 세팅
-  gsap.set(".sec2-title", { y: "25vh" }); 
-  // 첫 번째 줄(title-line-1)은 아래 fromTo에서 직접 제어하므로 여기서 뺐습니다.
-  gsap.set(".title-line-2", { opacity: 0, filter: "blur(20px)" }); 
+  // 🔥 1. 초기 상태 세팅 (vh 대신 픽셀 200으로 고정하여 계산 튕김 방지)
+  gsap.set(".sec2-title", { y: 200 }); 
   gsap.set([".sec2-subtitle", ".sec2-desc", ".sec2-slider"], { opacity: 0, y: 40 });
 
-  // 🔥 [해결 포인트] 첫 번째 줄을 Scrub(스크롤 연동)으로 분리!
-  // 스크롤을 내리면 나타나고, 올리면 휠 속도에 맞춰서 정확하게 되감기(사라짐) 됩니다.
+  // 첫 번째 줄 스크롤 연동 (독립)
   gsap.fromTo(".title-line-1", 
-    { opacity: 0, filter: "blur(20px)" }, // 시작 상태 (투명, 블러)
+    { opacity: 0, filter: "blur(20px)" }, 
     {
       opacity: 1, 
-      filter: "blur(0px)",                // 끝나는 상태 (선명)
+      filter: "blur(0px)",                
       scrollTrigger: {
         trigger: ".section-02",
-        start: "top 85%", // 섹션이 화면 아래쪽 75%쯤 보일 때부터 등장 시작
-        end: "top 10%",   // 화면 위쪽 20% 지점에 오면 등장 완료
-        scrub: 1.5          // 🔥 마우스 휠과 완벽 동기화 (올리면 바로 되감기!)
+        start: "top 85%", 
+        end: "top 10%",   
+        scrub: 1.5
       }
     }
   );
 
-  // 2. 스크롤 타임라인 생성 (나머지 요소들)
+  // 2. 메인 타임라인 (핀)
   const sec2Tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".section-02",
-      start: "top top", // 화면 꼭대기에 닿으면 고정
-      end: "+=2000",    // 전체 스크롤 길이
+      start: "top top", 
+      end: "+=2000",    
       scrub: 1,
-      pin: true,
-      anticipatePin: 1
+      pin: true
+      // 🔥 핵심 해결 1: 순간이동의 주범인 anticipatePin 옵션을 과감히 삭제!
     }
   });
 
   sec2Tl
-    // [Step 1] 두 번째 줄 등장
-    .to(".title-line-2", { opacity: 1, filter: "blur(0px)", duration: 0.5 })
+    // 🔥 핵심 해결 2: gsap.to 대신 .fromTo를 사용하여 시작값을 자물쇠처럼 잠가버립니다.
+    .fromTo(".title-line-2", 
+      { opacity: 0, filter: "blur(20px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.5 }
+    )
     
-    // [Step 2] 완성된 문장을 잠깐 감상하는 여백
+    // 완성된 문장을 잠깐 감상하는 여백
     .to({}, { duration: 0.3 }) 
     
-    // [Step 3] 타이틀 위로 스윽~ 올라감
-    .to(".sec2-title", { y: 0, duration: 1.2, ease: "power3.inOut" })
+    // 🔥 핵심 해결 3: 타이틀 위로 스윽~ 올라감 (여기서도 fromTo로 순간이동 원천 차단!)
+    .fromTo(".sec2-title", 
+      { y: 200 }, 
+      { y: 0, duration: 1.2, ease: "power3.inOut" }
+    )
     
-    // [Step 4] 서브타이틀, 설명, 슬라이드 페이드인
+    // 서브타이틀, 설명, 슬라이드 페이드인
     .to([".sec2-subtitle", ".sec2-desc", ".sec2-slider"], { 
       opacity: 1, 
       y: 0, 
