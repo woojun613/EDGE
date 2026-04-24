@@ -99,7 +99,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   color: #fff;
   font-size: 14px;
   font-weight: 500;
-  backdrop-filter: blur(10px); /* 뒷배경이 뿌옇게 비치는 글래스모피즘 효과 */
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }

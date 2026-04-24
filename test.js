@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 // [1] Custom Mouse Cursor (유령 커서 + 푸른 배경 글로우 완벽 연동)
 // =====================================================================
 const cursor = document.querySelector('.custom-cursor');
-const glowCursor = document.querySelector('.bg-glow-cursor'); // 🔥 후광 커서 선택
+const glowCursor = document.querySelector('.bg-glow-cursor'); // 후광 커서 선택
 
 if (cursor && glowCursor) {
   // 두 커서 모두 중심축 세팅
