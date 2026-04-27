@@ -62,12 +62,31 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("mousedown", () => gsap.to(cursor, { scale: 0.8, duration: 0.1 }));
     window.addEventListener("mouseup", () => gsap.to(cursor, { scale: 1, duration: 0.15, ease: "back.out(1.7)" }));
 
+    // const hoverElements = document.querySelectorAll('.header-logo a, .gnb a, .header-btn, .tab-item, .sec7-btn, a, button');
     const hoverElements = document.querySelectorAll('.header-logo a, .gnb a, .header-btn, .sec7-btn, a, button');
     hoverElements.forEach((el) => {
       el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
     });
   }
+
+
+
+
+  // =====================================================================
+  // [1.5] Sticky Tab Bar Animation (채용 페이지용 최적화)
+  // =====================================================================
+  // const stickyTabBar = document.querySelector('.sticky-tab-bar');
+  // const contentArea = document.querySelector('.recruit-content-area'); 
+
+  // if (stickyTabBar && contentArea) {
+  //   ScrollTrigger.create({
+  //     trigger: contentArea,
+  //     start: "top 20%", 
+  //     onEnter: () => stickyTabBar.classList.add('is-visible'),
+  //     onLeaveBack: () => stickyTabBar.classList.remove('is-visible') 
+  //   });
+  // }
 
 
 
