@@ -429,7 +429,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 80px 0;
+  padding: 30px 0;
 }
 
 .horizontal-title-area {
