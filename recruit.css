@@ -434,7 +434,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 .horizontal-title-area {
   width: 1200px;
-  margin: 0 auto 40px;
+  margin: 0 auto;
 }
 
 .h-main-title {
