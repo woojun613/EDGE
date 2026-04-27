@@ -171,10 +171,184 @@ body, a, button, .card-wrapper { cursor: none !important; }
   background: linear-gradient(90deg, #EF4E46 0%, #F2910E 100%); /* 주황빛 그라데이션 */
 }
 
+
+
+
+
+
 /* ===================================================
-  Section Layout Z-index
+  Section Layout Z-index (포장지 서열 정리)
 =================================================== */
-main, .section-07, .footer { position: relative; z-index: 10; }
+/* 큰 포장지와 푸터를 히어로 섹션(z-index:1)보다 위로 무조건 끌어올립니다. */
+.content-wrapper, .footer { 
+  position: relative; 
+  z-index: 10; 
+}
+
+.content-wrapper {
+  background-color: #081B28; /* 섹션들 사이에 틈이 생길 때 뒤가 비치지 않게 하는 든든한 밑바탕 */
+}
+
+
+
+
+
+
+
+/* ===================================================
+  Recruit Section 01 (시네마틱 인터루드)
+=================================================== */
+.recruit-section-01 {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 화면에 꽉 차게 */
+  background-image: url('./images/recruit-s2-bg.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* 스크롤 시 글자 잘림 방지 */
+}
+
+/* 텍스트 래퍼 중앙 정렬 */
+.recruit-sec1-container {
+  text-align: center;
+  z-index: 2; /* 배경보다 위로 오도록 설정 */
+}
+
+.recruit-sec1-title {
+  margin: 0;
+}
+
+/* 각각의 글자 줄바꿈 및 스타일 (시안 느낌 적용) */
+.recruit-sec1-title .recruit-line {
+  display: block; /* 강제 줄바꿈 */
+  color: #fff;
+  font-size: 38px;  /* 글자 크기 (시안과 비슷하게) */
+  font-weight: 700;
+  line-height: 1.8; /* 각 줄 사이의 간격을 넓게 */
+  letter-spacing: -0.02em;
+}
+
+
+
+
+
+
+/* ===================================================
+  Recruit Section 02 (핵심 가치 스태킹 스크롤)
+=================================================== */
+.recruit-section-02 {
+  position: relative;
+  width: 100%;
+  z-index: 10;
+  /* 🔥 [이미지1 feel] 전체 섹션 배경을 화이트로 설정하여 pill 모양이 도드라지게 합니다. */
+  background-color: #ffffff;
+}
+
+/* 🔥 핵심: 스티키를 이용해 100vh 카드가 위로 겹치게 만듭니다 */
+.value-panel {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  /* background-color: #ffffff; -> 이제 transparent 혹은 생략해도 무방합니다. */
+  overflow: hidden;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05); /* 카드가 덮일 때 살짝 생기는 그림자 깊이감 */
+}
+
+/* 짝수 패널(실행력)은 좌우 반전 시켜서 지그재그 레이아웃 완성 */
+.value-panel.reverse {
+  flex-direction: row-reverse;
+}
+
+/* --- 텍스트 영역 (절반) --- */
+.value-text-box {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff; /* 텍스트 뒤는 항상 화이트 */
+}
+
+.value-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 20px;
+}
+
+.value-desc {
+  font-size: 16px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* --- 이미지 영역 (절반) --- */
+.value-img-box {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  /* 🔥 [이미지1 detached feel] pill 모양으로 변할 wrapper가 중앙에 위치하도록 flex 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* 영역 밖 내용 숨김 */
+}
+
+/* 🔥 [이미지1 feel] 실제 이미지가 적용되고 곡률/오버레이 애니메이션이 일어날 wrapper 🔥 */
+.value-pill-wrapper {
+  position: relative;
+  width: 100%; /* 초기 상태: 영역 꽉 채움 */
+  height: 100%; /* 초기 상태: 영역 꽉 채움 */
+  border-radius: 0; /* 초기 상태: 직각 */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border-radius 0.3s ease, margin 0.3s ease; /* JS가 건드리지 않을 때를 대비한 기본 transition */
+  overflow: hidden; /* 오버레이가 pill 영역 안에 갇히게 함 */
+}
+
+/* 🔥 [이미지2, 4] 그라데이션 오버레이 🔥 */
+.value-gradient-overlay {
+  position: absolute;
+  inset: 0; /* 상하좌우 0으로 꽉 채움 */
+  /* 디자인 기반 그라데이션 stops 적용 */
+  background: linear-gradient(to bottom, #C273FF 0%, #484AF7 100%);
+  opacity: 0; /* 초기 상태: 투명 */
+  z-index: 1; /* 이미지 위, 키워드 아래 */
+  transition: opacity 0.3s ease; /* JS가 건드리지 않을 때를 대비한 기본 transition */
+}
+
+/* 이미지 위 영문 키워드 */
+.value-keyword {
+  color: #fff;
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 흰 글씨가 잘 보이도록 그림자 추가 */
+  z-index: 2; /* 오버레이 위로 배치 */
+  position: relative; /* z-index 작동을 위해 필요 */
+}
+
+/* 이미지 경로 설정 (pill-wrapper에 적용) */
+.bg-expertise .value-pill-wrapper { background-image: url('./images/value-keyword-1.png'); }
+.bg-execution .value-pill-wrapper { background-image: url('./images/value-keyword-2.png'); }
+.bg-trust .value-pill-wrapper { background-image: url('./images/value-keyword-3.png'); }
+
+
+
+
+
 
 /* ===================================================
   Section 07 (문의하기)

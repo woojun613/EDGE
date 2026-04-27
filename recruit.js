@@ -89,6 +89,103 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
+
+  // =====================================================================
+  // [1.8] Section 1 : 시네마틱 텍스트 스크롤 애니메이션
+  // =====================================================================
+  const recruitSec1 = document.querySelector(".recruit-section-01");
+
+  if (recruitSec1) {
+    // 3개의 글자 줄을 배열로 묶어서 차례대로 제어합니다.
+    const lines = [".recruit-line-1", ".recruit-line-2", ".recruit-line-3"];
+
+    // 🔥 메인 페이지와 동일한 스크롤 연동(Scrub) 방식
+    gsap.fromTo(lines, 
+      { 
+        opacity: 0, 
+        filter: "blur(20px)", 
+        y: 30 // 살짝 아래에서 위로 올라오는 느낌 추가
+      }, 
+      {
+        opacity: 1, 
+        filter: "blur(0px)",
+        y: 0,
+        scrollTrigger: {
+          trigger: ".recruit-section-01",
+          start: "top 75%", // 섹션이 화면에 조금 보이기 시작할 때 등장
+          end: "center center", // 섹션이 한가운데 오면 뚜렷해짐
+          scrub: 1.5 // 스크롤 올리면 다시 부드럽게 되감기
+        },
+        stagger: 0.3, // 🔥 핵심: 0.3초 간격으로 1번 줄, 2번 줄, 3번 줄이 차례대로 등장!
+        ease: "power2.out"
+      }
+    );
+  }
+
+
+
+
+  // =====================================================================
+  // [1.9] Section 2 : 핵심가치 내부 텍스트 등장 & 모든 카드 스태킹 변형
+  // =====================================================================
+  const valuePanels = gsap.utils.toArray(".value-panel");
+
+  if (valuePanels.length > 0) {
+    valuePanels.forEach((panel, i) => {
+      const title = panel.querySelector(".value-title");
+      const desc = panel.querySelector(".value-desc");
+      const pillWrapper = panel.querySelector(".value-pill-wrapper");
+      const keyword = panel.querySelector(".value-keyword");
+      const gradientOverlay = panel.querySelector(".value-gradient-overlay");
+
+      // --- [1단계] 패널이 처음 화면에 들어올 때 텍스트 등장 ---
+      const panelTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: panel,
+          start: "top 70%", 
+          toggleActions: "play none none reverse" 
+        }
+      });
+
+      panelTl
+        .from(title, { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" })
+        .from(desc, { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" }, "-=0.6")
+        .from(keyword, { opacity: 0, scale: 0.9, duration: 1, ease: "power3.out" }, "-=0.6");
+
+      // --- [2단계] 현재 패널이 천장에 닿았을 때 이미지 영역 변형 (모든 패널 적용!) ---
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: panel,       
+          start: "top top",     
+          end: "+=40%",        
+          scrub: true,          
+        }
+      })
+      .fromTo(pillWrapper, 
+        {
+          borderRadius: "0px",
+          width: "100%", 
+          height: "100%"
+        },
+        {
+          borderRadius: "500px", 
+          width: "100%",          
+          height: "100%",
+          ease: "none",
+        }, 0) 
+        
+      .fromTo(gradientOverlay, 
+        { opacity: 0 },
+        { 
+          opacity: 0.5, 
+          ease: "none" 
+        }, 0); 
+    });
+  }
+
+
+
   // =====================================================================
   // [2] Section 07 (문의하기) Fade In Animation
   // =====================================================================
