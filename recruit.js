@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   heroTl
     .from(".sub-subtitle", { opacity: 0, y: 30, duration: 0.8, ease: "power3.out", delay: 0.2 })
-    .from(".sub-title", { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" }, "-=0.6")
-    .from(".sub-hero-tabs .tab-item", { opacity: 0, y: 20, duration: 0.6, ease: "power3.out", stagger: 0.1 }, "-=0.4");
+    .from(".sub-title", { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" }, "-=0.6");
+    // .from(".sub-hero-tabs .tab-item", { opacity: 0, y: 20, duration: 0.6, ease: "power3.out", stagger: 0.1 }, "-=0.4");
 
   // =====================================================================
   // [0.5] Parallax Hero Content (텍스트가 스크롤 따라 올라감)
@@ -62,28 +62,10 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("mousedown", () => gsap.to(cursor, { scale: 0.8, duration: 0.1 }));
     window.addEventListener("mouseup", () => gsap.to(cursor, { scale: 1, duration: 0.15, ease: "back.out(1.7)" }));
 
-    const hoverElements = document.querySelectorAll('.header-logo a, .gnb a, .header-btn, .tab-item, .sec7-btn, a, button');
+    const hoverElements = document.querySelectorAll('.header-logo a, .gnb a, .header-btn, .sec7-btn, a, button');
     hoverElements.forEach((el) => {
       el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
-    });
-  }
-
-
-
-
-  // =====================================================================
-  // [1.5] Sticky Tab Bar Animation (채용 페이지용 최적화)
-  // =====================================================================
-  const stickyTabBar = document.querySelector('.sticky-tab-bar');
-  const contentArea = document.querySelector('.recruit-content-area'); // 다음 섹션
-
-  if (stickyTabBar && contentArea) {
-    ScrollTrigger.create({
-      trigger: contentArea,
-      start: "top 20%", // 채용 콘텐츠 영역이 상단 20% 지점까지 올라왔을 때
-      onEnter: () => stickyTabBar.classList.add('is-visible'), // 등장
-      onLeaveBack: () => stickyTabBar.classList.remove('is-visible') // 퇴장
     });
   }
 
