@@ -538,39 +538,39 @@ body, a, button, .card-wrapper { cursor: none !important; }
   🔥 카드별 개별 테마 컬러 설정 (헤더 배경 & 원형 배경)
 =================================================== */
 /* 1. Risk Hunter (카키) */
-.theme-1 .card-header { background-color: #CFCBC0; }
+.theme-1 .card-header { background-color: #BBB7A4; }
 /* .theme-1 .char-bg { background-color: #B5B2A6; } */
 
 /* 2. Infra Scan (그린) */
-.theme-2 .card-header { background-color: #E6F0E4; }
+.theme-2 .card-header { background-color: #E4F4E6; }
 /* .theme-2 .char-bg { background-color: #D2E4D2; } */
 
 /* 3. Trust Auditor (베이지) */
-.theme-3 .card-header { background-color: #F1E9D7; }
+.theme-3 .card-header { background-color: #F1DEC3; }
 /* .theme-3 .char-bg { background-color: #F8EEDB; } */
 
 /* 4. Privacy Guardian (퍼플) */
-.theme-4 .card-header { background-color: #DFD5F4; }
+.theme-4 .card-header { background-color: #D5CBED; }
 /* .theme-4 .char-bg { background-color: #E2D7F6; } */
 
 /* 5. White Hacker (옐로우) */
-.theme-5 .card-header { background-color: #FDF6CF; }
+.theme-5 .card-header { background-color: #FDF7D2; }
 /* .theme-5 .char-bg { background-color: #FDF6CF; } */
 
 /* 6. Code Detective (시안) */
-.theme-6 .card-header { background-color: #E3F2F3; }
+.theme-6 .card-header { background-color: #C9E7EA; }
 /* .theme-6 .char-bg { background-color: #D6ECED; } */
 
 /* 7. Security Storyteller (핑크) */
-.theme-7 .card-header { background-color: #FAECF0; }
+.theme-7 .card-header { background-color: #FFE9ED; }
 /* .theme-7 .char-bg { background-color: #FCE1E9; } */
 
 /* 8. Pixel Punk (블루) */
-.theme-8 .card-header { background-color: #E1EAFB; }
+.theme-8 .card-header { background-color: #D4E9FC; }
 /* .theme-8 .char-bg { background-color: #D3E1F9; } */
 
 /* 9. Code Wrangler (오렌지) */
-.theme-9 .card-header { background-color: #FDF1DE; }
+.theme-9 .card-header { background-color: #FFEFDA; }
 /* .theme-9 .char-bg { background-color: #FDE8CD; } */
 
 
