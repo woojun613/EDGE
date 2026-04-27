@@ -219,7 +219,60 @@ document.addEventListener("DOMContentLoaded", function() {
     );
   }
 
+
+
+
+  // =====================================================================
+  // [2.1] Section 4 : 횡스크롤 애니메이션 (Security Expert Group)
+  // =====================================================================
+  const horizontalTrack = document.querySelector(".horizontal-scroll-track");
+  const horizontalSection = document.querySelector(".recruit-section-04");
+  const slides = gsap.utils.toArray(".h-slide"); 
   
+  // 🔥 추가: HTML에 만들어둔 3개의 불릿(동그라미)을 가져옵니다.
+  const dots = gsap.utils.toArray(".h-pagination .dot");
+
+  if (horizontalTrack && horizontalSection) {
+    
+    const getScrollAmount = () => horizontalTrack.scrollWidth - window.innerWidth;
+
+    gsap.to(horizontalTrack, {
+      x: () => -getScrollAmount(),
+      ease: "none",
+      scrollTrigger: {
+        trigger: horizontalSection,
+        start: "top top",      
+        end: () => `+=${getScrollAmount()}`, 
+        scrub: 1,              
+        pin: true,             
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        snap: {
+          snapTo: 1 / (slides.length - 1), 
+          duration: 0.5, 
+          ease: "power2.inOut" 
+        },
+        
+        // 🔥 핵심 추가: 스크롤이 움직일 때마다 불릿 상태 업데이트!
+        onUpdate: (self) => {
+          // self.progress는 0부터 1까지의 값을 가집니다.
+          // 슬라이드 개수에 맞춰 0, 1, 2 중 하나의 인덱스로 변환합니다.
+          const activeIndex = Math.round(self.progress * (slides.length - 1));
+          
+          // 모든 불릿을 끄고, 현재 인덱스에 해당하는 불릿만 켭니다.
+          dots.forEach((dot, index) => {
+            if (index === activeIndex) {
+              dot.classList.add("active");
+            } else {
+              dot.classList.remove("active");
+            }
+          });
+        }
+      }
+    });
+  }
+
+
 
   // =====================================================================
   // [2] Section 07 (문의하기) Fade In Animation

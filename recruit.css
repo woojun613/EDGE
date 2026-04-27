@@ -412,6 +412,198 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 
 
+/* ===================================================
+  Recruit Section 04 (횡스크롤 슬라이드)
+=================================================== */
+.recruit-section-04 {
+  position: relative;
+  width: 100%;
+  background-color: #f9f9f9;
+  z-index: 10;
+}
+
+.horizontal-sticky-wrapper {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 0;
+}
+
+.horizontal-title-area {
+  width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.h-main-title {
+  font-size: 44px;
+  font-weight: 800;
+  color: #111;
+}
+
+/* 🔥 핵심: 가로로 길게 늘어선 트랙 */
+.horizontal-scroll-track {
+  display: flex;
+  width: 300vw; /* 슬라이드 3개 = 300vw */
+  height: 100%;
+}
+
+.h-slide {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h-card-container {
+  display: flex;
+  gap: 30px;
+  width: 1200px;
+}
+
+/* --- 공통 카드 스타일 --- */
+.h-card {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06); /* 부드러운 그림자 */
+  border: 1px solid #ebebeb; /* 시안처럼 연한 테두리 */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* overflow: hidden; */
+}
+
+/* 컬러 배경이 들어가는 상단 헤더 영역 */
+.card-header {
+  padding: 35px 20px; /* 🔥 핵심: 캐릭터 동그라미가 겹칠 수 있도록 아래쪽 여백을 넓게 줌 */
+  border-radius: 20px 20px 0 0; /* 상단만 둥글게 */
+}
+
+.job-tag { font-size: 14px; color: #333; margin-bottom: 8px; font-weight: 600; }
+.job-name { font-size: 28px; font-weight: 800; color: #2C328F; margin: 0; } /* 시안의 딥 네이비 타이틀 */
+
+/* 화이트 배경인 하단 텍스트 영역 */
+.card-body {
+  padding: 0 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 0 0 20px 20px; /* 하단만 둥글게 */
+}
+
+/* 캐릭터와 동그라미 배경을 감싸는 박스 */
+.char-box {
+  width: 220px; /* 🔥 수정 핵심: 350px -> 220px로 크기를 대폭 줄였습니다 (카드 안 황금 비율) */
+  height: 400px;
+  position: relative;
+  margin: -90px auto 25px; /* 컬러 배경 위로 자연스럽게 겹치도록 끌어올림 */
+  /* 🔥 display: flex 관련 코드는 다 지웠습니다! 절대 좌표로 배치할 예정입니다. */
+}
+
+.char-bg {
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* 캐릭터 이미지 팝아웃 효과 */
+.char-box img {
+  position: absolute;
+  bottom: -55px;            /* 바닥 라인에 발을 딱 맞춤 */
+  left: 50%;            /* 왼쪽에서 50% 지점으로 밀기 */
+  transform: translateX(-50%); /* 다시 자기 크기의 절반만큼 왼쪽으로 당겨서 '완벽한 정중앙' 세팅! */
+  z-index: 2;
+  height: 100%;         /* 찌그러짐 방지 핵심: 가로 너비 대신 세로 높이만 115%로 지정! (찌그러짐 원천 차단) */
+  width: auto;          /* 가로 비율은 원본 이미지 비율을 그대로 유지 */
+  max-width: none;      /* 상위 태그의 제한을 풀어서 이미지가 찌그러지지 않게 함 */
+  object-fit: contain;  /* 이미지가 잘리지 않게 함 */
+}
+
+.job-desc { font-size: 18px; font-weight: 800; color: #111; line-height: 1.4; margin-bottom: 15px; }
+.job-sub { font-size: 14px; color: #666; line-height: 1.6; word-break: keep-all; }
+
+
+/* ===================================================
+  🔥 카드별 개별 테마 컬러 설정 (헤더 배경 & 원형 배경)
+=================================================== */
+/* 1. Risk Hunter (카키) */
+.theme-1 .card-header { background-color: #CFCBC0; }
+/* .theme-1 .char-bg { background-color: #B5B2A6; } */
+
+/* 2. Infra Scan (그린) */
+.theme-2 .card-header { background-color: #E6F0E4; }
+/* .theme-2 .char-bg { background-color: #D2E4D2; } */
+
+/* 3. Trust Auditor (베이지) */
+.theme-3 .card-header { background-color: #F1E9D7; }
+/* .theme-3 .char-bg { background-color: #F8EEDB; } */
+
+/* 4. Privacy Guardian (퍼플) */
+.theme-4 .card-header { background-color: #DFD5F4; }
+/* .theme-4 .char-bg { background-color: #E2D7F6; } */
+
+/* 5. White Hacker (옐로우) */
+.theme-5 .card-header { background-color: #FDF6CF; }
+/* .theme-5 .char-bg { background-color: #FDF6CF; } */
+
+/* 6. Code Detective (시안) */
+.theme-6 .card-header { background-color: #E3F2F3; }
+/* .theme-6 .char-bg { background-color: #D6ECED; } */
+
+/* 7. Security Storyteller (핑크) */
+.theme-7 .card-header { background-color: #FAECF0; }
+/* .theme-7 .char-bg { background-color: #FCE1E9; } */
+
+/* 8. Pixel Punk (블루) */
+.theme-8 .card-header { background-color: #E1EAFB; }
+/* .theme-8 .char-bg { background-color: #D3E1F9; } */
+
+/* 9. Code Wrangler (오렌지) */
+.theme-9 .card-header { background-color: #FDF1DE; }
+/* .theme-9 .char-bg { background-color: #FDE8CD; } */
+
+
+/* 🔥 슬라이드 페이지네이션 (Bullets) */
+.h-pagination {
+  position: absolute;
+  bottom: 40px; /* 화면 하단 여백 */
+  left: 50%;
+  transform: translateX(-50%); /* 완벽한 중앙 정렬 */
+  display: flex;
+  gap: 15px; /* 동그라미 사이 간격 */
+  z-index: 20;
+}
+
+.h-pagination .dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #7b7b7b; /* 비활성 상태 (회색) */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* 활성화되었을 때의 스타일 */
+.h-pagination .dot.active {
+  background-color: #f17129; /* 포인트 컬러 (주황색) */
+  transform: scale(1.2); /* 살짝 커지면서 강조되는 느낌 추가 */
+}
+
+
+
+
+
 
 
 
