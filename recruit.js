@@ -186,6 +186,41 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
+
+  // =====================================================================
+  // [2.0] Section 3 : 직무 소개 시네마틱 텍스트 애니메이션
+  // =====================================================================
+  const recruitSec3 = document.querySelector(".recruit-section-03");
+
+  if (recruitSec3) {
+    // 애니메이션할 라인들을 배열로 담습니다.
+    const sec3Lines = [".sec3-line-1", ".sec3-line-2"];
+
+    gsap.fromTo(sec3Lines, 
+      { 
+        opacity: 0, 
+        filter: "blur(20px)", 
+        y: 30 
+      }, 
+      {
+        opacity: 1, 
+        filter: "blur(0px)",
+        y: 0,
+        scrollTrigger: {
+          trigger: ".recruit-section-03",
+          start: "top 75%",     // 섹션이 보이기 시작할 때
+          end: "center center", // 섹션이 화면 중앙에 고정될 때 선명해짐
+          scrub: 1.5            // 휠에 반응하는 부드러운 속도
+        },
+        stagger: 0.4,           // 타이틀 나오고 0.4초 뒤에 설명 등장
+        ease: "power2.out"
+      }
+    );
+  }
+
+  
+
   // =====================================================================
   // [2] Section 07 (문의하기) Fade In Animation
   // =====================================================================

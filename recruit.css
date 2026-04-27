@@ -350,6 +350,72 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 
 
+
+
+/* ===================================================
+  Recruit Section 03 (직무 소개 인터루드)
+=================================================== */
+.recruit-section-03 {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 화면에 꽉 차게 */
+  /* 배경 이미지는 아임웹에서 이 클래스에 맞춰 넣어주세요! */
+  background-image: url('./images/recruit-s3-bg.png'); 
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 텍스트가 잘 보이도록 배경에 살짝 어두운 오버레이 추가 (필요시) */
+.recruit-section-03::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* 20% 정도 어둡게 */
+  z-index: 1;
+}
+
+.recruit-sec3-container {
+  position: relative;
+  z-index: 2; /* 오버레이보다 위로 */
+  text-align: center;
+}
+
+/* 텍스트 줄바꿈 및 간격 스타일 */
+.recruit-sec3-title-area .sec3-line {
+  display: block;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+/* 메인 타이틀 (직무소개 타이틀) */
+.sec3-line-1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+
+/* 서브 설명 (설명) */
+.sec3-line-2 {
+  font-size: 20px;
+  font-weight: 400;
+  opacity: 0.8; /* 설명글은 살짝 은은하게 */
+  line-height: 1.6;
+}
+
+
+
+
+
+
+
+
+
+
 /* ===================================================
   Section 07 (문의하기)
 =================================================== */
