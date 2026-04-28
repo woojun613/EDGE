@@ -276,6 +276,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   // =====================================================================
+  // [2.2] Section 5 : 복리후생 그리드 카드 등장 애니메이션
+  // =====================================================================
+  const sec5Container = document.querySelector(".recruit-section-05");
+  const benefitCards = gsap.utils.toArray(".benefit-card");
+
+  if (sec5Container && benefitCards.length > 0) {
+    gsap.from(benefitCards, {
+      scrollTrigger: {
+        trigger: sec5Container,
+        start: "top 65%", // 화면의 65%쯤 보일 때 실행
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1, // 🔥 핵심: 0.1초 간격으로 다다다닥! 등장
+      ease: "power3.out"
+    });
+  }
+
+
+
+  // =====================================================================
   // [2] Section 07 (문의하기) Fade In Animation
   // =====================================================================
   const sec7Container = document.querySelector(".sec7-container");

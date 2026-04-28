@@ -580,6 +580,136 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 
 
+/* ===================================================
+  Recruit Section 05 (복리후생 & 애니메이션 배경)
+=================================================== */
+.recruit-section-05 {
+  position: relative;
+  width: 100%;
+  padding: 120px 0 150px;
+  z-index: 10;
+  /* 🔥 차장님이 주신 애니메이션 코드 적용 (컬러는 시안 느낌으로 튜닝!) 🔥 */
+  background: linear-gradient(-45deg, #7A5CFA, #833AB4, #3A8DF2, #C273FF);
+  background-size: 400% 400%;
+  animation: gradientBg 15s ease infinite;
+}
+
+@keyframes gradientBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.recruit-sec5-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.sec5-title-area {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sec5-title-area h2 {
+  color: #fff;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+/* 3x3 그리드 레이아웃 */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 70px;
+}
+
+.benefit-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(40px) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.benefit-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* 아이콘 이미지 */
+.benefit-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.benefit-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.benefit-desc {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* 하단 채용공고 확인 버튼 */
+.sec5-btn-area {
+  text-align: center;
+}
+
+.benefit-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #111;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 20px 60px;
+  border-radius: 50px; /* 시안처럼 둥근 알약 형태 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.benefit-apply-btn .arrow {
+  margin-left: 10px;
+  font-size: 24px;
+  color: #27928C; /* 화살표에 시안의 청록색 포인트 컬러 부여 */
+  font-weight: 400;
+  transition: transform 0.3s ease;
+}
+
+.benefit-apply-btn:hover {
+  transform: scale(1.03); /* 마우스 올리면 버튼이 살짝 커짐 */
+}
+
+.benefit-apply-btn:hover .arrow {
+  transform: translateX(5px); /* 화살표가 오른쪽으로 슥 이동함 */
+}
+
+
+
+
+
+
+
 
 
 /* ===================================================
