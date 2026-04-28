@@ -584,14 +584,34 @@ body, a, button, .card-wrapper { cursor: none !important; }
   Recruit Section 05 (복리후생 & 애니메이션 배경)
 =================================================== */
 .recruit-section-05 {
-  position: relative;
+  position: relative; /* 가상 요소의 기준점 */
   width: 100%;
   padding: 120px 0 150px;
   z-index: 10;
-  /* 🔥 차장님이 주신 애니메이션 코드 적용 (컬러는 시안 느낌으로 튜닝!) 🔥 */
-  background: linear-gradient(-45deg, #7A5CFA, #833AB4, #3A8DF2, #C273FF);
+  
+  /* 🔥 1. 바닥 레이어: 배경 이미지 설정 🔥 */
+  background-image: url('./images/recruit-s5-bg.png'); /* 올려주신 이미지 경로 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* 가상 요소 삐침 방지 */
+}
+
+/* 🔥 2. 중간 레이어: 이미지 위에 얹을 투명 애니메이션 그라데이션 🔥 */
+.recruit-section-05::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* 상하좌우 0으로 꽉 채움 */
+  background: linear-gradient(-45deg, 
+    rgba(238, 119, 82, 0.6), 
+    rgba(231, 60, 126, 0.6), 
+    rgba(35, 166, 213, 0.6), 
+    rgba(35, 213, 171, 0.6)
+  );
+  
   background-size: 400% 400%;
   animation: gradientBg 15s ease infinite;
+  z-index: 1; /* 배경 이미지 위 */
 }
 
 @keyframes gradientBg {
@@ -603,6 +623,8 @@ body, a, button, .card-wrapper { cursor: none !important; }
 .recruit-sec5-container {
   width: 1200px;
   margin: 0 auto;
+  position: relative; /* z-index 작동을 위해 필요 */
+  z-index: 2; /* 🔥 그라데이션 오버레이보다 위로 올림 🔥 */
 }
 
 .sec5-title-area {
@@ -630,7 +652,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
   border-radius: 16px;
   padding: 40px 30px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .benefit-card:hover {
