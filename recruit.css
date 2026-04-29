@@ -243,7 +243,6 @@ body, a, button, .card-wrapper { cursor: none !important; }
   position: relative;
   width: 100%;
   z-index: 10;
-  /* 🔥 [이미지1 feel] 전체 섹션 배경을 화이트로 설정하여 pill 모양이 도드라지게 합니다. */
   background-color: #ffffff;
 }
 
@@ -254,7 +253,6 @@ body, a, button, .card-wrapper { cursor: none !important; }
   width: 100%;
   height: 100vh;
   display: flex;
-  /* background-color: #ffffff; -> 이제 transparent 혹은 생략해도 무방합니다. */
   overflow: hidden;
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05); /* 카드가 덮일 때 살짝 생기는 그림자 깊이감 */
 }
@@ -446,12 +444,14 @@ body, a, button, .card-wrapper { cursor: none !important; }
 /* 🔥 핵심: 가로로 길게 늘어선 트랙 */
 .horizontal-scroll-track {
   display: flex;
-  width: 300vw; /* 슬라이드 3개 = 300vw */
+  width: max-content; /* 🔥 300vw 삭제: 카드 개수에 맞춰 자연스럽게 늘어나게 함 */
   height: 100%;
+  gap: 30px; /* 🔥 슬라이드(그룹) 사이의 간격도 카드 간격과 똑같이 30px로 묶어줌! */
+  padding: 0 calc(50vw - 600px); /* 🔥 화면 양쪽 끝에 여백을 주어 첫 슬라이드와 마지막 슬라이드가 항상 정중앙에 오도록 계산 */
 }
 
 .h-slide {
-  width: 100vw;
+  width: 1200px; /* 🔥 100vw 삭제: 화면 전체가 아닌 컨테이너 크기(1200px)로 딱 맞게 고정 */
   height: 100%;
   display: flex;
   justify-content: center;
@@ -461,7 +461,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
 .h-card-container {
   display: flex;
   gap: 30px;
-  width: 1200px;
+  width: 100%; /* 🔥 1200px -> 100% 로 변경: 부모(.h-slide)에 딱 맞춰짐 */
 }
 
 /* --- 공통 카드 스타일 --- */

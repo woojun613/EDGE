@@ -223,18 +223,57 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
+  
+  
   // =====================================================================
+  // [2.1.5] Section 4 : 스크롤 속도에 따른 카드 Skew(관성 기울기) 효과
+  // =====================================================================
+  let proxy = { skew: 0 },
+      // 🔥 수정 포인트 1: 대상은 .h-card, 횡스크롤에 맞춰 좌우로 기울도록 skewX 적용
+      skewSetter = gsap.quickSetter(".h-card", "skewX", "deg"), 
+      // 🔥 최대 10도까지만 기울도록 제한 (너무 심하면 글씨가 깨져 보여서 살짝 낮췄습니다)
+      clamp = gsap.utils.clamp(-5, 5); 
+
+  ScrollTrigger.create({
+    onUpdate: (self) => {
+      // 스크롤 속도(Velocity)를 가져와서 기울기 값으로 변환
+      let skew = clamp(self.getVelocity() / -300);
+      
+      // 속도가 더 빨라질 때만 기울기를 업데이트하고, 멈추면 서서히 0(원래대로)으로 복귀
+      if (Math.abs(skew) > Math.abs(proxy.skew)) {
+        proxy.skew = skew;
+        gsap.to(proxy, {
+          skew: 0, 
+          duration: 0.8, 
+          ease: "power3", 
+          overwrite: true, 
+          onUpdate: () => skewSetter(proxy.skew)
+        });
+      }
+    }
+  });
+
+  // 🔥 수정 포인트 2: 카드가 바닥(bottom)을 무게중심으로 묵직하게 흔들리도록 설정
+  gsap.set(".h-card", {transformOrigin: "center bottom", force3D: true});
+
+
+
+
+
+
+// =====================================================================
   // [2.1] Section 4 : 횡스크롤 애니메이션 (Security Expert Group)
   // =====================================================================
   const horizontalTrack = document.querySelector(".horizontal-scroll-track");
   const horizontalSection = document.querySelector(".recruit-section-04");
   const slides = gsap.utils.toArray(".h-slide"); 
   
-  // 🔥 추가: HTML에 만들어둔 3개의 불릿(동그라미)을 가져옵니다.
   const dots = gsap.utils.toArray(".h-pagination .dot");
 
   if (horizontalTrack && horizontalSection) {
     
+    // 트랙의 전체 길이에서 화면 너비만큼만 뺀 '정확한 가로 이동 거리'
     const getScrollAmount = () => horizontalTrack.scrollWidth - window.innerWidth;
 
     gsap.to(horizontalTrack, {
@@ -248,19 +287,11 @@ document.addEventListener("DOMContentLoaded", function() {
         pin: true,             
         anticipatePin: 1,
         invalidateOnRefresh: true,
-        snap: {
-          snapTo: 1 / (slides.length - 1), 
-          duration: 0.5, 
-          ease: "power2.inOut" 
-        },
         
-        // 🔥 핵심 추가: 스크롤이 움직일 때마다 불릿 상태 업데이트!
+        // 스크롤이 움직일 때마다 불릿 상태 업데이트 (이건 그대로 유지!)
         onUpdate: (self) => {
-          // self.progress는 0부터 1까지의 값을 가집니다.
-          // 슬라이드 개수에 맞춰 0, 1, 2 중 하나의 인덱스로 변환합니다.
           const activeIndex = Math.round(self.progress * (slides.length - 1));
           
-          // 모든 불릿을 끄고, 현재 인덱스에 해당하는 불릿만 켭니다.
           dots.forEach((dot, index) => {
             if (index === activeIndex) {
               dot.classList.add("active");
