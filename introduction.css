@@ -7,7 +7,6 @@ a { text-decoration: none; color: inherit; }
 img { max-width: 100%; vertical-align: top; }
 button { border: none; background: none; cursor: pointer; font-family: inherit; }
 
-body { background-color: #081B28; color: #fff; line-height: 1.6; }
 
 /* ===================================================
   Header & Glassmorphism Button
@@ -22,6 +21,7 @@ body { background-color: #081B28; color: #fff; line-height: 1.6; }
   width: 1200px; height: 100%; margin: 0 auto;
   display: flex; justify-content: space-between; align-items: center;
 }
+.header-logo a { display: flex; align-items: center; }
 .header-logo img { height: 40px; width: auto; }
 .header-right { display: flex; align-items: center; gap: 40px; }
 .gnb ul { display: flex; gap: 40px; }
@@ -44,15 +44,25 @@ body { background-color: #081B28; color: #fff; line-height: 1.6; }
 
 /* 문의하기 유리질감 버튼 */
 .header-btn {
-  display: inline-flex; align-items: center; justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 24px;
-  background-color: rgba(255, 255, 255, 0.15); 
-  border: 1px solid rgba(255, 255, 255, 0.2); 
-  border-radius: 5px; color: #fff; font-size: 14px; font-weight: 500;
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.15); /* 은은한 반투명 하얀색 배경 */
+  border: 1px solid rgba(255, 255, 255, 0.2);  /* 아주 연한 테두리 */
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
-.header-btn:hover { background-color: rgba(255, 255, 255, 0.3); }
+
+/* 마우스를 올렸을 때 배경을 살짝 더 밝게 */
+.header-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3); 
+}
 
 /* ===================================================
   Custom Mouse Cursor
@@ -88,6 +98,8 @@ body, a, button, .card-wrapper { cursor: none !important; }
   display: flex; 
   align-items: center; 
   overflow: hidden; 
+  /* 🔥 핵심 1: 떠있는 헤더 높이(80px)만큼 위에서 밀어내어 시각적인 완벽한 중앙을 맞춥니다! */
+  padding-top: 80px; 
 }
 /* 채용페이지 전용: 100vh 꽉 채우기 및 라운드 제거 */
 .recruit-hero {
@@ -113,13 +125,18 @@ body, a, button, .card-wrapper { cursor: none !important; }
   z-index: 1; 
 }
 
+.intro-hero .sub-hero-container {
+  height: calc(100vh - 80px) !important;
+}
+
 .sub-hero-container {
   position: relative; 
   z-index: 2; /* 텍스트는 오버레이(1)보다 위로! */
   width: 1200px; 
   margin: 0 auto; 
+  display: flex; flex-direction: column; justify-content: center;
 }
-.sub-hero-text { margin-top: -50px; } /* 100vh에 맞춰 약간 조정 */
+.sub-hero-text { margin-top: -50px; } /* 시각적 무게 중심을 위한 약간의 조정 */
 .sub-subtitle { color: #fff; font-size: 14px; font-weight: 500; letter-spacing: 0.2em; margin-bottom: 20px; opacity: 0.8; }
 .sub-title { color: #fff; font-size: 34px; font-weight: 800; line-height: 1.4; }
 
