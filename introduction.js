@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", function() {
     .from(".sub-title", { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" }, "-=0.6");
     // .from(".sub-hero-tabs .tab-item", { opacity: 0, y: 20, duration: 0.6, ease: "power3.out", stagger: 0.1 }, "-=0.4");
 
+
+
+
   // =====================================================================
   // [0.5] Parallax Hero Content (텍스트가 스크롤 따라 올라감)
   // =====================================================================
@@ -30,6 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }
+
+
+
 
   // =====================================================================
   // [3] Custom Mouse Cursor (호버, 클릭 액션 완벽 복구!)
@@ -72,6 +78,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+
+
+
+
   // =====================================================================
   // [4] Section 07 (문의하기) Fade In Animation
   // =====================================================================
@@ -90,6 +100,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
 });
+
+
+
+
 
 // =====================================================================
 // [5] Utilities: 푸터 TOP 버튼 이동 기능
