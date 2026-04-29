@@ -224,21 +224,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-  
+
   
   // =====================================================================
   // [2.1.5] Section 4 : 스크롤 속도에 따른 카드 Skew(관성 기울기) 효과
   // =====================================================================
   let proxy = { skew: 0 },
-      // 🔥 수정 포인트 1: 대상은 .h-card, 횡스크롤에 맞춰 좌우로 기울도록 skewX 적용
+      // 대상은 .h-card, 횡스크롤에 맞춰 좌우로 기울도록 skewX 적용
       skewSetter = gsap.quickSetter(".h-card", "skewX", "deg"), 
-      // 🔥 최대 10도까지만 기울도록 제한 (너무 심하면 글씨가 깨져 보여서 살짝 낮췄습니다)
       clamp = gsap.utils.clamp(-5, 5); 
 
   ScrollTrigger.create({
     onUpdate: (self) => {
       // 스크롤 속도(Velocity)를 가져와서 기울기 값으로 변환
-      let skew = clamp(self.getVelocity() / -300);
+      let skew = clamp(self.getVelocity() / -600);
       
       // 속도가 더 빨라질 때만 기울기를 업데이트하고, 멈추면 서서히 0(원래대로)으로 복귀
       if (Math.abs(skew) > Math.abs(proxy.skew)) {
@@ -254,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // 🔥 수정 포인트 2: 카드가 바닥(bottom)을 무게중심으로 묵직하게 흔들리도록 설정
+  // 카드가 바닥(bottom)을 무게중심으로 묵직하게 흔들리도록 설정
   gsap.set(".h-card", {transformOrigin: "center bottom", force3D: true});
 
 

@@ -1,0 +1,216 @@
+@charset "utf-8";
+
+/* 기본 초기화 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+ul, li { list-style: none; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; vertical-align: top; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+body { background-color: #081B28; color: #fff; line-height: 1.6; }
+
+/* ===================================================
+  Header & Glassmorphism Button
+=================================================== */
+.header {
+  position: absolute; 
+  top: 0; left: 0; width: 100%; height: 80px;
+  background-color: transparent; 
+  z-index: 9999;
+}
+.header-container {
+  width: 1200px; height: 100%; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.header-logo img { height: 40px; width: auto; }
+.header-right { display: flex; align-items: center; gap: 40px; }
+.gnb ul { display: flex; gap: 40px; }
+
+/* GNB 메뉴 아이템 & 하얀 점(Dot) */
+.gnb a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px; font-weight: 500;
+  transition: color 0.3s ease;
+  display: inline-block; 
+}
+.gnb a:hover, .gnb a.active { color: #fff; font-weight: 700; }
+.gnb a.active::after {
+  content: ""; position: absolute;
+  bottom: -12px; left: 50%; transform: translateX(-50%);
+  width: 4px; height: 4px;
+  background-color: #fff; border-radius: 50%;
+}
+
+/* 문의하기 유리질감 버튼 */
+.header-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 24px;
+  background-color: rgba(255, 255, 255, 0.15); 
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  border-radius: 5px; color: #fff; font-size: 14px; font-weight: 500;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+.header-btn:hover { background-color: rgba(255, 255, 255, 0.3); }
+
+/* ===================================================
+  Custom Mouse Cursor
+=================================================== */
+body, a, button, .card-wrapper { cursor: none !important; }
+.custom-cursor {
+  position: fixed; top: 0; left: 0; width: 20px; height: 20px;
+  background-color: #fff; border-radius: 50%; pointer-events: none; 
+  z-index: 99999; mix-blend-mode: difference; 
+  transition: width 0.3s ease, height 0.3s ease; opacity: 0;
+}
+.custom-cursor.is-hovering { width: 60px; height: 60px; }
+
+/* ===================================================
+  Recruit Hero (100vh 풀스크린)
+=================================================== */
+/* .sub-hero {
+  position: sticky; top: 0; z-index: 1; 
+  width: 100%;
+
+  display: flex; align-items: center; 
+  padding-top: 80px; 
+} */
+
+.sub-hero { 
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  background-image: url('./images/int-bg1.png');
+  position: sticky; 
+  top: 0; 
+  z-index: 1; /* 포장지보다 뒤에 깔림 */
+  width: 100%; 
+  height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  overflow: hidden; 
+}
+/* 채용페이지 전용: 100vh 꽉 채우기 및 라운드 제거 */
+.recruit-hero {
+  min-height: 100vh !important; 
+  border-radius: 0 !important; 
+}
+.sub-hero::after {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); z-index: 1; 
+}
+.recruit-hero::after { border-radius: 0 !important; }
+
+/* 100vh에 맞춘 컨테이너 높이 */
+.recruit-hero .sub-hero-container {
+  height: calc(100vh - 80px) !important;
+}
+
+.intro-hero::after { 
+  content: ""; 
+  position: absolute; 
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index: 1; 
+}
+
+.sub-hero-container {
+  position: relative; 
+  z-index: 2; /* 텍스트는 오버레이(1)보다 위로! */
+  width: 1200px; 
+  margin: 0 auto; 
+}
+.sub-hero-text { margin-top: -50px; } /* 100vh에 맞춰 약간 조정 */
+.sub-subtitle { color: #fff; font-size: 14px; font-weight: 500; letter-spacing: 0.2em; margin-bottom: 20px; opacity: 0.8; }
+.sub-title { color: #fff; font-size: 34px; font-weight: 800; line-height: 1.4; }
+
+
+
+
+
+
+
+/* ===================================================
+  Section Layout Z-index (포장지 서열 정리)
+=================================================== */
+.content-wrapper, .footer { 
+  position: relative; 
+  z-index: 10; 
+}
+
+.content-wrapper {
+  background-color: #081B28; /* 전체 배경색과 동일하게 맞춰서 뒤가 비치지 않게 함 */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ===================================================
+  Section 07 (문의하기)
+=================================================== */
+.section-07 {
+  background-image: url('./images/s77-bg.png'); background-position: center; background-size: cover;
+  padding: 120px 0; text-align: center; display: flex; justify-content: center; align-items: center;
+}
+.sec7-container { opacity: 0; transform: translateY(40px); }
+.sec7-subtitle {
+  font-size: 18px; font-weight: 500; margin-bottom: 20px;
+  background: linear-gradient(90deg, #32C58A 0%, #1FC9FF 50%, #355AD0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.sec7-title { color: #fff; font-size: 32px; line-height: 1.5; margin-bottom: 40px; }
+.sec7-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 40px; border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 50px;
+  color: #fff; font-size: 15px; font-weight: 500; transition: all 0.3s ease;
+}
+.sec7-btn:hover { background-color: #fff; color: #0e1420; }
+
+/* ===================================================
+  Footer
+=================================================== */
+.footer { background-color: #152640; padding: 80px 0 60px; font-size: 14px; color: #fff; }
+.footer-container { width: 1200px; margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 70px; }
+.footer-info p { margin-bottom: 8px; color: #446699; }
+.footer-info a { color: #7998C5; } .footer-info a:hover { color: #fff; text-decoration: underline; }
+.footer-btns { display: flex; gap: 12px; }
+.sns-links { display: flex; gap: 12px; }
+.sns-links a, .top-btn {
+  display: flex; justify-content: center; align-items: center;
+  height: 56px; background-color: #283d5b; border-radius: 12px; transition: all 0.3s ease;
+}
+.sns-links a { width: 56px; } .top-btn { padding: 0 24px; color: #fff; font-weight: 700; }
+.sns-links a:hover, .top-btn:hover { background-color: #3b4860; transform: translateY(-5px); }
+.sns-icon { width: 28px; height: 28px; object-fit: contain; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+.footer-logo img { width: 550px; height: 97px; object-fit: contain; }
+.footer-links { display: flex; gap: 30px; }
+.footer-links a { font-size: 13px; color: #7998C5; } .footer-links a:hover { color: #fff; }
+
+/* ===================================================
+  Side Menu
+=================================================== */
+.side-menu {
+  position: fixed; 
+  top: 54%;
+  transform: translateY(-50%); 
+  right: 40px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+  z-index: 10000;
+}
+.side-item {
+  display: flex; justify-content: center; align-items: center; width: 56px; height: 56px;
+  background-color: #e5e7f0; border-radius: 50%; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.side-item:hover { transform: translateY(-5px); background-color: #fff; }
+.side-item img { width: 24px; height: 24px; object-fit: contain; }
