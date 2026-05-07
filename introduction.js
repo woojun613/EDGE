@@ -76,6 +76,17 @@ document.addEventListener("DOMContentLoaded", function() {
       el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
     });
+
+    // 🔥 [여기서부터 추가!] 지도 영역(.location-map-box)에 들어가면 커서 숨기기 🔥
+    const mapBox = document.querySelector('.location-map-box');
+    if (mapBox) {
+      mapBox.addEventListener('mouseenter', () => {
+        gsap.to(cursor, { opacity: 0, scale: 0, duration: 0.2 });
+      });
+      mapBox.addEventListener('mouseleave', () => {
+        gsap.to(cursor, { opacity: 1, scale: 1, duration: 0.2 });
+      });
+    }
   }
 
 
@@ -190,6 +201,39 @@ document.addEventListener("DOMContentLoaded", function() {
       ease: "back.out(1.7)", // 살짝 튕기며 나타나게 해서 '생동감' 추가
     }, "-=1.5"); // 선이 절반쯤 그려졌을 때부터 첫 번째 아이콘이 나오기 시작함
   }
+
+
+
+
+  // =====================================================================
+  // [3.8] Location Section Animation (소개페이지 위치 정보 등장)
+  // =====================================================================
+  const locationSec = document.querySelector(".intro-location-section");
+  
+  if (locationSec) {
+    const locTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: locationSec,
+        start: "top 75%",
+      }
+    });
+
+    locTl.from(".intro-location-section .en-title", { opacity: 0, y: 30, duration: 0.8 })
+         .from(".info-item", { 
+            opacity: 0, 
+            x: -40, 
+            duration: 0.8, 
+            stagger: 0.2, 
+            ease: "power3.out" 
+         }, "-=0.4")
+         .from(".location-map-box", { 
+            opacity: 0, 
+            x: 50, 
+            duration: 1, 
+            ease: "power3.out" 
+         }, "-=0.8");
+  }
+
 
 
 
