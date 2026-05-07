@@ -575,7 +575,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 100px 0;
+  padding: 100px 0 200px;
 }
 
 /* 타이틀 영역 스타일 */

@@ -287,6 +287,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
 });
 
+// Section 4 : 배경만 따로 움직이는 패럴랙스 효과
 const parallaxCards = document.querySelectorAll(".card");
 
 if (parallaxCards.length > 0) {
