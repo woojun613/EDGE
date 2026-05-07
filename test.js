@@ -284,7 +284,43 @@ document.addEventListener("DOMContentLoaded", function() {
   }, { threshold: 0.5 });
 
   cards.forEach(card => observer.observe(card));
+  
 });
+
+const parallaxCards = document.querySelectorAll(".card");
+
+if (parallaxCards.length > 0) {
+  // 1. VanillaTilt 초기화 (기본 기울기 설정)
+  VanillaTilt.init(parallaxCards, {
+    max: 15,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2,
+    reverse: true // 마우스 방향으로 기울어짐
+  });
+
+  // 2. 배경 이미지 이동 동기화
+  parallaxCards.forEach(card => {
+    card.addEventListener("tiltChange", (event) => {
+      const { tiltX, tiltY } = event.detail;
+      const bg = card.querySelector(".card-bg");
+      
+      // 기울기 값에 따라 배경을 반대 방향 혹은 같은 방향으로 이동
+      // 숫자를 키울수록 배경이 더 많이 움직입니다.
+      const moveX = -tiltX * 1.5; // 가로 이동량
+      const moveY = -tiltY * 1.5; // 세로 이동량
+
+      // 배경 이미지에만 이동 효과 적용 (scale 1.1 유지)
+      bg.style.transform = `scale(1.1) translate3d(${moveX}px, ${moveY}px, 0)`;
+    });
+
+    // 마우스가 나가면 배경도 정중앙으로 복귀
+    card.addEventListener("mouseleave", () => {
+      const bg = card.querySelector(".card-bg");
+      bg.style.transform = `scale(1.1) translate3d(0, 0, 0)`;
+    });
+  });
+}
 
 
 // =====================================================================

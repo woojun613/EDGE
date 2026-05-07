@@ -5,7 +5,7 @@
 ul, li { list-style: none; }
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; vertical-align: top; }
-button { border: none; background: none; cursor: pointer; font-family: inherit; }
+button { border: none; background: none; cursor: pointer; }
 
 
 /* ===================================================
@@ -152,7 +152,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
 }
 
 .content-wrapper {
-  background-color: #081B28; /* 전체 배경색과 동일하게 맞춰서 뒤가 비치지 않게 함 */
+  background-color: #fff;
 }
 
 
@@ -278,11 +278,11 @@ body, a, button, .card-wrapper { cursor: none !important; }
   Intro Section 02 (VISION)
 =================================================== */
 .intro-vision-section {
-  background-color: #F5F6F8; /* 시안의 연한 그레이 배경 */
+  background-color: #F3F3F3;
   padding: 150px 0;
   position: relative;
   z-index: 10;
-  /* border-radius: 20px; */
+  border-radius: 40px;
 }
 
 .vision-container {

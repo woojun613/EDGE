@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function() {
     graphicTl.from(".mission-graphic-box", { y: 50, opacity: 0, duration: 0.8, ease: "power3.out" })
              // 알약 배경이 스르륵 커짐
              .from(".graphic-inner-pill", { scale: 0.8, opacity: 0, duration: 0.8, ease: "back.out(1.2)" }, "-=0.4")
-             // 왼쪽 원은 왼쪽에서, 오른쪽 원은 오른쪽에서 날아와 중앙으로 합쳐지는 느낌!
+             // 왼쪽 원은 왼쪽에서, 오른쪽 원은 오른쪽에서 날아와 중앙으로
              .from(".circle-item", { 
                x: (i) => i === 0 ? -100 : 100, // 첫 번째 원은 -100px, 두 번째 원은 +100px에서 출발
                opacity: 0, 
@@ -133,9 +133,9 @@ document.addEventListener("DOMContentLoaded", function() {
                ease: "power3.out",
                stagger: 0.1 
              }, "-=0.6")
-             // 선이 찌~익 그어짐
+             // 선이 그어짐
              .from(".line", { width: 0, opacity: 0, duration: 0.6, stagger: 0.2 }, "-=0.6")
-             // 마지막으로 중앙 텍스트가 뿅!
+             // 마지막으로 중앙 텍스트가 살짝 커지며 등장
              .from(".center-text", { scale: 0.8, opacity: 0, y: 10, duration: 0.6, ease: "power3.out" }, "-=0.4");
   }
 

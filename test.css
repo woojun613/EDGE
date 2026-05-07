@@ -566,206 +566,156 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 
 /* ===================================================
-  section-04 - 3D 입체감 카드 레이아웃
-=================================================== */
-.section-04 {
-  background-color: #010101;
-  display: flex;
-  flex-direction: column; /* 가로 배열을 세로 배열로 변경하여 타이틀이 위로 오게 함 */
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 100px 0; /* 위아래 전체 여백 확보 */
-}
+      section-04 - 3D 입체감 카드 레이아웃 (수정됨)
+    =================================================== */
+    .section-04 {
+      background-color: #010101;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 100px 0;
+    }
 
-/* ===================================================
-  타이틀 영역 스타일 (새로 추가)
-=================================================== */
-.title-area {
-  text-align: center;
-  margin-bottom: 60px; /* 타이틀과 아래 카드 컨테이너 사이의 간격 */
-}
+    /* 타이틀 영역 스타일 */
+    .title-area {
+      text-align: center;
+      margin-bottom: 60px;
+    }
 
-.title-area .subtitle {
-  color: #fff;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.1em; /* 자간을 살짝 넓혀서 고급스럽게 */
-  margin-bottom: 20px;
-}
+    .title-area .subtitle {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
 
-.title-area .main-title {
-  color: #fff;
-  font-size: 48px; /* 폰트 크기 (비율에 맞게 조절 가능) */
-  font-weight: 800;
-  line-height: 1.3;
-  margin: 0;
-}
+    .title-area .main-title {
+      color: #fff;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin: 0;
+    }
 
-/* 텍스트 그라데이션 핵심 코드 */
-.gradient-text {
-  background: linear-gradient(90deg, #C273FF 0%, #484AF7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent; 
-}
+    .gradient-text {
+      background: linear-gradient(90deg, #C273FF 0%, #484AF7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent; 
+    }
 
-.container {
-  display: flex;
-  flex-direction: column; 
-  width: 1200px; 
-  padding: 0 30px;
-  margin: 0 auto;
-  position: relative; 
-  z-index: 1;
-}
+    .container {
+      display: flex;
+      flex-direction: column; 
+      width: 1200px; 
+      padding: 0 30px;
+      margin: 0 auto;
+      position: relative; 
+      z-index: 1;
+    }
 
-/* ===================================================
-  새로 추가된 껍데기 (스크롤 페이드인 담당)
-=================================================== */
-.card-wrapper {
-  position: relative; /* top을 사용하기 위해 필수 */
-  z-index: 1;         /* 버그 방지용 고정 */
-  opacity: 0; 
-  top: 70px; 
-  transition: opacity 0.8s ease-out, top 0.8s ease-out;
-  cursor: pointer;
-  /* overflow: visible;  글씨가 래퍼 밖으로 삐져나오게 함 */
-}
+    /* 스크롤 페이드인 담당 */
+    .card-wrapper {
+      position: relative;
+      z-index: 1;
+      opacity: 0; 
+      top: 70px; 
+      transition: opacity 0.8s ease-out, top 0.8s ease-out;
+      cursor: pointer;
+    }
 
-.card-wrapper.is-visible {
-  opacity: 1; /* 다시 보이게 됨 */
-  top: 0; /* 원래 위치로 올라옴 */
-}
+    .card-wrapper.is-visible {
+      opacity: 1;
+      top: 0;
+    }
 
-/* 1. 카드 전체 뼈대 (투명한 영역) - 1.35배 확대 */
-.card {
-  position: relative;
-  width: 486px;
-  height: 600px; 
-  transform-style: preserve-3d;
-  overflow: visible;
-  transform: perspective(950px);
-  z-index: 2;
-}
+    /* 1. 카드 전체 뼈대 (투명한 영역) */
+    .card {
+      position: relative;
+      width: 486px;
+      height: 600px; 
+      transform-style: preserve-3d;
+      overflow: hidden; /* 배경 이미지가 둥근 테두리 밖으로 나가지 않게 */
+      border-radius: 20px;
+      z-index: 2;
+    }
 
-/* 2. 실제 색상이 들어가는 배경 사각형 */
-.card-bg {
-  position: absolute;
-  top: 27px;
-  right: 0;
-  width: 378px;
-  height: 477px;
-  background: url('./images/TEST_BG.png') center center no-repeat;
-  background-size: cover;
-  border-radius: 4px;
-  transform: translateZ(0);
-  z-index: 1;
-}
+    /* 2. 카드 배경 사각형 (패럴랙스를 위한 세팅) */
+    .card-bg {
+      position: absolute;
+      top: -10%; /* 이동 여유분 확보를 위해 더 크게 */
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.1); /* 초기 확대 상태 */
+      transition: transform 0.1s ease-out;
+      z-index: 1;
+    }
+    .card-bg-1 { background: url('./images/main-card-bg-1.png') center center no-repeat; }
+    .card-bg-2 { background: url('./images/main-card-bg-2.png') center center no-repeat; }
+    .card-bg-3 { background: url('./images/main-card-bg-3.png') center center no-repeat; }
+    .card-bg-4 { background: url('./images/main-card-bg-4.png') center center no-repeat; }
 
-/* 3. 3D 요소 (왼쪽과 위쪽으로 삐져나옴) */
-.card-diagram {
-  position: absolute;
-  top: 104px;
-  left: 68px;
-  width: 351px;
-  z-index: 2;
-  transform: translateZ(135px); /* 3D 입체감 확대 */
-  filter: drop-shadow(10px 18px 25px rgba(0,0,0,0.4)); /* 그림자도 살짝 확대 */
-}
+    /* 🔥 텍스트가 카드 중앙에 Multi-line으로 정렬되도록 CSS 전면 수정 */
+    .card-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      /* 상하좌우 중앙 정렬 후 입체감 부여 */
+      transform: translate3d(-50%, -50%, 100px); 
+      z-index: 3;
+      color: #fff;
+      font-size: 2.7rem;
+      font-weight: 800;
+      text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      pointer-events: none;
+      
+      /* 🔥 멀티라인 중앙 정렬 핵심 속성 */
+      text-align: center; /* 텍스트 자체 중앙 정렬 */
+      width: 80%;         /* 줄 바꿈을 위해 폭 지정 */
+      line-height: 1.3;    /* 줄 간격 조절 */
+      /* white-space: nowrap; <- 줄 바꿈을 막던 이 속성을 제거했습니다. */
+    }
 
-/* 4. 텍스트 (왼쪽과 아래쪽으로 삐져나옴) */
-.card-title {
-  position: absolute;
-  bottom: 82px;
-  left: 68px;
-  margin: 0;
-  color: #fff;
-  font-size: 2.7rem; /* 폰트 사이즈 1.35배 확대 */
-  z-index: 3;
-  transform: translateZ(81px); /* 입체감 확대 */
-  text-shadow: 5px 5px 12px rgba(0,0,0,0.6);
-  white-space: nowrap;
-}
+    /* 지그재그 레이아웃 코드 */
+    .card-wrapper:nth-child(odd) { align-self: flex-start; }
+    .card-wrapper:nth-child(even) { align-self: flex-end; }
+    .card-wrapper:nth-child(n+2) { margin-top: -204px; }
 
-/* ===================================================
-  지그재그 레이아웃 코드 
-=================================================== */
-.card-wrapper:nth-child(odd) { align-self: flex-start; }
-.card-wrapper:nth-child(even) { align-self: flex-end; }
-.card-wrapper:nth-child(n+2) { margin-top: -204px; }
+    /* 오른쪽 카드 반전 코드 */
+    .container > .card-wrapper:nth-child(even) .card {
+      transform: perspective(950px);
+    }
+    /* 배경은 지그재그에 맞춰 원위치 복구 */
+    .container > .card-wrapper:nth-child(even) .card-bg {
+      top: -10%; 
+      left: -10%;
+    }
 
-/* ===================================================
-  오른쪽 카드 반전 코드
-=================================================== */
-.container > .card-wrapper:nth-child(even) .card {
-  transform: perspective(950px);
-}
-.container > .card-wrapper:nth-child(even) .card-bg {
-  right: auto; left: 0; 
-}
-.container > .card-wrapper:nth-child(even) .card-diagram {
-  left: auto; right: 68px;
-}
-.container > .card-wrapper:nth-child(even) .card-title {
-  left: auto; right: 68px;
-}
+    /* 카드 배경 개별 타이포그래피 (Parallax Text) */
+    .bg-text {
+      position: absolute;
+      z-index: -1;
+      font-family: Arial, sans-serif;
+      font-size: 100px; 
+      font-weight: 900;
+      color: transparent; 
+      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.5);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      white-space: nowrap; 
+      pointer-events: none; 
+    }
 
-/* ===================================================
-  별 오브젝트 (3D 틸트 효과 독립 버전)
-=================================================== */
-.card-star-object {
-  position: absolute;
-  top: -56px;      /* 시안처럼 위쪽으로 살짝 삐져나오게 조절 (이미지 크기에 맞춰 숫자 변경) */
-  right: 40px;    /* 시안처럼 오른쪽으로 살짝 삐져나오게 조절 */
-  width: 140px;    /* 별 이미지 크기 */
-  z-index: 10;     /* 카드(2)보다 무조건 위에 오도록 최상위 서열 부여 */
-  pointer-events: none; 
-}
-
-/* ===================================================
-  페이드인 완료 상태)
-=================================================== */
-.card.is-visible {
-  opacity: 1; /* 다시 보이게 됨 */
-  top: 0; /* 원래 위치로 올라옴 */
-}
-
-
-/* ===================================================
-  카드 배경 개별 타이포그래피 (Parallax Text)
-=================================================== */
-.bg-text {
-  position: absolute;
-  z-index: -1;
-  font-family: Arial, sans-serif;
-  font-size: 100px; 
-  font-weight: 900;
-  color: transparent; 
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.5);
-  line-height: 0.9;
-  letter-spacing: 0.02em;
-  white-space: nowrap; 
-  pointer-events: none; 
-}
-
-/* 각각의 글씨가 2번, 3번, 4번 카드 높이쯤에 오도록 퍼센트로 재배치 */
-.text-securing {
-  top: 28%;      /* 기존 20% -> 28%로 내려서 타이틀 침범 방지 */
-  right: 40%;    /* 2번 카드(오른쪽)의 왼쪽 바깥으로 뻗음 */
-}
-
-.text-safety {
-  top: 53%;      /* 기존 45% -> 53%로 내림 */
-  left: 40%;     /* 3번 카드(왼쪽)의 오른쪽 바깥으로 뻗음 */
-}
-
-.text-edge {
-  top: 78%;      /* 기존 70% -> 78%로 내림 */
-  right: 40%;    /* 4번 카드(오른쪽)의 왼쪽 바깥으로 뻗음 */
-  text-align: right;
-}
+    .text-securing { top: 28%; right: 40%; }
+    .text-safety { top: 53%; left: 40%; }
+    .text-edge { top: 78%; right: 40%; text-align: right; }
 /* ===================================================
   section-04 - 3D 입체감 카드 레이아웃 끝
 =================================================== */
