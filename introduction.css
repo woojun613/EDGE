@@ -182,7 +182,11 @@ body, a, button, .card-wrapper { cursor: none !important; }
 .en-title {
   font-size: 48px;
   font-weight: 800;
-  color: #2C328F; /* 시안의 딥 네이비 타이틀 */
+  background: linear-gradient(90deg, #4F1B78 0%, #21229C 20%, #1E208E 99%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 20px;
   letter-spacing: 0.05em;
 }
@@ -278,6 +282,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
   padding: 150px 0;
   position: relative;
   z-index: 10;
+  /* border-radius: 20px; */
 }
 
 .vision-container {
@@ -334,6 +339,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
   padding: 150px 0;
   position: relative;
   z-index: 10;
+  height: 100vh;
 }
 
 .value-container {
@@ -416,7 +422,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
   Intro Section 04 (LOCATION)
 =================================================== */
 .intro-location-section {
-  background-color: #0D1A2D; /* 시안 기반의 깊은 네이비 배경색 */
+  background-color: #2A3F7D; /* 시안 기반의 깊은 네이비 배경색 */
   padding: 150px 0;
   position: relative;
   z-index: 10;
@@ -429,8 +435,11 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 /* MISSION, VISION 등과 동일한 타이틀 스타일 유지 */
 .intro-location-section .en-title {
-  color: #fff; /* 배경이 어두우므로 타이틀은 화이트 */
   margin-bottom: 80px;
+  background: none; /* 공통 그라데이션 해제 */
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: #fff; /* 글자색을 완전한 흰색으로 강제 지정 */
+  color: #fff; 
 }
 
 .location-content {
