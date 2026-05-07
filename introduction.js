@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
       el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
     });
 
-    // 🔥 [여기서부터 추가!] 지도 영역(.location-map-box)에 들어가면 커서 숨기기 🔥
+    // 지도 영역(.location-map-box)에 들어가면 커서 숨기기
     const mapBox = document.querySelector('.location-map-box');
     if (mapBox) {
       mapBox.addEventListener('mouseenter', () => {
