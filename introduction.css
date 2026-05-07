@@ -144,8 +144,6 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 
 
-
-
 /* ===================================================
   Section Layout Z-index (포장지 서열 정리)
 =================================================== */
@@ -161,7 +159,261 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 
 
+/* ===================================================
+  Intro Section 01 (MISSION)
+=================================================== */
+.intro-mission-section {
+  background-color: #ffffff; /* 까만 포장지 위에 하얀 섹션 얹기 */
+  padding: 150px 0;
+  border-radius: 40px 40px 0 0; /* 위쪽 모서리를 둥글게 해서 예쁘게 덮이도록 */
+  position: relative;
+  z-index: 11;
+}
 
+.mission-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- 상단 타이틀 영역 --- */
+.mission-header {
+  margin-bottom: 70px;
+}
+
+.en-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #2C328F; /* 시안의 딥 네이비 타이틀 */
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+}
+
+.mission-sub-row {
+  display: flex;
+  gap: 120px; /* 미션 글자와 설명 사이의 간격 */
+  align-items: flex-start;
+}
+
+.ko-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111;
+  white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+.mission-desc {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  font-weight: 500;
+  padding-top: 8px; /* 한글 타이틀과 시각적 높이를 맞추기 위함 */
+}
+
+/* --- 하단 그래픽 영역 (그라데이션 배경) --- */
+.mission-graphic-box {
+  width: 100%;
+  height: 460px;
+  border-radius: 30px;
+  /* 🔥 [이미지2]의 피그마 컬러값 완벽 적용 (0%, 50%, 99%) 🔥 */
+  background: linear-gradient(90deg, #4F1B78 0%, #21229C 50%, #2B2DD5 99%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 50px rgba(43, 45, 213, 0.2); /* 은은한 그림자 */
+}
+
+/* 내부 반투명 알약 모양 (Glassmorphism) */
+.graphic-inner-pill {
+  width: 900px;
+  height: 300px;
+  border-radius: 150px; /* 완전한 알약 모양 */
+  background-color: rgba(255, 255, 255, 0.08); /* 8% 투명도의 흰색 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 내부 반투명 원형 */
+.circle-item {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.12); /* 알약보다 살짝 더 불투명하게 겹치는 느낌 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px); /* 유리 질감 극대화 */
+}
+
+/* 텍스트와 원을 잇는 얇은 선 */
+.line {
+  width: 70px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* 중앙 텍스트 */
+.center-text {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0 20px;
+}
+
+
+
+
+
+/* ===================================================
+  Intro Section 02 (VISION)
+=================================================== */
+.intro-vision-section {
+  background-color: #F5F6F8; /* 시안의 연한 그레이 배경 */
+  padding: 150px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.vision-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* en-title, ko-title은 MISSION 섹션의 속성을 그대로 상속받습니다 */
+
+.vision-sub-row {
+  display: flex;
+  gap: 120px; /* 미션 섹션과 동일한 간격으로 완벽한 세로선 정렬 */
+  align-items: flex-start;
+}
+
+.vision-right {
+  flex: 1; /* 우측 영역이 남은 공간을 모두 차지하게 함 */
+  display: flex;
+  flex-direction: column;
+}
+
+.vision-slogan {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 25px;
+  word-break: keep-all; /* 단어 단위로 줄바꿈되어 깔끔하게 떨어짐 */
+  padding-top: 8px; /* 한글 '비전'과 눈높이를 맞추기 위한 미세 조정 */
+}
+
+.vision-desc {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 60px; /* 빈 박스와의 여백 */
+}
+
+/* 콘텐츠 미정 빈 네모 박스 */
+.vision-placeholder {
+  width: 100%;
+  height: 400px; /* 시안과 비슷한 비율 */
+  background-color: #2A3654; /* 시안의 네이비 컬러 */
+  /* border-radius: 12px; 필요 시 둥근 모서리 적용 가능 */
+}
+
+
+
+
+
+
+/* ===================================================
+  Intro Section 03 (CORE VALUE)
+=================================================== */
+.intro-value-section {
+  background-color: #ffffff;
+  padding: 150px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.value-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.value-header {
+  margin-bottom: 100px; 
+}
+
+/* 4단 그리드 레이아웃 */
+.value-grid {
+  position: relative; /* 선을 배치하기 위한 기준점 */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+/* 🔥 새롭게 추가된 아이콘 뒤 연결선 */
+.value-connecting-line {
+  position: absolute;
+  top: 96px; /* 아이콘 박스(120px)의 정확히 절반 높이 */
+  left: 60px; /* 첫 번째 아이콘 박스의 정확한 가로 중앙 */
+  width: calc(100% - 270px); /* 수학적으로 계산된 마지막 아이콘 중앙까지의 길이 */
+  height: 1px;
+  background-color: #D6D6D6; /* 시안과 유사한 연한 회색 선 */
+  z-index: 1; /* 아이콘들보다 뒤에 깔리게 설정 */
+}
+
+/* 개별 아이템 (좌측 정렬로 변경) */
+.value-item {
+  text-align: left; /* 중앙 정렬 -> 좌측 정렬로 변경 */
+  position: relative;
+  z-index: 2; /* 배경 선보다 무조건 위로 오도록 설정 */
+}
+
+/* 이미지 박스 크기 고정 */
+.value-icon-box {
+  width: 200px; /* 아이콘 박스 크기를 고정해야 선이 정확히 중앙을 관통합니다 */
+  height: 200px;
+  margin-bottom: 25px; /* 타이틀과의 간격 조정 */
+  display: flex;
+  justify-content: center; /* 아이콘 자체는 박스 안에서 중앙 정렬 */
+  align-items: center;
+}
+
+.value-icon-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+/* 호버 시 이미지가 살짝 커지는 효과는 유지 */
+.value-item:hover .value-icon-box img {
+  transform: scale(1.1) translateY(-5px);
+}
+
+/* 타이틀 및 설명 폰트 디테일 조정 */
+.v-en-title {
+  font-size: 24px; /* 시안처럼 폰트 크기 확대 */
+  font-weight: 800; /* 시안처럼 강렬한 굵기 */
+  color: #000; /* 완전한 블랙에 가깝게 */
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.v-ko-desc {
+  font-size: 16px; /* 크기 조정 */
+  color: #333;
+  font-weight: 400; /* 영문 타이틀과 대비되도록 일반 굵기로 변경 */
+  letter-spacing: -0.02em;
+}
 
 
 
