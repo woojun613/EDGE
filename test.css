@@ -566,156 +566,152 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 
 /* ===================================================
-      section-04 - 3D 입체감 카드 레이아웃 (수정됨)
-    =================================================== */
-    .section-04 {
-      background-color: #010101;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 100px 0;
-    }
+  section-04 - 3D 입체감 카드 레이아웃 (수정됨)
+=================================================== */
+.section-04 {
+  background-color: #010101;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 100px 0;
+}
 
-    /* 타이틀 영역 스타일 */
-    .title-area {
-      text-align: center;
-      margin-bottom: 60px;
-    }
+/* 타이틀 영역 스타일 */
+.title-area {
+  text-align: center;
+  margin-bottom: 60px;
+}
 
-    .title-area .subtitle {
-      color: #fff;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      margin-bottom: 20px;
-    }
+.title-area .subtitle {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
 
-    .title-area .main-title {
-      color: #fff;
-      font-size: 48px;
-      font-weight: 800;
-      line-height: 1.3;
-      margin: 0;
-    }
+.title-area .main-title {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0;
+}
 
-    .gradient-text {
-      background: linear-gradient(90deg, #C273FF 0%, #484AF7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent; 
-    }
+.gradient-text {
+  background: linear-gradient(90deg, #C273FF 0%, #484AF7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
+}
 
-    .container {
-      display: flex;
-      flex-direction: column; 
-      width: 1200px; 
-      padding: 0 30px;
-      margin: 0 auto;
-      position: relative; 
-      z-index: 1;
-    }
+.container {
+  display: flex;
+  flex-direction: column; 
+  width: 1200px; 
+  padding: 0 30px;
+  margin: 0 auto;
+  position: relative; 
+  z-index: 1;
+}
 
-    /* 스크롤 페이드인 담당 */
-    .card-wrapper {
-      position: relative;
-      z-index: 1;
-      opacity: 0; 
-      top: 70px; 
-      transition: opacity 0.8s ease-out, top 0.8s ease-out;
-      cursor: pointer;
-    }
+/* 스크롤 페이드인 담당 */
+.card-wrapper {
+  position: relative;
+  z-index: 1;
+  opacity: 0; 
+  top: 70px; 
+  transition: opacity 0.8s ease-out, top 0.8s ease-out;
+  cursor: pointer;
+}
 
-    .card-wrapper.is-visible {
-      opacity: 1;
-      top: 0;
-    }
+.card-wrapper.is-visible {
+  opacity: 1;
+  top: 0;
+}
 
-    /* 1. 카드 전체 뼈대 (투명한 영역) */
-    .card {
-      position: relative;
-      width: 486px;
-      height: 600px; 
-      transform-style: preserve-3d;
-      overflow: hidden; /* 배경 이미지가 둥근 테두리 밖으로 나가지 않게 */
-      border-radius: 20px;
-      z-index: 2;
-    }
+/* 1. 카드 전체 뼈대 (투명한 영역) */
+.card {
+  position: relative;
+  width: 486px;
+  height: 600px; 
+  transform-style: preserve-3d;
+  overflow: hidden; /* 배경 이미지가 둥근 테두리 밖으로 나가지 않게 */
+  border-radius: 20px;
+  z-index: 2;
+}
 
-    /* 2. 카드 배경 사각형 (패럴랙스를 위한 세팅) */
-    .card-bg {
-      position: absolute;
-      top: -10%; /* 이동 여유분 확보를 위해 더 크게 */
-      left: -10%;
-      width: 120%;
-      height: 120%;
-      background-size: cover;
-      background-position: center;
-      transform: scale(1.1); /* 초기 확대 상태 */
-      transition: transform 0.1s ease-out;
-      z-index: 1;
-    }
-    .card-bg-1 { background: url('./images/main-card-bg-1.png') center center no-repeat; }
-    .card-bg-2 { background: url('./images/main-card-bg-2.png') center center no-repeat; }
-    .card-bg-3 { background: url('./images/main-card-bg-3.png') center center no-repeat; }
-    .card-bg-4 { background: url('./images/main-card-bg-4.png') center center no-repeat; }
+/* 2. 카드 배경 사각형 (패럴랙스를 위한 세팅) */
+.card-bg {
+  position: absolute;
+  top: -10%; /* 이동 여유분 확보를 위해 더 크게 */
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.1); /* 초기 확대 상태 */
+  transition: transform 0.1s ease-out;
+  z-index: 1;
+}
+.card-bg-1 { background: url('./images/main-card-bg-1.png') center center no-repeat; }
+.card-bg-2 { background: url('./images/main-card-bg-2.png') center center no-repeat; }
+.card-bg-3 { background: url('./images/main-card-bg-3.png') center center no-repeat; }
+.card-bg-4 { background: url('./images/main-card-bg-4.png') center center no-repeat; }
 
-    /* 🔥 텍스트가 카드 중앙에 Multi-line으로 정렬되도록 CSS 전면 수정 */
-    .card-title {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      /* 상하좌우 중앙 정렬 후 입체감 부여 */
-      transform: translate3d(-50%, -50%, 100px); 
-      z-index: 3;
-      color: #fff;
-      font-size: 2.7rem;
-      font-weight: 800;
-      text-shadow: 0 10px 20px rgba(0,0,0,0.5);
-      pointer-events: none;
-      
-      /* 🔥 멀티라인 중앙 정렬 핵심 속성 */
-      text-align: center; /* 텍스트 자체 중앙 정렬 */
-      width: 80%;         /* 줄 바꿈을 위해 폭 지정 */
-      line-height: 1.3;    /* 줄 간격 조절 */
-      /* white-space: nowrap; <- 줄 바꿈을 막던 이 속성을 제거했습니다. */
-    }
+.card-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 100px); 
+  z-index: 3;
+  color: #fff;
+  font-size: 2.7rem;
+  font-weight: 800;
+  text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  pointer-events: none;
+  text-align: center; /* 텍스트 자체 중앙 정렬 */
+  width: 80%;         /* 줄 바꿈을 위해 폭 지정 */
+  line-height: 1.3;    /* 줄 간격 조절 */
+  /* white-space: nowrap; <- 줄 바꿈을 막던 이 속성을 제거했습니다. */
+}
 
-    /* 지그재그 레이아웃 코드 */
-    .card-wrapper:nth-child(odd) { align-self: flex-start; }
-    .card-wrapper:nth-child(even) { align-self: flex-end; }
-    .card-wrapper:nth-child(n+2) { margin-top: -204px; }
+/* 지그재그 레이아웃 코드 */
+.card-wrapper:nth-child(odd) { align-self: flex-start; }
+.card-wrapper:nth-child(even) { align-self: flex-end; }
+.card-wrapper:nth-child(n+2) { margin-top: -204px; }
 
-    /* 오른쪽 카드 반전 코드 */
-    .container > .card-wrapper:nth-child(even) .card {
-      transform: perspective(950px);
-    }
-    /* 배경은 지그재그에 맞춰 원위치 복구 */
-    .container > .card-wrapper:nth-child(even) .card-bg {
-      top: -10%; 
-      left: -10%;
-    }
+/* 오른쪽 카드 반전 코드 */
+.container > .card-wrapper:nth-child(even) .card {
+  transform: perspective(950px);
+}
+/* 배경은 지그재그에 맞춰 원위치 복구 */
+.container > .card-wrapper:nth-child(even) .card-bg {
+  top: -10%; 
+  left: -10%;
+}
 
-    /* 카드 배경 개별 타이포그래피 (Parallax Text) */
-    .bg-text {
-      position: absolute;
-      z-index: -1;
-      font-family: Arial, sans-serif;
-      font-size: 100px; 
-      font-weight: 900;
-      color: transparent; 
-      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.5);
-      line-height: 0.9;
-      letter-spacing: 0.02em;
-      white-space: nowrap; 
-      pointer-events: none; 
-    }
+/* 카드 배경 개별 타이포그래피 (Parallax Text) */
+.bg-text {
+  position: absolute;
+  z-index: -1;
+  font-family: Arial, sans-serif;
+  font-size: 100px; 
+  font-weight: 900;
+  color: transparent; 
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.5);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  white-space: nowrap; 
+  pointer-events: none; 
+}
 
-    .text-securing { top: 28%; right: 40%; }
-    .text-safety { top: 53%; left: 40%; }
-    .text-edge { top: 78%; right: 40%; text-align: right; }
+.text-securing { top: 28%; right: 40%; }
+.text-safety { top: 53%; left: 40%; }
+.text-edge { top: 78%; right: 40%; text-align: right; }
 /* ===================================================
   section-04 - 3D 입체감 카드 레이아웃 끝
 =================================================== */
