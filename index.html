@@ -474,6 +474,95 @@
   ================================================== -->
 
 
+
+
+  <!-- ==================================================
+    챗봇테스트
+  ================================================== -->
+  <div id="edge-chat-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: sans-serif;">
+    <button id="chat-button" style="width: 60px; height: 60px; border-radius: 50%; background: #001f3f; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    </button>
+
+    <div id="chat-window" style="display: none; width: 360px; height: 500px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); flex-direction: column; overflow: hidden; margin-bottom: 15px; border: 1px solid #ddd;">
+        <div style="background: #001f3f; color: white; padding: 18px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
+            <span>Edge Security AI 비서</span>
+            <span id="close-chat" style="cursor: pointer; font-size: 20px;">×</span>
+        </div>
+        <div id="chat-messages" style="flex: 1; padding: 20px; overflow-y: auto; background: #fdfdfd; font-size: 14px;">
+            <div style="margin-bottom: 15px; color: #001f3f;"><b>AI:</b> 반갑습니다. 엣지시큐리티 연혁 및 보안 가이드에 대해 무엇이든 물어보세요.</div>
+        </div>
+        <div style="padding: 15px; border-top: 1px solid #eee; display: flex; background: white;">
+            <input type="text" id="user-input" placeholder="질문을 입력하세요..." style="flex: 1; border: 1px solid #ccc; border-radius: 8px; padding: 10px; outline: none;">
+            <button id="send-btn" style="margin-left: 8px; background: #001f3f; color: white; border: none; border-radius: 8px; padding: 0 18px; cursor: pointer; font-weight: bold;">전송</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // [설정 정보]
+    const API_KEY = 'SZ10D9X-Y4BMYMH-NYGRH5F-SKB1JQ6'; // 차장님이 발급하신 키 적용됨
+    const BASE_URL = 'http://localhost:3001/api/v1'; 
+    const WORKSPACE_SLUG = '76beeec0-0e8c-4224-924d-40ae0c62c02d'; // 👈 실제 워크스페이스 URL 슬러그로 수정하세요!
+
+    const chatBtn = document.getElementById('chat-button');
+    const chatWin = document.getElementById('chat-window');
+    const closeBtn = document.getElementById('close-chat');
+    const chatMsg = document.getElementById('chat-messages');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    chatBtn.onclick = () => chatWin.style.display = chatWin.style.display === 'none' ? 'flex' : 'none';
+    closeBtn.onclick = () => chatWin.style.display = 'none';
+
+    async function sendMessage() {
+    const message = userInput.value.trim();
+    if (!message) return;
+
+    appendMsg('나', message, '#333');
+    userInput.value = '';
+
+    try {
+        const response = await fetch(`${BASE_URL}/workspace/${WORKSPACE_SLUG}/chat`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${API_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message, mode: 'query' })
+        });
+
+        // HTTP 상태 코드가 200이 아닐 경우 상세 에러 출력
+        if (!response.ok) {
+            const errorData = await response.json();
+            appendMsg('시스템 에러', `상태코드: ${response.status} / 메시지: ${JSON.stringify(errorData)}`, 'red');
+            return;
+        }
+
+        const data = await response.json();
+        appendMsg('AI', data.textResponse, '#001f3f');
+
+    } catch (error) {
+        // 네트워크 연결 자체의 문제(CORS, 주소 틀림 등) 출력
+        appendMsg('네트워크 에러', error.message, 'red');
+        console.error('상세 에러 내역:', error);
+    }
+}
+
+    function appendMsg(sender, text, color) {
+        const div = document.createElement('div');
+        div.style.marginBottom = '12px';
+        div.innerHTML = `<b style="color:${color}">${sender}:</b> ${text}`;
+        chatMsg.appendChild(div);
+        chatMsg.scrollTop = chatMsg.scrollHeight;
+    }
+
+    sendBtn.onclick = sendMessage;
+    userInput.onkeypress = (e) => { if(e.key === 'Enter') sendMessage(); };
+</script>
+  <!-- ==================================================
+    챗봇테스트
+  ================================================== -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
