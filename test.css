@@ -162,7 +162,6 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   height: 1500px;
   border-radius: 50%;
   
-  /* 파란색~보라색이 섞인 은은한 그라데이션 빛 */
   background: radial-gradient(circle, rgba(72, 74, 247, 0.2) 0%, rgba(37, 111, 228, 0.1) 40%, rgba(0, 0, 0, 0) 70%);
   filter: blur(40px); /* 테두리를 아주 부드럽게 뭉개줍니다 */
   
@@ -170,7 +169,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   z-index: 9990; /* 헤더보다는 아래, 콘텐츠보다는 위에서 빛을 뿌려줌 */
   mix-blend-mode: screen; /* 어두운 배경 위에서 빛처럼 합성됨 */
   
-  opacity: 0; /* 처음엔 숨김 */
+  opacity: 0;
   transition: opacity 0.5s ease;
 }
 /* ===================================================

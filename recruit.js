@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 3개의 글자 줄을 배열로 묶어서 차례대로 제어합니다.
     const lines = [".recruit-line-1", ".recruit-line-2", ".recruit-line-3"];
 
-    // 🔥 메인 페이지와 동일한 스크롤 연동(Scrub) 방식
+    // 메인 페이지와 동일한 스크롤 연동(Scrub) 방식
     gsap.fromTo(lines, 
       { 
         opacity: 0, 

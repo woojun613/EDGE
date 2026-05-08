@@ -7,7 +7,7 @@
 ul, ol, li { list-style: none; }
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; vertical-align: top; }
-button { border: none; background: none; cursor: pointer; font-family: inherit; }
+button { border: none; background: none; cursor: pointer; }
 
 /* ===================================================
   Header & Glassmorphism Button
