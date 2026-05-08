@@ -12,7 +12,7 @@ if (cursor && glowCursor) {
   gsap.set(cursor, { xPercent: -50, yPercent: -50 });
   gsap.set(glowCursor, { xPercent: -50, yPercent: -50 });
 
-  // 1. 작은 기본 커서의 움직임 (빠릿빠릿함)
+  // 1. 작은 기본 커서의 움직임
   let xTo = gsap.quickTo(cursor, "x", { duration: 0.15, ease: "power3" });
   let yTo = gsap.quickTo(cursor, "y", { duration: 0.15, ease: "power3" });
 
@@ -93,7 +93,7 @@ if (cursor && glowCursor) {
 const sec2 = document.querySelector(".section-02");
 
 if (sec2) {
-  // 🔥 1. 초기 상태 세팅 (vh 대신 픽셀 200으로 고정하여 계산 튕김 방지)
+  // 초기 상태 세팅 (vh 대신 픽셀 200으로 고정하여 계산 튕김 방지)
   gsap.set(".sec2-title", { y: 200 }); 
   gsap.set([".sec2-subtitle", ".sec2-desc", ".sec2-slider"], { opacity: 0, y: 40 });
 
@@ -120,12 +120,11 @@ if (sec2) {
       end: "+=2000",    
       scrub: 1,
       pin: true
-      // 🔥 핵심 해결 1: 순간이동의 주범인 anticipatePin 옵션을 과감히 삭제!
     }
   });
 
   sec2Tl
-    // 🔥 핵심 해결 2: gsap.to 대신 .fromTo를 사용하여 시작값을 자물쇠처럼 잠가버립니다.
+    // gsap.to 대신 .fromTo를 사용하여 시작값을 자물쇠처럼 잠가버립니다.
     .fromTo(".title-line-2", 
       { opacity: 0, filter: "blur(20px)" },
       { opacity: 1, filter: "blur(0px)", duration: 0.5 }
@@ -134,7 +133,7 @@ if (sec2) {
     // 완성된 문장을 잠깐 감상하는 여백
     .to({}, { duration: 0.3 }) 
     
-    // 🔥 핵심 해결 3: 타이틀 위로 스윽~ 올라감 (여기서도 fromTo로 순간이동 원천 차단!)
+    // 타이틀 위로 올라감 (여기서도 fromTo로 순간이동 원천 차단!)
     .fromTo(".sec2-title", 
       { y: 200 }, 
       { y: 0, duration: 1.2, ease: "power3.inOut" }
@@ -251,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // 🔥 브라우저가 렌더링될 때 불릿 4개를 직접 강제로 그려 넣습니다.
+  // 브라우저가 렌더링될 때 불릿 4개를 직접 강제로 그려 넣습니다.
   const paginationContainer = document.querySelector(".swiper-pagination");
   if (paginationContainer) {
     paginationContainer.innerHTML = ""; // 기존 내용 비우기
@@ -390,9 +389,9 @@ if (sec5) {
     }
   });
 
-  // 🔥 위즈텍 방식 적용: width/height 대신 scale과 x(vw)만 사용하여 완벽한 일직선 구현!
+  // width/height 대신 scale과 x(vw)만 사용하여 완벽한 일직선 구현!
   sec5Tl.to(".sec5-image-wrap", {
-    scale: 0.45,         // 위즈텍의 (1 - 0.6 * progress)와 비슷한 45% 크기로 축소
+    scale: 0.45,         // (1 - 0.6 * progress)와 비슷한 45% 크기로 축소
     x: "15vw",           // 우측으로 15vw 만큼 이동 (원하는 위치에 맞게 숫자 조절 가능)
     borderRadius: "40px",// scale이 줄어들면 라운드도 작아보이므로 살짝 큰 값을 줍니다.
     ease: "none",        // 포물선 방지용 일직선 가속도
