@@ -682,7 +682,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 /* 지그재그 레이아웃 코드 */
 .card-wrapper:nth-child(odd) { align-self: flex-start; }
 .card-wrapper:nth-child(even) { align-self: flex-end; }
-.card-wrapper:nth-child(n+2) { margin-top: -204px; }
+.card-wrapper:nth-child(n+2) { margin-top: -160px; }
 
 /* 오른쪽 카드 반전 코드 */
 .container > .card-wrapper:nth-child(even) .card {
