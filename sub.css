@@ -204,7 +204,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   top: 0;
   z-index: 1;       /* 핵심 2: 다음 섹션들이 덮을 수 있도록 가장 밑바닥에 배치 */
   width: 100%;
-  min-height: 70vh;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -245,7 +245,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   z-index: 2;
   width: 1200px;
   margin: 0 auto;
-  height: calc(70vh - 80px); /* 전체 높이에서 헤더를 뺀 실제 콘텐츠 높이 */
+  height: calc(100vh - 80px); /* 전체 높이에서 헤더를 뺀 실제 콘텐츠 높이 */
   display: flex;
   flex-direction: column;
   justify-content: center; /* 텍스트를 수직 중앙에 배치 */
@@ -267,7 +267,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 .sub-title {
   color: #fff;
-  font-size: 34px;
+  font-size: 44px;
   font-weight: 800;
   line-height: 1.4;
 }
@@ -330,7 +330,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 =================================================== */
 .sub-section-01 {
   background-color: #081B28;
-  margin-top: -30px;
+  /* margin-top: -30px; */
   padding: 110px 0 60px;
 }
 
@@ -374,7 +374,15 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .floating-wrapper {
   position: absolute;
   top: -150px;
-  right: -10px;
+  right: 140px;
+  z-index: 10;
+}
+
+.hero-obj {
+  position: absolute;
+  top: 50%; /* 화면 중앙 근처 */
+  right: 140px; /* 타이틀 오른쪽에 배치 */
+  transform: translateY(-50%);
   z-index: 10;
 }
 
