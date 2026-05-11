@@ -298,7 +298,6 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 /* --- 활성화된 탭 (요청하신 그라데이션) --- */
 .tab-item.active {
   font-weight: 700;
-  /* 글자 그라데이션 적용 */
   background: linear-gradient(90deg, #FFE5FD 0%, #CA57FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
