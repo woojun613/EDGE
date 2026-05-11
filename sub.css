@@ -211,7 +211,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   display: flex;
   align-items: center; 
   padding-top: 80px; 
-  border-radius: 0 0 20px 20px;
+  /* border-radius: 0 0 20px 20px; */
 }
 .sub-hero-01 { background-image: url('./images/sub-hero-bg1.png'); }
 .sub-hero-02 { background-image: url('./images/sub-hero-bg2.png'); }
@@ -374,20 +374,20 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .floating-wrapper {
   position: absolute;
   top: -150px;
-  right: 140px;
+  right: 0px;
   z-index: 10;
 }
 
 .hero-obj {
   position: absolute;
-  top: 50%; /* 화면 중앙 근처 */
-  right: 140px; /* 타이틀 오른쪽에 배치 */
+  top: 60%; /* 화면 중앙 근처 */
+  right: 0px; /* 타이틀 오른쪽에 배치 */
   transform: translateY(-50%);
   z-index: 10;
 }
 
 .floating-obj {
-  width: 260px; /* 이미지 크기 */
+  width: 360px; /* 이미지 크기 */
   animation: floating 4s ease-in-out infinite; /* 제자리 무한 둥둥 애니메이션 */
   /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); */
 }
