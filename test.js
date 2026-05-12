@@ -518,8 +518,8 @@ function initHeroThreeJS() {
             posArray[i * 3 + 2] += (Math.random() - 0.5) * 0.002;
 
             const dist = Math.sqrt(
-                posArray[i * 3] ** 2 + 
-                posArray[i * 3 + 1] ** 2 + 
+                posArray[i * 3] ** 2 +
+                posArray[i * 3 + 1] ** 2 +
                 posArray[i * 3 + 2] ** 2
             );
 
