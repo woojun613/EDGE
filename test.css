@@ -194,6 +194,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   display: flex;
   align-items: center; 
   padding-top: 80px; 
+  background-color: #010101;
 }
 
 /* --- 배경 영상 스타일 --- */
@@ -207,6 +208,17 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   z-index: 0;
 }
 
+/* 1. 3D 캔버스 영역 (추가해 주세요) */
+#particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* 최하단 */
+  pointer-events: none; /* 마우스가 뒤의 입자를 뚫고 버튼을 누를 수 있게 */
+}
+
 /* --- 어두운 반투명 오버레이 (가독성 향상) --- */
 .sec1-bg-overlay {
   position: absolute;
@@ -214,7 +226,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* 70% 투명도의 검은색 (영상 밝기에 따라 숫자 조절 가능) */
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
   z-index: 1; /* 영상(0) 바로 위에 배치 */
 }
 
@@ -647,18 +659,6 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
   transition: transform 0.1s ease-out;
   z-index: 1;
 }
-
-/* video.card-bg {
-  position: absolute;
-  top: -10%; 
-  left: -10%;
-  width: 120%;
-  height: 120%;
-  object-fit: cover;
-  transform: scale(1.1); 
-  transition: transform 0.1s ease-out;
-  z-index: 1;
-} */
 
 .card-bg-1 { background: url('./images/main-card-bg-1.png') center center no-repeat; }
 .card-bg-2 { background: url('./images/main-card-bg-2.png') center center no-repeat; }

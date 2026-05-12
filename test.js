@@ -427,3 +427,130 @@ fadeSections.forEach(sec => {
     });
   }
 });
+
+
+
+// =====================================================================
+// [추가] Hero Section 3D Particle Sphere (Vanilla Three.js 버전)
+// =====================================================================
+function initHeroThreeJS() {
+    const container = document.getElementById('particle-canvas');
+    if (!container) return;
+
+    // 1. 기본 세팅 (Scene, Camera, Renderer)
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 4;
+
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
+
+    // 2. 입자 데이터 생성
+    const particleCount = 1500;
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+    const colorTool = new THREE.Color();
+
+    const RADIUS = 2.3;
+
+    for (let i = 0; i < particleCount; i++) {
+        // 구형 분포 계산
+        const u = Math.random();
+        const v = Math.random();
+        const theta = 2 * Math.PI * u;
+        const phi = Math.acos(2 * v - 1);
+        const r = RADIUS * Math.pow(Math.random(), 1/3);
+
+        positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+        positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+        positions[i * 3 + 2] = r * Math.cos(phi);
+
+        // 색상: 흰색 80%, 골드 20%
+        const isGold = Math.random() < 0.2;
+        colorTool.set(isGold ? "#4144F3" : "#65A7FF");
+        colors[i * 3] = colorTool.r;
+        colors[i * 3 + 1] = colorTool.g;
+        colors[i * 3 + 2] = colorTool.b;
+    }
+
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+    const material = new THREE.PointsMaterial({
+        size: 0.02,
+        vertexColors: true,
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+    });
+
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+
+    // 3. 마우스 인터랙션 설정
+    let mouseX = 0;
+    let mouseY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+        // 좌표를 -1 ~ 1 사이로 정규화
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+    });
+
+    // 4. 애니메이션 루프
+    function animate() {
+        requestAnimationFrame(animate);
+
+        // 부드러운 회전 (마우스 반응)
+        points.rotation.y += (mouseX * 0.3 - points.rotation.y) * 0.05;
+        points.rotation.x += (-mouseY * 0.3 - points.rotation.x) * 0.05;
+        
+        // 미세한 자동 회전
+        points.rotation.z += 0.001;
+
+        // 입자들 미세하게 움직이기 (가두기 로직)
+        const posArray = geometry.attributes.position.array;
+        for (let i = 0; i < particleCount; i++) {
+            posArray[i * 3] += (Math.random() - 0.5) * 0.002;
+            posArray[i * 3 + 1] += (Math.random() - 0.5) * 0.002;
+            posArray[i * 3 + 2] += (Math.random() - 0.5) * 0.002;
+
+            const dist = Math.sqrt(
+                posArray[i * 3] ** 2 + 
+                posArray[i * 3 + 1] ** 2 + 
+                posArray[i * 3 + 2] ** 2
+            );
+
+            if (dist > RADIUS) {
+                posArray[i * 3] *= 0.99;
+                posArray[i * 3 + 1] *= 0.99;
+                posArray[i * 3 + 2] *= 0.99;
+            }
+        }
+        geometry.attributes.position.needsUpdate = true;
+
+        renderer.render(scene, camera);
+    }
+
+    // 창 크기 조절 대응
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    animate();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. 기존 UI 컴포넌트 실행 (Swiper, Observer 등)
+    // (기존에 작성하신 DOMContentLoaded 내부 코드들)
+
+    // 2. 3D 입자 엔진 기동
+    initHeroThreeJS(); 
+    
+    console.log("Edge Security 3D Engine: Active"); // 보안 로그 느낌 한 줄
+});

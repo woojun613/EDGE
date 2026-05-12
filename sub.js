@@ -3,7 +3,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 
-
 // =====================================================================
 // [0] Hero Section Load Animation (페이지 로드 시 히어로 섹션 등장)
 // =====================================================================
@@ -235,10 +234,10 @@ const floatingWrapper = document.querySelector(".floating-wrapper");
 
 if (floatingWrapper) {
   gsap.to(floatingWrapper, {
-    y: -350, // 스크롤을 내릴 때 위로 250px 만큼 더 빠르게 이동합니다. (숫자를 키울수록 더 빨리 올라감)
+    y: -400, // 스크롤을 내릴 때 위로 400px 만큼 더 빠르게 이동합니다. (숫자를 키울수록 더 빨리 올라감)
     ease: "none",
     scrollTrigger: {
-      trigger: ".sub-section-01",
+      trigger: ".sub-hero",
       start: "top bottom", // 섹션이 화면 아래에서 보이기 시작할 때 작동
       end: "bottom top",   // 섹션이 화면 위로 완전히 사라질 때 종료
       scrub: 1 // 스크롤 속도에 맞춰 부드럽게(1초 지연) 따라가기
