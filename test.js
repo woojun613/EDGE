@@ -347,7 +347,7 @@ if (cardsList.length > 0 && bgTexts.length > 0) {
   gsap.fromTo('.text-securing', 
     { opacity: 0, y: -100 }, 
     { opacity: 1, y: 150, ease: "none", 
-      scrollTrigger: { trigger: cardsList[1], start: "top 80%", end: "center 30%", scrub: 1.5 }
+      scrollTrigger: { trigger: cardsList[1], start: "top 90%", end: "top 20%", scrub: 0.3 }
     }
   );
 
@@ -355,7 +355,7 @@ if (cardsList.length > 0 && bgTexts.length > 0) {
   gsap.fromTo('.text-safety', 
     { opacity: 0, y: -100 }, 
     { opacity: 1, y: 150, ease: "none", 
-      scrollTrigger: { trigger: cardsList[2], start: "top 80%", end: "center 30%", scrub: 1.5 }
+      scrollTrigger: { trigger: cardsList[2], start: "top 90%", end: "top 20%", scrub: 0.3 }
     }
   );
 
@@ -363,7 +363,7 @@ if (cardsList.length > 0 && bgTexts.length > 0) {
   gsap.fromTo('.text-edge', 
     { opacity: 0, y: -170 }, 
     { opacity: 1, y: 80, ease: "none", 
-      scrollTrigger: { trigger: cardsList[3], start: "top 80%", end: "center 30%", scrub: 1.5 }
+      scrollTrigger: { trigger: cardsList[3], start: "top 90%", end: "top 20%", scrub: 0.3 }
     }
   );
   
@@ -544,13 +544,5 @@ function initHeroThreeJS() {
     animate();
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // 1. 기존 UI 컴포넌트 실행 (Swiper, Observer 등)
-    // (기존에 작성하신 DOMContentLoaded 내부 코드들)
-
-    // 2. 3D 입자 엔진 기동
-    initHeroThreeJS(); 
-    
-    console.log("Edge Security 3D Engine: Active"); // 보안 로그 느낌 한 줄
-});
+// 3D 입자 엔진 기동
+initHeroThreeJS(); 
