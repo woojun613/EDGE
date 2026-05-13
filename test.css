@@ -656,6 +656,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .icon-tr {
   top: -130px;
   right: -120px;
+  animation-delay: -2s;
 }
 /* 홀수/짝수 카드 정렬에 맞게 우상단 이미지 x축 위치 미세 조정 */
 .container > .card-wrapper:nth-child(even) .icon-tr {
