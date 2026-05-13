@@ -372,21 +372,29 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 /* --- 충돌 방지를 위해 위치(wrapper)와 애니메이션(obj) 분리 --- */
 .floating-wrapper {
   position: absolute;
-  z-index: 10;
+  top: -940px; 
+  /* 2. 1200px 중앙 정렬 레일 */
+  left: 50%;
+  width: 1200px;
+  margin-left: -600px;
+  height: 0;
+  z-index: 20; 
+  pointer-events: none;
 }
 
 .hero-obj {
   position: absolute;
-  top: 10%; /* 화면 중앙 근처 */
-  right: 20%; /* 타이틀 오른쪽에 배치 */
-  transform: translateY(-50%);
-  z-index: 20;
+  /* 1200px 박스의 오른쪽 끝에 배치 */
+  right: 100px; 
+  top: 0;
+  pointer-events: auto;
 }
 
 .floating-obj {
-  width: 300px; /* 이미지 크기 */
-  animation: floating 4s ease-in-out infinite; /* 제자리 무한 둥둥 애니메이션 */
-  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); */
+  width: 300px; /* 시원하게 크기 키움 */
+  animation: floating 4s ease-in-out infinite;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
+  will-change: transform;
 }
 
 
