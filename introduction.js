@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// =====================================================================
+  // =====================================================================
   // [3.6] Vision Section Animation (비전 영역 페이드인 조립 효과)
   // =====================================================================
   const visionSec = document.querySelector(".intro-vision-section");
