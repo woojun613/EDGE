@@ -638,11 +638,12 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 /* [추가] 고정 장식 이미지 스타일 (중요!) */
 .decor-icon {
   position: absolute;
-  width: 200px; /* 이미지 크기에 맞게 조절 */
+  width: 200px;
   height: auto;
-  z-index: 10; /* 카드(z-index: 2)보다 위에 오게 */
-  pointer-events: none; /* 이미지가 마우스 이벤트를 가로채지 않게 (기울기 효과 유지) */
-  transform: translate3d(0, 0, 0); /* 강제 고정 */
+  z-index: 10;
+  pointer-events: none;
+  animation: floatAnimation 4s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* 좌상단 배치 */
@@ -754,6 +755,19 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .text-securing { top: 28%; right: 40%; }
 .text-safety { top: 53%; left: 40%; }
 .text-edge { top: 82%; right: 40%; text-align: right; }
+
+
+@keyframes floatAnimation {
+  0%, 100% {
+    /* 초기 위치 (원래 배치된 위치) */
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    /* 중간 위치 (위로 15px 이동 + 2도 회전) */
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
 /* ===================================================
   section-04 - 3D 입체감 카드 레이아웃 끝
 =================================================== */
