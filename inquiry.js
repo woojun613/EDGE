@@ -2,20 +2,41 @@ gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    // [1] 커스텀 마우스 커서
+    // =====================================================================
+    // [1] 커스텀 마우스 커서 로직 (완벽 복구)
+    // =====================================================================
     const cursor = document.querySelector('.custom-cursor');
     if (cursor) {
         gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-        let xTo = gsap.quickTo(cursor, "x", { duration: 0.15 });
-        let yTo = gsap.quickTo(cursor, "y", { duration: 0.15 });
+        let xTo = gsap.quickTo(cursor, "x", { duration: 0.15, ease: "power3" });
+        let yTo = gsap.quickTo(cursor, "y", { duration: 0.15, ease: "power3" });
 
+        let isFirstMove = true; 
+
+        // 마우스 이동 감지 및 추적
         window.addEventListener("mousemove", (e) => {
-            gsap.to(cursor, { opacity: 1, duration: 0.3 });
-            xTo(e.clientX);
-            yTo(e.clientY);
+            if (isFirstMove) {
+                gsap.set(cursor, { x: e.clientX, y: e.clientY });
+                gsap.to(cursor, { opacity: 1, duration: 0.3 });
+                isFirstMove = false;
+            } else {
+                xTo(e.clientX);
+                yTo(e.clientY);
+            }
         });
 
-        const hoverElements = document.querySelectorAll('a, button, .header-btn, .top-btn');
+        // 화면 밖으로 나갈 때 숨김
+        document.body.addEventListener("mouseleave", () => gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.2 }));
+        document.body.addEventListener("mouseenter", () => {
+            if (!isFirstMove) gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.2 });
+        });
+
+        // 클릭 효과
+        window.addEventListener("mousedown", () => gsap.to(cursor, { scale: 0.8, duration: 0.1 }));
+        window.addEventListener("mouseup", () => gsap.to(cursor, { scale: 1, duration: 0.15, ease: "back.out(1.7)" }));
+
+        // 호버 효과 (버튼, 링크 등)
+        const hoverElements = document.querySelectorAll('a, button, .header-btn, .top-btn, .side-item');
         hoverElements.forEach((el) => {
             el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));

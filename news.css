@@ -9,11 +9,6 @@ a { text-decoration: none; color: inherit; }
 img { max-width: 100%; vertical-align: top; }
 button { border: none; background: none; cursor: pointer; }
 
-body {
-    background-color: #000;
-    overflow-x: hidden;
-}
-
 /* ===================================================
   [2] Header & Layout (공통)
 =================================================== */
@@ -109,6 +104,11 @@ body, a, button { cursor: none !important; }
     font-weight: 400; letter-spacing: -0.02em;
 }
 
+
+
+
+
+
 /* ===================================================
   [5] Content Area (아임웹 위젯 영역)
 =================================================== */
@@ -130,6 +130,13 @@ body, a, button { cursor: none !important; }
 #imweb-widget-area {
     min-height: 800px; /* 위젯 로드 전 공간 확보 */
 }
+
+
+
+
+
+
+
 
 /* ===================================================
   Footer

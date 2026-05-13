@@ -7,8 +7,6 @@ a { text-decoration: none; color: inherit; }
 img { max-width: 100%; vertical-align: top; }
 button { border: none; background: none; cursor: pointer; }
 
-body { background-color: #000; overflow-x: hidden; font-family: 'Pretendard', sans-serif; }
-
 /* 헤더 및 GNB */
 .header { position: absolute; top: 0; left: 0; width: 100%; height: 80px; z-index: 9999; }
 .header-container { width: 1200px; height: 100%; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
@@ -18,24 +16,24 @@ body { background-color: #000; overflow-x: hidden; font-family: 'Pretendard', sa
 .gnb a { color: rgba(255, 255, 255, 0.6); font-size: 16px; font-weight: 500; transition: 0.3s; }
 .gnb a:hover { color: #fff; }
 
-/* [중요] 그라데이션 문의하기 버튼 */
 .header-btn {
     display: inline-flex; align-items: center; justify-content: center;
     padding: 12px 26px;
-    /* 이미지1의 그라데이션 반영 */
     background: linear-gradient(90deg, #B4BEFF 0%, #CA57FF 100%);
     border-radius: 5px; color: #fff; font-size: 14px; font-weight: 700;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(202, 87, 255, 0.3);
 }
-/* .header-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(202, 87, 255, 0.5); } */
 
-/* 커스텀 커서 */
+/* ===================================================
+  [3] Custom Mouse Cursor (공통)
+=================================================== */
 body, a, button { cursor: none !important; }
 .custom-cursor {
     position: fixed; top: 0; left: 0; width: 20px; height: 20px;
     background-color: #fff; border-radius: 50%; pointer-events: none; 
-    z-index: 99999; mix-blend-mode: difference; opacity: 0;
+    z-index: 99999; mix-blend-mode: difference; 
+    opacity: 0; transition: width 0.3s ease, height 0.3s ease;
 }
 .custom-cursor.is-hovering { width: 60px; height: 60px; }
 
@@ -56,11 +54,22 @@ body, a, button { cursor: none !important; }
 .sub-title { color: #fff; font-size: 44px; font-weight: 800; line-height: 1.4; word-break: keep-all; }
 .inquiry-hero-desc { color: rgba(255, 255, 255, 0.7); font-size: 18px; margin-top: 30px; line-height: 1.6; font-weight: 400; }
 
+
+
+
+
+
 /* Content Area */
 .content-wrapper { position: relative; z-index: 10; background-color: #fff; border-radius: 40px 40px 0 0; }
 .inquiry-content-section { padding: 120px 0 150px; }
 .inquiry-container { width: 1200px; margin: 0 auto; }
 .widget-placeholder { width: 100%; height: 500px; border: 2px dashed #ddd; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: #aaa; }
+
+
+
+
+
+
 
 /* ===================================================
   Footer
