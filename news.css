@@ -76,7 +76,7 @@ body, a, button { cursor: none !important; }
 }
 
 .news-hero {
-    background-image: url('./images/news-bg.png'); 
+    background-image: url('./images/newsroom_bg.png'); 
     background-color: #05070a; /* 대비용 */
 }
 

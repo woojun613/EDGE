@@ -760,7 +760,6 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 
 @keyframes floatAnimation {
   0%, 100% {
-    /* 초기 위치 (원래 배치된 위치) */
     transform: translateY(0) rotate(0deg);
   }
   50% {
@@ -783,7 +782,7 @@ body, a, button, .swiper-pagination-bullet, .card-wrapper, .gradient-box {
 .section-05 {
   background-color: #010101;
   width: 100%;
-  height: 100vh; /* 화면에 100% 꽉 차게 고정 */
+  height: 100vh; 
   display: flex;
   align-items: center;
   position: relative;
