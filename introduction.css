@@ -202,7 +202,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
 .ko-title {
   font-size: 32px;
   font-weight: 800;
-  color: #111;
+  color: #fff;
   white-space: nowrap; /* 줄바꿈 방지 */
 }
 
@@ -345,7 +345,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
   Intro Section 03 (CORE VALUE)
 =================================================== */
 .intro-value-section {
-  background-color: #ffffff;
+  background: linear-gradient(130deg, #4F1B78 0%, #21229C 50%, #1E208E 99%); /* 그라데이션 배경으로 변경 */
   padding: 150px 0;
   position: relative;
   z-index: 10;
@@ -359,6 +359,13 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 .value-header {
   margin-bottom: 100px; 
+}
+
+.value-header .en-title {
+  /* CORE VALUE 텍스트 그라데이션 추가 */
+  background: linear-gradient(90deg, #FFE5FD 0%, #CA57FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* 4단 그리드 레이아웃 */
@@ -412,16 +419,17 @@ body, a, button, .card-wrapper { cursor: none !important; }
 .v-en-title {
   font-size: 24px; /* 시안처럼 폰트 크기 확대 */
   font-weight: 800; /* 시안처럼 강렬한 굵기 */
-  color: #000; /* 완전한 블랙에 가깝게 */
+  color: #fff; /* 완전한 블랙에 가깝게 */
   margin-bottom: 12px;
   letter-spacing: -0.01em;
 }
 
 .v-ko-desc {
   font-size: 16px; /* 크기 조정 */
-  color: #333;
+  color: #fff;
   font-weight: 400; /* 영문 타이틀과 대비되도록 일반 굵기로 변경 */
   letter-spacing: -0.02em;
+  opacity: .6;
 }
 
 
@@ -432,7 +440,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
   Intro Section 04 (LOCATION)
 =================================================== */
 .intro-location-section {
-  background-color: #2A3F7D; /* 시안 기반의 깊은 네이비 배경색 */
+  background-color: #F2F2F2; /* 시안 기반의 깊은 네이비 배경색 */
   padding: 150px 0;
   position: relative;
   z-index: 10;
@@ -448,7 +456,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
   margin-bottom: 80px;
   background: none; /* 공통 그라데이션 해제 */
   -webkit-background-clip: border-box;
-  -webkit-text-fill-color: #fff; /* 글자색을 완전한 흰색으로 강제 지정 */
+  -webkit-text-fill-color: #35379E; /* 글자색을 완전한 흰색으로 강제 지정 */
   color: #fff; 
 }
 
@@ -475,16 +483,32 @@ body, a, button, .card-wrapper { cursor: none !important; }
   display: block;
   font-size: 18px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.6); /* 시안처럼 약간 흐릿한 화이트 */
+  color: #35379E; /* 시안처럼 약간 흐릿한 화이트 */
   margin-bottom: 15px;
 }
 
 .info-value {
   font-size: 24px;
   font-weight: 700;
-  color: #fff;
+  color: #35379E;
   line-height: 1.5;
   word-break: keep-all;
+}
+
+.info-item {
+  /* 항목 사이의 전체 간격 조절 */
+  padding-bottom: 40px; 
+  margin-bottom: 40px;
+  /* value 밑에 선이 생기도록 설정 */
+  border-bottom: 1px solid #35379E; 
+}
+
+.info-item:last-child {
+  /* 시안처럼 마지막 항목 아래에는 선이 없도록 설정 */
+  /* 만약 마지막에도 선을 넣고 싶으시면 이 부분을 삭제하세요 */
+  border-bottom: none; 
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 /* 우측 지도 영역 (6:4 비율 중 6) */
@@ -497,7 +521,7 @@ body, a, button, .card-wrapper { cursor: none !important; }
   height: 500px; /* 시안과 비슷한 높이 */
   border-radius: 30px; /* 시안처럼 부드러운 라운드 */
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3); */
 }
 
 .map-img-wrapper img {

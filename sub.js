@@ -234,7 +234,7 @@ const floatingWrapper = document.querySelector(".floating-wrapper");
 
 if (floatingWrapper) {
   gsap.to(floatingWrapper, {
-    y: 800, // 스크롤을 내릴 때 위로 400px 만큼 더 빠르게 이동합니다. (숫자를 키울수록 더 빨리 올라감)
+    y: 800, // 스크롤을 내릴 때 위로 800px 만큼 더 빠르게 이동합니다.
     ease: "none",
     scrollTrigger: {
       trigger: ".sub-hero",

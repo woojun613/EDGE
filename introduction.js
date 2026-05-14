@@ -23,12 +23,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (heroContainer) {
     gsap.to(heroContainer, {
-      y: -1500, 
+      y: -1500,
       ease: "none",
       scrollTrigger: {
         trigger: "body",
         start: "top top",
-        end: "+=1500", 
+        end: "+=1500",
         scrub: true
       }
     });
