@@ -202,10 +202,12 @@ body, a, button, .card-wrapper { cursor: none !important; }
 .ko-title {
   font-size: 32px;
   font-weight: 800;
-  color: #fff;
+  color: #111;
   white-space: nowrap; /* 줄바꿈 방지 */
 }
-
+.ko-title-fff {
+  color: #fff; /* 시안처럼 완전한 흰색으로 변경 */
+}
 .mission-desc {
   font-size: 18px;
   color: #333;
@@ -345,11 +347,46 @@ body, a, button, .card-wrapper { cursor: none !important; }
   Intro Section 03 (CORE VALUE)
 =================================================== */
 .intro-value-section {
+  overflow: hidden;
   background: linear-gradient(130deg, #4F1B78 0%, #21229C 50%, #1E208E 99%); /* 그라데이션 배경으로 변경 */
   padding: 150px 0;
   position: relative;
   z-index: 10;
   height: 100vh;
+}
+
+.value-scrolling-bg {
+  position: absolute;
+  bottom: -50px; /* 시안처럼 하단에 걸치도록 배치 */
+  left: 0;
+  width: 100%;
+  pointer-events: none; /* 클릭 방지 */
+  z-index: 1; /* 아이콘보다 뒤에 위치 */
+  user-select: none;
+  
+  /* 마스크 효과: 상단 30%에서 하단 0%로 페이드 아웃 */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.scroll-wrap {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee-text 40s linear infinite; /* 40초 동안 한 바퀴 회전 */
+}
+
+.scroll-wrap span {
+  font-size: 200px; /* 시안처럼 압도적인 크기 */
+  font-weight: 900;
+  color: #ffffff;
+  padding-right: 100px; /* 문구 사이 간격 */
+  letter-spacing: -0.02em;
+}
+
+/* 무한 루프 애니메이션 정의 */
+@keyframes marquee-text {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* 문구가 반복되므로 50%만 밀어도 무한 루프처럼 보임 */
 }
 
 .value-container {

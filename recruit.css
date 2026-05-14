@@ -455,10 +455,14 @@ body, a, button, .card-wrapper { cursor: none !important; }
 /* 가로로 길게 늘어선 트랙 */
 .horizontal-scroll-track {
   display: flex;
-  width: max-content; /* 카드 개수에 맞춰 자연스럽게 늘어나게 함 */
-  height: 100%;
-  gap: 30px; /* 슬라이드(그룹) 사이의 간격도 카드 간격과 똑같이 30px로 묶어줌! */
-  padding: 0 calc(50vw - 600px); /* 화면 양쪽 끝에 여백을 주어 첫 슬라이드와 마지막 슬라이드가 항상 정중앙에 오도록 계산 */
+  width: max-content; /* 카드 개수에 따라 너비가 자동으로 늘어남 */
+  height: auto;
+  gap: 30px; /* 카드 사이 간격 */
+  /* 첫 카드의 시작 위치를 타이틀 라인(1200px 중앙)에 맞춤 */
+  padding-left: calc(50vw - 600px); 
+  padding-right: 100px; /* 마지막 카드 뒤 여백 */
+  align-items: flex-start;
+  margin-top: 50px;
 }
 
 .h-slide {
@@ -477,7 +481,8 @@ body, a, button, .card-wrapper { cursor: none !important; }
 
 /* --- 공통 카드 스타일 --- */
 .h-card {
-  flex: 1;
+  width: 380px; /* 카드의 너비를 380px로 고정 */
+  flex-shrink: 0; /* 너비가 줄어들지 않도록 방어 */
   background-color: #fff;
   border-radius: 24px;
   text-align: center;
@@ -486,7 +491,11 @@ body, a, button, .card-wrapper { cursor: none !important; }
   position: relative;
   display: flex;
   flex-direction: column;
-  /* overflow: hidden; */
+}
+
+.slide-03 .h-card-container {
+  justify-content: flex-start; /* 왼쪽 정렬 (현재 설정) */
+  /* 만약 중앙에 두고 싶다면 justify-content: center; 로 변경하세요 */
 }
 
 /* 컬러 배경이 들어가는 상단 헤더 영역 */

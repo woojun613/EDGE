@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
           end: "center center", // 섹션이 한가운데 오면 뚜렷해짐
           scrub: 1.5 // 스크롤 올리면 다시 부드럽게 되감기
         },
-        stagger: 0.3, // 🔥 핵심: 0.3초 간격으로 1번 줄, 2번 줄, 3번 줄이 차례대로 등장!
+        stagger: 0.3, // 0.3초 간격으로 1번 줄, 2번 줄, 3번 줄이 차례대로 등장!
         ease: "power2.out"
       }
     );
@@ -261,44 +261,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// =====================================================================
+  // =====================================================================
   // [2.1] Section 4 : 횡스크롤 애니메이션 (Security Expert Group)
   // =====================================================================
   const horizontalTrack = document.querySelector(".horizontal-scroll-track");
   const horizontalSection = document.querySelector(".recruit-section-04");
-  const slides = gsap.utils.toArray(".h-slide"); 
-  
-  const dots = gsap.utils.toArray(".h-pagination .dot");
 
   if (horizontalTrack && horizontalSection) {
     
-    // 트랙의 전체 길이에서 화면 너비만큼만 뺀 '정확한 가로 이동 거리'
+    // 트랙의 전체 가로 길이에서 화면 너비를 뺀 만큼이 총 이동 거리입니다.
     const getScrollAmount = () => horizontalTrack.scrollWidth - window.innerWidth;
 
     gsap.to(horizontalTrack, {
       x: () => -getScrollAmount(),
-      ease: "none",
+      ease: "none", // 스크롤과 1:1 대응되도록 가속도 제거
       scrollTrigger: {
         trigger: horizontalSection,
-        start: "top top",      
-        end: () => `+=${getScrollAmount()}`, 
-        scrub: 1,              
-        pin: true,             
-        anticipatePin: 1,
+        start: "top top",
+        end: () => `+=${getScrollAmount()}`, // 트랙 길이에 비례해서 스크롤 길이 결정
+        scrub: 1,
+        pin: true,
         invalidateOnRefresh: true,
-        
-        // 스크롤이 움직일 때마다 불릿 상태 업데이트 (이건 그대로 유지!)
-        onUpdate: (self) => {
-          const activeIndex = Math.round(self.progress * (slides.length - 1));
-          
-          dots.forEach((dot, index) => {
-            if (index === activeIndex) {
-              dot.classList.add("active");
-            } else {
-              dot.classList.remove("active");
-            }
-          });
-        }
+        // 블릿이 없으므로 onUpdate 로직은 삭제합니다.
       }
     });
   }
@@ -320,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function() {
       y: 50,
       opacity: 0,
       duration: 0.8,
-      stagger: 0.1, // 🔥 핵심: 0.1초 간격으로 다다다닥! 등장
+      stagger: 0.1, // 0.1초 간격으로 등장
       ease: "power3.out"
     });
   }
