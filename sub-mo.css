@@ -30,9 +30,12 @@ a { text-decoration: none; color: inherit; }
   text-align: center; position: relative; 
   z-index: 1;
 }
-.m-hero-1 {
-  background: url('./images/sub1-bg-mo.png') no-repeat center center/cover;
-}
+.m-hero-1 { background: url('./images/sub1-bg-mo.png') no-repeat center center/cover; }
+.m-hero-2 { background: url('./images/sub2-bg-mo.png') no-repeat center center/cover; }
+.m-hero-3 { background: url('./images/sub3-bg-mo.png') no-repeat center center/cover; }
+.m-hero-4 { background: url('./images/sub4-bg-mo.png') no-repeat center center/cover; }
+
+
 .m-hero-subtitle { font-size: 14px; letter-spacing: 0.4em; margin-bottom: 50px; opacity: 0.8; }
 .m-hero-title { font-size: 30px; font-weight: 700; line-height: 1.7; }
 .m-scroll-down {
@@ -164,7 +167,7 @@ a { text-decoration: none; color: inherit; }
 .m-sub-icon-floating {
     position: absolute;
     top: -100px; /* 타이틀 위로 살짝 올라가게 */
-    right: -20px; /* 우측 끝에 살짝 걸치게 */
+    right: 0; 
     width: 130px; /* 시안처럼 큼직하게 */
     height: 130px;
     z-index: 1;
