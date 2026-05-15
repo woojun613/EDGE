@@ -8,7 +8,7 @@ a { text-decoration: none; color: inherit; }
 /* 모바일 전용 독립 스타일 */
 .m-inquiry-page {
     color: #fff;
-    font-family: 'Pretendard', sans-serif;
+    overflow-x: hidden;
 }
 
 /* 헤더 */
@@ -26,9 +26,12 @@ a { text-decoration: none; color: inherit; }
 
 /* 히어로 (시안1) */
 .m-hero {
-    height: 100vh; display: flex; align-items: center; justify-content: center;
-    text-align: center; position: relative; 
-    background: url('./images/news-bg-mo.png') no-repeat center center/cover;
+  height: 100vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative; 
+  z-index: 1;
+}
+.m-hero-1 {
+  background: url('./images/sub1-bg-mo.png') no-repeat center center/cover;
 }
 .m-hero-subtitle { font-size: 14px; letter-spacing: 0.4em; margin-bottom: 50px; opacity: 0.8; }
 .m-hero-title { font-size: 30px; font-weight: 700; line-height: 1.7; }
@@ -38,9 +41,305 @@ a { text-decoration: none; color: inherit; }
 .m-scroll-down span { font-size: 11px; letter-spacing: 0.2em; display: block; margin-bottom: 15px; }
 .m-line { width: 1px; height: 60px; background: #fff; margin: 0 auto; }
 
-/* 콘텐츠 */
-.m-main-content { background: #fff; position: relative; z-index: 10; padding: 80px 20px; }
-.m-placeholder { padding: 100px 0; border: 1px dashed #ccc; text-align: center; color: #999; }
+
+
+
+.m-hero-nav {
+    position: absolute;
+    bottom: 0; /* 히어로 섹션 맨 아래에 딱 붙임 */
+    left: 0;
+    width: 100%;
+    padding: 0 10px; /* 모바일 좌우 여백 */
+    z-index: 20;
+}
+
+.m-hero-nav ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.m-hero-nav li {
+    flex: 1; /* 4개의 메뉴가 동일한 비율로 공간을 차지함 */
+    text-align: center;
+}
+
+.m-hero-nav a {
+    display: inline-block; /* 밑줄이 텍스트 너비만큼만 생기도록 인라인 블록 처리 */
+    padding-bottom: 16px; /* 텍스트와 하단 밑줄 사이의 간격 */
+    font-size: 13px; /* 모바일 화면에 4개가 다 들어가기 위한 최적의 사이즈 */
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4); /* [이미지1] 비활성 상태의 반투명 흰색 */
+    line-height: 1.4;
+    word-break: keep-all; /* 단어 단위로 줄바꿈되어 깔끔하게 유지 */
+    position: relative;
+}
+
+/* 🛡️ 활성화(Active) 상태: [이미지2] 그라데이션 텍스트 적용 */
+.m-hero-nav li.active a {
+    background: linear-gradient(90deg, #FFE5FD 0%, #CA57FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+/* 🛡️ 활성화(Active) 상태: 하단 그라데이션 밑줄 */
+.m-hero-nav li.active a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #FFE5FD 0%, #CA57FF 100%);
+}
+
+
+
+
+
+
+
+
+
+
+/* ===================================================
+   [이미지 시안 완벽 재현] 정보보안 컨설팅 섹션
+=================================================== */
+.m-main-content {z-index: 2;}
+.m-sub-section {
+    width: 100%;
+    padding: 80px 0; /* 상하 여백 */
+    background-color: #081B28; /* 시안의 짙은 네이비 배경. 필요시 투명(transparent)으로 변경 */
+    position: relative;
+    z-index: 5;
+    /* overflow: hidden; 우측 아이콘이 화면 밖으로 나가는 것 방지 */
+}
+
+.m-sub-container {
+    width: 100%;
+    padding: 0 20px; /* 모바일 좌우 여백 */
+    position: relative;
+}
+
+/* 페이드인 애니메이션 초기 상태 */
+.m-fade-in-item {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* ----------------------------------
+   상단 헤더 영역 (타이틀 & 둥둥 떠있는 아이콘)
+----------------------------------- */
+.m-sub-header {
+    position: relative;
+    margin-bottom: 35px;
+    padding-top: 20px;
+}
+
+.m-sub-title {
+    color: #ffffff; /* 👈 시안처럼 순백색의 굵은 메인 타이틀 */
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 2;
+}
+
+/* 🛡️ [이미지2] 컬러 반영: 그라데이션 서브타이틀 */
+.m-sub-subtitle-grad {
+    font-size: 16px;
+    font-weight: 500;
+    background: linear-gradient(90deg, #B4BEFF 0%, #CA57FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    word-break: keep-all;
+    position: relative;
+    z-index: 2;
+}
+
+/* 우측 상단 플로팅 아이콘 (별/크리스탈) */
+.m-sub-icon-floating {
+    position: absolute;
+    top: -100px; /* 타이틀 위로 살짝 올라가게 */
+    right: -20px; /* 우측 끝에 살짝 걸치게 */
+    width: 130px; /* 시안처럼 큼직하게 */
+    height: 130px;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.m-sub-icon-floating img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ----------------------------------
+   하단 본문 영역 (순백색 솔리드 카드)
+----------------------------------- */
+.m-sub-card {
+    background-color: #ffffff; /* 👈 투명도 없는 완벽한 흰색 카드 */
+    border-radius: 16px; /* 둥근 모서리 */
+    padding: 40px 25px; /* 넉넉한 내부 여백 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.m-card-title {
+    color: #111111;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    letter-spacing: -0.02em;
+}
+
+.m-card-content p {
+    color: #222222; /* 짙은 검회색으로 가독성 확보 */
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 24px; /* 문단 사이 간격 */
+    word-break: keep-all;
+}
+
+.m-card-content p:last-child {
+    margin-bottom: 0; /* 마지막 문단은 여백 제거 */
+}
+
+
+
+
+
+
+
+
+
+/* ===================================================
+   [이미지 시안 완벽 재현] 이런 서비스를 제공합니다 (서비스 리스트)
+=================================================== */
+.m-service-list-section {
+    width: 100%;
+    padding: 20px 0 100px; /* 이전 섹션과 자연스럽게 이어지도록 상단 여백 조절 */
+    background-color: #081B28; /* 이전 섹션과 완벽히 동일한 다크 네이비 배경 */
+    z-index: 5;
+    position: relative;
+}
+
+.m-service-container {
+    padding: 0 25px;
+}
+
+/* 메인 타이틀 */
+.m-service-main-title {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+/* 리스트 래퍼 */
+.m-service-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 개별 서비스 아이템 */
+.m-service-item {
+    display: flex;
+    gap: 20px; /* 아이콘과 텍스트 사이 간격 */
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 시안의 얇고 은은한 가로 구분선 */
+}
+
+.m-service-item:last-child {
+    border-bottom: none; /* 마지막 항목은 밑줄 제거 */
+}
+
+/* 좌측 그라데이션 아이콘 영역 */
+.m-svc-icon {
+    width: 55px; /* 모바일 비율에 맞게 셋팅 */
+    height: 55px;
+    flex-shrink: 0;
+}
+
+.m-svc-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 우측 콘텐츠 영역 */
+.m-svc-content {
+    flex: 1;
+}
+
+.m-svc-title {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+}
+
+.m-svc-desc {
+    color: rgba(255, 255, 255, 0.7); /* 밝은 회색으로 가독성 보장 */
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    word-break: keep-all;
+}
+
+/* 하단 캡슐형 태그 그룹 */
+.m-svc-tags {
+    display: flex;
+    flex-wrap: wrap; /* 공간이 모자라면 자동으로 줄바꿈 */
+    gap: 10px; /* 태그 간 상하좌우 간격 */
+}
+
+/* 캡슐형 태그 개별 디자인 */
+.m-svc-tags span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 시안처럼 얇고 반투명한 흰색 테두리 */
+    border-radius: 40px; /* 완벽한 둥근 알약 형태 */
+    color: rgba(255, 255, 255, 0.6); /* 텍스트는 테두리보다 살짝 더 밝게 */
+    font-size: 12px;
+    line-height: 1.3;
+    text-align: center;
+    word-break: keep-all;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ===================================================
    [이미지1] 시안 완벽 재현: 모바일 푸터 디테일

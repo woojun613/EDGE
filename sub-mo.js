@@ -4,13 +4,34 @@ const mFsMenu = document.getElementById('mFsMenu');
 const mFsClose = document.getElementById('mFsClose');
 
 if(mMenuBtn) {
-    mMenuBtn.addEventListener('click', () => mFsMenu.classList.add('active'));
+  mMenuBtn.addEventListener('click', () => mFsMenu.classList.add('active'));
 }
 if(mFsClose) {
-    mFsClose.addEventListener('click', () => mFsMenu.classList.remove('active'));
+  mFsClose.addEventListener('click', () => mFsMenu.classList.remove('active'));
 }
 
-// 모바일 전용 상단 이동
-function mScrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+// 기존 코드 하단에 추가
+document.addEventListener("DOMContentLoaded", function() {
+    // 폰트 로드 완료 후 실행 (텍스트 위치 계산 오류 방지)
+    document.fonts.ready.then(() => {
+        
+        // 🛡️ [추가] 정보보안 컨설팅 본문 페이드인 애니메이션 (stagger 효과)
+        const fadeElements = gsap.utils.toArray(".m-fade-in-item");
+
+        if (fadeElements.length > 0) {
+            gsap.to(fadeElements, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2, // 애니메이션 시간
+                ease: "power3.out",
+                stagger: 0.3, // 👈 핵심: 0.3초 간격으로 순차 등장
+                scrollTrigger: {
+                    trigger: ".m-sub-section",
+                    start: "top 75%", // 화면의 75% 지점에 도달하면 애니메이션 시작
+                    // toggleActions: "play none none reverse", // 스크롤 올리면 다시 사라지게
+                    // markers: true, // 디버깅 시 주석 해제
+                }
+            });
+        }
+    });
+});
