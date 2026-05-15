@@ -1,0 +1,153 @@
+@charset "utf-8";
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+ul, li { list-style: none; }
+a { text-decoration: none; color: inherit; }
+
+
+/* 모바일 전용 독립 스타일 */
+.m-inquiry-page {
+    background-color: #05070a;
+    color: #fff;
+    font-family: 'Pretendard', sans-serif;
+}
+
+/* 헤더 */
+.m-header {
+    position: absolute; top: 0; left: 0; width: 100%; height: 70px; z-index: 100;
+}
+.m-header-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 20px; height: 100%;
+}
+.m-logo img { height: 26px; }
+.m-hamburger span {
+    display: block; width: 24px; height: 2px; background: #fff; margin: 6px 0;
+}
+
+/* 히어로 (시안1) */
+.m-hero {
+    height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; position: relative; 
+    background: url('./images/inquiry-bg-mo.png') no-repeat center center/cover;
+}
+.m-hero-subtitle { font-size: 14px; letter-spacing: 0.4em; margin-bottom: 50px; opacity: 0.8; }
+.m-hero-title { font-size: 30px; font-weight: 700; line-height: 1.7; }
+.m-scroll-down {
+    position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%);
+}
+.m-scroll-down span { font-size: 11px; letter-spacing: 0.2em; display: block; margin-bottom: 15px; }
+.m-line { width: 1px; height: 60px; background: #fff; margin: 0 auto; }
+
+/* 콘텐츠 */
+.m-main-content { background: #fff; position: relative; z-index: 10; padding: 80px 20px; }
+.m-placeholder { padding: 100px 0; border: 1px dashed #ccc; text-align: center; color: #999; }
+
+/* ===================================================
+   [이미지1] 시안 완벽 재현: 모바일 푸터 디테일
+=================================================== */
+.m-footer { 
+    background-color: #152640; /* 시안의 깊은 네이비 배경색 */
+    padding: 60px 24px 40px; /* 하단바 여백 포함 */
+    text-align: left;
+}
+
+/* 1. 상단 메뉴 영역 (소개 | 서비스...) */
+.m-f-nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+.m-f-nav a { 
+    font-size: 16px; 
+    font-weight: 600; 
+    color: #ffffff; 
+}
+
+.m-pipe { 
+    font-size: 12px;
+    color: rgba(255,255,255,0.2); /* 파이프 기호는 아주 연하게 */
+    font-weight: 300;
+}
+
+/* 2. 개인정보처리방침 */
+.m-f-privacy { 
+    display: block; 
+    font-size: 14px; 
+    color: #7998C5; /* 시안 특유의 밝은 회청색 */
+    margin-bottom: 35px; 
+    font-weight: 500;
+}
+
+/* 3. 중간 구분선 */
+.m-f-divider { 
+    width: 100%; 
+    height: 1px; 
+    background: rgba(255,255,255,0.1); /* 매우 은은한 라인 */
+    margin-bottom: 40px; 
+}
+
+/* 4. 기업 상세 정보 */
+.m-f-info {
+    margin-bottom: 50px;
+}
+
+.m-f-brand { 
+    font-size: 20px; 
+    font-weight: 700;
+    color: #7998C5; /* 브랜드명 강조 컬러 */
+    margin-bottom: 15px; 
+    letter-spacing: -0.02em;
+}
+
+.m-f-info p { 
+    font-size: 14px; 
+    color: rgba(121, 152, 197, 0.7); /* 텍스트는 약간 투명하게 처리 */
+    margin-bottom: 8px; 
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* 5. 로고 및 카피라이트 */
+.m-f-logo-area { 
+    margin-top: 60px; 
+}
+
+.m-f-logo { 
+    width: 220px; /* 로고 크기 시안에 맞게 조정 */
+    margin-bottom: 15px; 
+    opacity: 0.9;
+}
+
+.m-f-copyright { 
+    font-size: 12px; 
+    color: rgba(121, 152, 197, 0.5); /* 카피라이트는 가장 연하게 */
+    letter-spacing: 0.02em;
+    font-weight: 300;
+}
+
+/* [참고] 하단 고정 바 배경색도 푸터와 맞춤 */
+.m-bottom-fixed-bar {
+    background-color: #0d1726; /* 푸터보다 살짝 더 어두운 블랙네이비 */
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* 하단 바 */
+.m-bottom-fixed-bar {
+    position: fixed; bottom: 0; left: 0; width: 100%; background: #000;
+    padding: 15px 25px; z-index: 1000; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.m-bar-icons { display: flex; justify-content: space-between; align-items: center; }
+.m-bar-icons img { height: 22px; }
+
+/* 메뉴 드로어 */
+.m-fs-menu {
+    position: fixed; top: 0; right: -100%; width: 100%; height: 100%;
+    background: #05070a; z-index: 2000; transition: 0.5s; padding: 100px 30px;
+}
+.m-fs-menu.active { right: 0; }
+.m-fs-close { position: absolute; top: 15px; right: 25px; font-size: 30px; }
+.m-fs-gnb a { display: block; font-size: 30px; font-weight: 800; margin-bottom: 30px; }
+.m-highlight { color: #CA57FF; }
