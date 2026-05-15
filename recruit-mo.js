@@ -197,9 +197,8 @@ function initWelfare() {
     const welfareMask = document.querySelector('.m-welfare-mask');
     if(!welfareList || !welfareMask) return;
 
-    // ⭐ [핵심 수정] 하단 페이드 구역을 벗어나기 위한 추가 여백
-    // 숫자를 늘릴수록 마지막 카드가 더 위에서 멈춥니다. (기본 120px 세팅)
-    const offset = 60; 
+    // 숫자를 늘릴수록 마지막 카드가 더 위에서 멈춥니다.
+    const offset = 80; 
 
     // 전체 리스트 높이에서 마스크 높이를 뺀 뒤, offset만큼 더 위로 끌어올림
     const moveDistance = (welfareList.offsetHeight - welfareMask.offsetHeight) + offset;
