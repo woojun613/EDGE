@@ -287,7 +287,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .m-card-body {
-    padding: 40px 20px;
+    padding: 20px;
     text-align: center;
 }
 
@@ -427,7 +427,6 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   justify-content: center;
   width: 100%;
-  /* padding: 0 20px; 양옆 여백 */
   margin-bottom: 30px; /* 하단 여백 */
   pointer-events: auto; /* 클릭 활성화 */
 }
@@ -436,8 +435,8 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between; /* 텍스트는 왼쪽, 화살표는 오른쪽 끝으로 */
-  width: 100%; /* 👈 가로로 길게 꽉 차도록 설정 */
-  background-color: #ffffff; /* 👈 시안과 동일한 흰색 배경 */
+  width: 100%; /* 가로로 길게 꽉 차도록 설정 */
+  background-color: #ffffff; /* 시안과 동일한 흰색 배경 */
   padding: 17px 30px; /* 버튼을 도톰하고 터치하기 쉽게 */
   border-radius: 50px; /* 완벽한 캡슐 모양 */
   text-decoration: none;
@@ -451,7 +450,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .m-recruit-text {
-  color: #111; /* 👈 검은색 텍스트 */
+  color: #111; /* 검은색 텍스트 */
   font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.02em;

@@ -223,6 +223,6 @@ window.onload = () => {
     setTimeout(() => {
         if(typeof initReveal === "function") initReveal();
         if(typeof initStacking === "function") initStacking();
-        initWelfare(); // 👈 복리후생 슬라이드 추가
+        initWelfare(); // 복리후생 슬라이드 추가
     }, 300);
 };
