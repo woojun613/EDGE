@@ -7,7 +7,6 @@ a { text-decoration: none; color: inherit; }
 
 /* 모바일 전용 독립 스타일 */
 .m-inquiry-page {
-    background-color: #05070a;
     color: #fff;
     font-family: 'Pretendard', sans-serif;
 }
@@ -125,11 +124,11 @@ a { text-decoration: none; color: inherit; }
 
 /* 🛡️ 개별 아이템별 이미지 매핑 (보내주신 순서대로) */
 .m-stack-1 { background-image: url('./images/recruit-2-1-mo.png'); }
-.m-stack-2 { background: #fff; color: #000; }
-.m-stack-3 { background-image: url('./images/recruit-2-2-mo.png'); }
-.m-stack-4 { background: #fff; color: #000; }
-.m-stack-5 { background-image: url('./images/recruit-2-3-mo.png');}
-.m-stack-6 { background: #fff; color: #000; }
+.m-stack-2 { background: #fff; color: #000; border-radius: 20px 20px 0 0; }
+.m-stack-3 { background-image: url('./images/recruit-2-2-mo.png'); border-radius: 20px 20px 0 0; }
+.m-stack-4 { background: #fff; color: #000; border-radius: 20px 20px 0 0; }
+.m-stack-5 { background-image: url('./images/recruit-2-3-mo.png'); border-radius: 20px 20px 0 0; }
+.m-stack-6 { background: #fff; color: #000; border-radius: 20px 20px 0 0; }
 
 
 
@@ -182,6 +181,7 @@ a { text-decoration: none; color: inherit; }
   width: 100%;
   height: 100vh; /* 화면 전체 높이로 설정하여 시선 집중 */
   padding: 150px 0; /* 위아래로 넉넉한 공간을 주어 시선 집중 */
+  border-radius: 20px;
   z-index: 5;
   background-image: url('./images/recruit-3-mo.png');
   background-repeat: no-repeat;
@@ -416,7 +416,7 @@ a { text-decoration: none; color: inherit; }
   gap: 20px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
-.m-welfare-icon { width: 50px; height: 50px; flex-shrink: 0; margin-bottom: 10px;}
+.m-welfare-icon { width: 50px; height: 50px; flex-shrink: 0; margin-bottom: 20px;}
 .m-welfare-icon img { width: 100%;}
 .m-welfare-text h4 { font-size: 18px; font-weight: 800; color: #333; margin-bottom: 5px; }
 .m-welfare-text p { font-size: 14px; color: #666; line-height: 1.4; word-break: keep-all; }
