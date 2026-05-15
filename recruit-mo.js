@@ -186,3 +186,44 @@ document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener('resize', () => moveSlider(currentIndex));
     }
 });
+
+
+
+
+
+// 기존 initWelfare() 함수를 아래 코드로 교체해주세요
+function initWelfare() {
+    const welfareList = document.getElementById('mWelfareList');
+    const welfareMask = document.querySelector('.m-welfare-mask');
+    if(!welfareList || !welfareMask) return;
+
+    // ⭐ [핵심 수정] 하단 페이드 구역을 벗어나기 위한 추가 여백
+    // 숫자를 늘릴수록 마지막 카드가 더 위에서 멈춥니다. (기본 120px 세팅)
+    const offset = 60; 
+
+    // 전체 리스트 높이에서 마스크 높이를 뺀 뒤, offset만큼 더 위로 끌어올림
+    const moveDistance = (welfareList.offsetHeight - welfareMask.offsetHeight) + offset;
+
+    // 안전장치
+    if (moveDistance <= 0) return;
+
+    gsap.to(welfareList, {
+        y: -moveDistance, 
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".m-welfare-section",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1, 
+        }
+    });
+}
+
+// window.onload 내부에 추가
+window.onload = () => {
+    setTimeout(() => {
+        if(typeof initReveal === "function") initReveal();
+        if(typeof initStacking === "function") initStacking();
+        initWelfare(); // 👈 복리후생 슬라이드 추가
+    }, 300);
+};

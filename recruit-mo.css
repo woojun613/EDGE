@@ -353,6 +353,127 @@ a { text-decoration: none; color: inherit; }
 
 
 
+/* 복리후생 섹션 전체 (스크롤 길이 조절용) */
+.m-welfare-section {
+  position: relative;
+  height: 350vh; /* 카드 개수가 많아 스크롤을 더 부드럽게 쓰기 위해 약간 늘림 */
+  background: linear-gradient(180deg, #4F1B78 0%, #21229C 50%, #1E208E 99%);
+}
+
+/* 고정 레이어 (100vh 꽉 채움) */
+.m-welfare-fixed-layer {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  padding: 80px 20px 40px; /* 위 80px, 좌우 20px, 아래 40px 여백 */
+  z-index: 10;
+}
+
+/* 상단 타이틀 (고정) */
+.m-welfare-header {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.m-welfare-title {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.m-welfare-title span { color: #B4BEFF; }
+
+/* 🛡️ 중간 카드 영역 (마스크 역할) */
+.m-welfare-mask {
+  flex: 1; /* 남은 중간 공간을 모두 차지 */
+  position: relative;
+  margin: 30px 0; /* 타이틀/버튼과의 안전 간격 */
+  overflow: hidden; /* 이 영역 밖으로 나가는 카드는 무조건 숨김! */
+  
+  /* [고급 효과] 경계선에서 카드가 스르륵 투명해지며 사라지게 만듦 */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+/* 스크롤될 실제 카드 리스트 */
+.m-welfare-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: absolute;
+  width: 100%;
+  top: 30px; /* 마스크 가장 아래에서 시작 대기 */
+}
+
+/* 개별 카드 (기존과 동일) */
+.m-welfare-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.m-welfare-icon { width: 50px; height: 50px; flex-shrink: 0; }
+.m-welfare-icon img { width: 100%; }
+.m-welfare-text h4 { font-size: 18px; font-weight: 800; color: #333; margin-bottom: 5px; }
+.m-welfare-text p { font-size: 14px; color: #666; line-height: 1.4; word-break: keep-all; }
+
+/* 하단 버튼 (고정) */
+.m-welfare-footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* padding: 0 20px; 양옆 여백 */
+  margin-bottom: 30px; /* 하단 여백 */
+  pointer-events: auto; /* 클릭 활성화 */
+}
+
+.m-recruit-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 텍스트는 왼쪽, 화살표는 오른쪽 끝으로 */
+  width: 100%; /* 👈 가로로 길게 꽉 차도록 설정 */
+  background-color: #ffffff; /* 👈 시안과 동일한 흰색 배경 */
+  padding: 17px 30px; /* 버튼을 도톰하고 터치하기 쉽게 */
+  border-radius: 50px; /* 완벽한 캡슐 모양 */
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* 그라데이션 배경 위에서 입체감 부여 */
+  transition: transform 0.2s ease;
+}
+
+/* 터치 시 살짝 눌리는 피드백 효과 */
+.m-recruit-link:active {
+  transform: scale(0.97);
+}
+
+.m-recruit-text {
+  color: #111; /* 👈 검은색 텍스트 */
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* 얇은 화살표 스타일링 */
+.m-recruit-arrow {
+  width: 28px; /* 화살표 크기 */
+  height: 28px;
+  /* 👈 시안에 있는 특유의 청록색(Teal) 컬러 적용 */
+  color: #40A898; 
+}
+
+
+
+
+
+
+
+
 
 /* ===================================================
    모바일 푸터 디테일
