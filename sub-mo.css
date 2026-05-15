@@ -322,9 +322,156 @@ a { text-decoration: none; color: inherit; }
 
 
 
+/* ===================================================
+   [이미지 시안 완벽 재현] 추천 대상 섹션
+=================================================== */
+.m-recommend-section {
+    width: 100%;
+    padding: 100px 0; /* 상하 넉넉한 여백 */
+    background-color: #ffffff; /* 이전 섹션과 대비되는 깨끗한 흰색 배경 */
+    z-index: 5;
+    position: relative;
+}
+
+.m-recommend-container {
+    padding: 0 25px; /* 모바일 좌우 여백 */
+}
+
+/* 페이드인 애니메이션 초기 상태 */
+.m-rec-fade {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* 섹션 타이틀 */
+.m-recommend-title {
+    color: #0B1121; /* 엣지시큐리티 특유의 다크 네이비 톤 유지 */
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+/* 카드 리스트 래퍼 */
+.m-recommend-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* 카드 간의 간격 (시안처럼 촘촘하게) */
+}
+
+/* 개별 회색 카드 */
+.m-recommend-card {
+    background-color: #F1F3F5; /* 시안의 아주 연한 회색 */
+    border-radius: 12px; /* 부드러운 모서리 */
+    padding: 24px 20px; /* 시안과 동일한 상하좌우 여백 */
+}
+
+.m-recommend-card p {
+    color: #111111;
+    font-size: 16px;
+    font-weight: 600; /* 시안처럼 약간 도톰한 글씨체 */
+    line-height: 1.5;
+    word-break: keep-all; /* 모바일 줄바꿈 최적화 */
+}
+
+/* 카드 내 부가 설명 (괄호 안의 글씨) */
+.m-recommend-card p span {
+    display: block; /* 줄바꿈 효과 */
+    font-size: 14px;
+    font-weight: 400; /* 설명은 얇게 */
+    color: #555555;
+    margin-top: 6px;
+}
 
 
 
+
+
+
+
+
+/* ===================================================
+   [이미지 시안 완벽 재현] 이런 성과를 만들어냅니다 섹션
+=================================================== */
+.m-achievement-section {
+    width: 100%;
+    padding: 100px 0;
+    background-color: #F2F4F7; /* 시안의 옅은 회색 배경 */
+    z-index: 5;
+    position: relative;
+}
+
+.m-achievement-container {
+    padding: 0 25px;
+}
+
+/* 페이드인 애니메이션 초기 상태 */
+.m-achieve-fade {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* 섹션 메인 타이틀 */
+.m-achievement-title {
+    color: #111111;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+/* 성과 카드 리스트 래퍼 */
+.m-achievement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 카드 간 간격 */
+}
+
+/* 개별 흰색 카드 */
+.m-achievement-card {
+    background-color: #ffffff; /* 순백색 카드 */
+    border-radius: 16px; /* 둥근 모서리 */
+    padding: 25px 20px;
+    display: flex;
+    align-items: flex-start; /* 아이콘과 텍스트의 상단 라인을 맞춤 */
+    gap: 18px; /* 아이콘과 텍스트 사이 간격 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03); /* 살짝 떠보이는 아주 은은한 그림자 */
+}
+
+/* 좌측 아이콘 영역 */
+.m-achieve-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0; /* 화면이 좁아져도 아이콘이 찌그러지지 않음 */
+}
+
+.m-achieve-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 우측 텍스트 영역 */
+.m-achieve-text {
+    flex: 1; /* 남은 공간 모두 차지 */
+}
+
+.m-achieve-text h4 {
+    color: #111111;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px; /* 타이틀과 설명 사이 간격 */
+    letter-spacing: -0.01em;
+}
+
+.m-achieve-text p {
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: keep-all; /* 모바일 단어단위 줄바꿈 */
+}
 
 
 

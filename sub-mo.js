@@ -35,3 +35,40 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+
+
+
+const recFadeElements = gsap.utils.toArray(".m-rec-fade");
+
+if (recFadeElements.length > 0) {
+    gsap.to(recFadeElements, {
+        opacity: 1,
+        y: 0,
+        duration: 1, // 개별 애니메이션 속도
+        ease: "power3.out",
+        stagger: 0.15, // 👈 0.15초 간격으로 카드가 하나씩 빠르게 올라옴
+        scrollTrigger: {
+            trigger: ".m-recommend-section",
+            start: "top 80%", // 섹션이 화면의 80% 지점에 도달했을 때 실행
+        }
+    });
+}
+
+
+
+const achieveFadeElements = gsap.utils.toArray(".m-achieve-fade");
+
+if (achieveFadeElements.length > 0) {
+    gsap.to(achieveFadeElements, {
+        opacity: 1,
+        y: 0,
+        duration: 1, 
+        ease: "power3.out",
+        stagger: 0.15, // 👈 카드가 0.15초 간격으로 다다닥 올라옴
+        scrollTrigger: {
+            trigger: ".m-achievement-section",
+            start: "top 80%", // 섹션이 화면에 조금 진입하면 바로 시작
+        }
+    });
+}
