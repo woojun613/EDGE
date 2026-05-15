@@ -174,6 +174,40 @@ a { text-decoration: none; color: inherit; }
 
 
 
+/* ===================================================
+   페이드인 텍스트 섹션 (채용 CTA)
+=================================================== */
+.m-fade-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 화면 전체 높이로 설정하여 시선 집중 */
+  padding: 150px 0; /* 위아래로 넉넉한 공간을 주어 시선 집중 */
+  z-index: 5;
+  background-image: url('./images/recruit-3-mo.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.m-fade-container {
+  width: 100%;
+  padding: 0 30px;
+  text-align: center;
+}
+
+/* 페이드인을 위한 초기 숨김 상태 */
+.m-fade-title {
+  font-size: 34px; /* 모바일 화면을 꽉 채우는 임팩트 있는 크기 */
+  font-weight: 800; /* 강렬한 메시지에 맞는 두꺼운 폰트 */
+  color: #fff; /* 배경에 맞춰 필요시 수정하세요 */
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+  
+  /* 애니메이션 시작 전 상태 */
+  opacity: 0;
+  transform: translateY(40px);
+}
 
 
 
@@ -183,6 +217,133 @@ a { text-decoration: none; color: inherit; }
 
 
 
+
+/* 전문가 그룹 섹션 */
+.m-expert-section {
+    padding: 100px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.m-expert-main-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 50px;
+}
+
+/* 슬라이더 트랙 */
+.m-expert-slider-outer {
+    width: 100%;
+    padding: 0 20px;
+}
+
+.m-expert-track {
+    display: flex;
+    gap: 20px;
+    will-change: transform;
+}
+
+/* 개별 카드 디자인 */
+.m-expert-card {
+    min-width: 85vw; /* 한 화면에 카드가 거의 다 차고 다음 카드가 살짝 보이게 */
+    background-color: #fff;
+}
+
+.m-card-inner {
+    border: 1px solid #e5e7f0;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.m-card-header {
+    padding: 25px 20px;
+    text-align: center;
+}
+
+
+.m-card-header-1 { background-color: #BBB7A4; }
+.m-card-header-2 { background-color: #E4F4E6; }   
+.m-card-header-3 { background-color: #F1DEC3; }   
+.m-card-header-4 { background-color: #D5CBED; }   
+.m-card-header-5 { background-color: #FDF7D2; }   
+.m-card-header-6 { background-color: #C9E7EA; }   
+.m-card-header-7 { background-color: #FFE9ED; }   
+
+.m-expert-pos {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.m-expert-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #002D72; /* 엣지 네이비 */
+}
+
+.m-card-body {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.m-expert-img {
+    width: 260px;
+    height: 180px;
+    margin: 0 auto 30px;
+    /* border-radius: 50%; */
+    /* background-color: #f3f3f3; */
+    overflow: hidden;
+}
+
+.m-expert-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.m-expert-catch {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.m-expert-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 네비게이션 버튼 */
+.m-expert-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.m-nav-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e5e7f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.m-nav-btn:active {
+    background-color: #f3f3f3;
+}
 
 
 
